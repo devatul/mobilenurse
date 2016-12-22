@@ -21,7 +21,8 @@
                   <input placeholder="first" value="" id="name" type="text" class="active validate" required>
                   <label for="firstName">First Name</label>
                </div>
-               <div class="input-field col s6">      
+               <div class="input-field col s6">
+               	  <i class="material-icons prefix">account_circle</i>      
                   <label for="password">Last Name</label>
                   <input id="password" type="text" placeholder="last" class="validate" required>          
                </div>
@@ -29,46 +30,57 @@
 
 
             <div class="row">
+				<div class="input-field col s6">
+          		  <i class="material-icons prefix">phone</i>
+          		  <input placeholder="Telephone" id="icon_telephone" type="tel" class="validate">
+          		  <label for="icon_telephone">Telephone</label>
+          		</div>
                <div class="input-field col s6">
                   <i class="material-icons prefix">account_circle</i>
                   <input placeholder="email" value="" id="email" type="text" class="active validate" required>
                   <label for="email">Email</label>
                </div>
-               <div class="input-field col s6">      
-                  <label for="password">Last Name</label>
-                  <input id="password" type="text" placeholder="last" class="validate" required>          
+            </div>
+
+			 <div class="row">
+				<div class="input-field col s6">
+          		  <input placeholder="street" id="street_name" type="text" class="validate" required>
+          		  <label for="icon_telephone">Street</label>
+
+          		</div>
+               <div class="input-field col s6">
+                  <input placeholder="city" value="city" id="city" type="text" class="active validate" required>
+                  <label for="city">City</label>
                </div>
             </div>
-		
 
+
+			 <div class="row">
+				<div class="input-field col s6">
+          		  <input placeholder="State" id="state-id" type="text" class="validate" required>
+          		  <label for="state">State</label>
+
+          		</div>
+               <div class="input-field col s6">
+                  <input placeholder="Zip" value="zip" id="zip" type="text" class="active validate" required>
+                  <label for="zip">Zip</label>
+               </div>
+            </div>
+
+
+
+	
             <div class="row">
                <div class="input-field col s12">
-                  <input placeholder="Comments (Disabled)" id="comments" type="text"  disabled>
+                  <input placeholder="Comments" id="comments" type="text">
                   <label for="comments">Comments</label>
                </div>
             </div>
 
-
-            <div class="row">
-               <div class="input-field col s12">
-                  <p>
-                     <input id="married" type="checkbox" checked="checked">
-                     <label for="married">Married</label>
-                  </p>
-                  <p>
-                     <input id="single" type="checkbox" class="filled-in" >
-                     <label for="single">Single</label>
-                  </p>
-                  <p>
-                     <input id="dontknow" type="checkbox">              
-                     <label for="dontknow">Don't know (Disabled)</label>
-                  </p>
-               </div>
-            </div>
             <div class="row">
                <div class="input-field col s12">
                    <p>
-                     <input id="male" type="radio" name="gender" value="male" checked>
+                     <input id="male" type="radio" name="gender" value="male">
                      <label for="male">Male</label>
                   </p>
                   <p>
@@ -76,8 +88,8 @@
                      <label for="female">Female</label>
                   </p>
                   <p>
-                     <input id="dontknow1" type="radio" name="gender" value="female" >                  
-                     <label for="dontknow1">Don't know (Disabled)</label>
+                     <input id="otherGender" type="radio" name="gender" value="otherGender">                  
+                     <label for="otherGender">Other</label>
                   </p>
                </div>
             </div>           
@@ -112,6 +124,7 @@
       </div>
     </div>
   </footer>
+
 
 
   <!--  Scripts-->
