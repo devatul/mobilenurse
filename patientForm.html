@@ -49,7 +49,7 @@
 
           		</div>
                <div class="input-field col s6">
-                  <input placeholder="city" value="city" id="city" type="text" class="active validate" required>
+                  <input placeholder="city" value="" id="city" type="text" class="active validate" required>
                   <label for="city">City</label>
                </div>
             </div>
@@ -62,12 +62,18 @@
 
           		</div>
                <div class="input-field col s6">
-                  <input placeholder="Zip" value="zip" id="zip" type="text" class="active validate" required>
+                  <input placeholder="Zip" value="" id="zip" type="text" class="active validate" required>
                   <label for="zip">Zip</label>
                </div>
             </div>
 
-
+			  <label>Gender</label>
+				  <select class="browser-default">
+				    <option value="" disabled selected>Choose your option</option>
+				    <option value="1">Male</option>
+				    <option value="2">Female</option>
+				    <option value="3">Other</option>
+				  </select>
 
 	
             <div class="row">
@@ -77,22 +83,7 @@
                </div>
             </div>
 
-            <div class="row">
-               <div class="input-field col s12">
-                   <p>
-                     <input id="male" type="radio" name="gender" value="male">
-                     <label for="male">Male</label>
-                  </p>
-                  <p>
-                     <input id="female" type="radio" name="gender" value="female" checked>
-                     <label for="female">Female</label>
-                  </p>
-                  <p>
-                     <input id="otherGender" type="radio" name="gender" value="otherGender">                  
-                     <label for="otherGender">Other</label>
-                  </p>
-               </div>
-            </div>           
+         
          </form>       
       </div>
    </body>   
