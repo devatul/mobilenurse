@@ -10,6 +10,36 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="irep.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
+<style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+/*    body {
+      background: #fff;
+    }*/
+
+    .input-field input[type=date]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=email]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #2a3031;
+    }
+
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #2a3031;
+      box-shadow: none;
+    }
+  </style>
 
  <body class="container">   
       <div class="row">
@@ -17,12 +47,12 @@
          	<p>Please enter client information:</p>
             
             <div class="row">
-               <div class="input-field col s6">
+               <div class="input-field col m6 s12">
                   <i class="material-icons prefix">account_circle</i>
                   <input placeholder="first" value="" id="name" type="text" class="active validate" required>
                   <label for="firstName">First Name</label>
                </div>
-               <div class="input-field col s6">
+               <div class="input-field col m6 s12">
                	  <i class="material-icons prefix">account_circle</i>      
                   <label for="password">Last Name</label>
                   <input id="password" type="text" placeholder="last" class="validate" required>          
@@ -31,12 +61,12 @@
 
 
             <div class="row">
-				<div class="input-field col s6">
+				<div class="input-field col m6 s12">
           		  <i class="material-icons prefix">phone</i>
           		  <input placeholder="Telephone" id="icon_telephone" type="tel" class="validate">
           		  <label for="icon_telephone">Telephone</label>
           		</div>
-               <div class="input-field col s6">
+               <div class="input-field col m6 s12">
                   <i class="material-icons prefix">account_circle</i>
                   <input placeholder="email" value="" id="email" type="text" class="active validate" required>
                   <label for="email">Email</label>
@@ -44,25 +74,25 @@
             </div>
 
 			 <div class="row">
-				<div class="input-field col s6">
+				<div class="input-field col m6 s12">
           		  <input placeholder="street" id="street_name" type="text" class="validate" required>
           		  <label for="icon_telephone">Street</label>
 
           		</div>
-               <div class="input-field col s6">
-                  <input placeholder="city" value="" id="city" type="text" class="active validate" required>
+               <div class="input-field col m6 s12">
+                  <input placeholder="" value="" id="city" type="text" class="active validate" required>
                   <label for="city">City</label>
                </div>
             </div>
 
 
 			 <div class="row">
-				<div class="input-field col s6">
+				<div class="input-field col m6 s12">
           		  <input placeholder="State" id="state-id" type="text" class="validate" required>
           		  <label for="state">State</label>
 
           		</div>
-               <div class="input-field col s6">
+               <div class="input-field col m6 s12">
                   <input placeholder="Zip" value="" id="zip" type="text" class="active validate" required>
                   <label for="zip">Zip</label>
                </div>
@@ -80,15 +110,15 @@
 			  <label>Exam Type</label>
 				  <select class="browser-default">
 				    <option value="" disabled selected>Choose your option</option>
-				    <option value="">Blood & Heart</option>
-				    <option value="2">Blood + EKG</option>
+				    <option value="">Paramed Blood & Urine (PBU)</option>
+				    <option value="2">Paramed Blood & Urine + EKG (PBE)</option>
 				    <option value="3">Other</option>
 				  </select>
 
-			  <label>Location</label>
+			  <label>Location Type</label>
 				  <select class="browser-default">
 				    <option value="" disabled selected>Choose your option</option>
-				    <option value="home">Home</option>
+				    <option value="home">Private Residence</option>
 				    <option value="office">Office</option>
 				    <option value="other">Other</option>
 				  </select>
@@ -105,6 +135,22 @@
       </div>
    </body>   
   
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+
+    <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team</p>
+
+
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Settings</h5>
@@ -133,12 +179,4 @@
     </div>
   </footer>
 
-
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-
-  </body>
 </html>
