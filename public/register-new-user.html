@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edu-care</title>
+    <!-- Material Design Icons Courtesy of Google -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <!-- Page Content goes here -->
+    <!-- navbar with tabs -->
+    <nav>
+        <div class="nav-wrapper container-margins">
+            <img src="images/logo.png" alt="logo" class="logo">
+            <a href="/" class="brand-logo">Edu-Care</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/schools">Schools</a></li>
+                <li><a href="/become-a-volunteer">Volunteers</a></li>
+                <li><a href="/signin">Login</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="/schools">Schools</a></li>
+                <li><a href="/become-a-volunteer">Volunteers</a></li>
+                <li><a href="/signin">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
+        <!-- volunteer sign-up form -->
+        <div class="row">
+            <h2 class="margin-left-110">Create an Account</h2>
+            <p class="margin-left-110">Volunteers, create an account here to start posting.</p>
+            <div class="col s1 m1"></div>
+            <div class="row section fill-out" id="create-account">
+                <form method='post' action='/register' class="col s12" id="volunteer-form">
+                    <h2 class="center-align">Create an Account</h2>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" name="username" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" name="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit">Register
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+            <div class="col s1 m1"></div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="footer-container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Edu-care</h5>
+                    <p class="grey-text text-lighten-4">Edu-care connects schools with volunteers.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Learn More</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Edu-care Github</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="footer-container">
+                © 2017 Team Edu-care
+            </div>
+        </div>
+    </footer>
+    <!-- Materialize initialization -->
+    <script type="text/javascript" src="js/initialization.js"></script>
+    <script type="text/javascript" src="js/newVolunteerForm.js"></script>
+</body>
+
+</html>
