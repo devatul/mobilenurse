@@ -2,156 +2,115 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MobileNurse.io</title>
-    <!-- Material Design Icons Courtesy of Google -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <!-- Custom stylesheet -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- link to css -->
+    <link rel="stylesheet" type="text/css" href="./public/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 </head>
 
+<style type="text/css">
+    
+.container-fluid {
+    padding-top: 5px;
+    padding-bottom: 25px;
+}
+
+.jumbotron{
+    text-align: center;
+}
+
+</style>
+
+
 <body>
-    <!-- Page Content goes here -->
-    <!-- navbar with tabs -->
-    <nav>
-        <div class="nav-wrapper container">
-            <img src="images/logo.png" alt="logo" class="logo">
-            <a href="/" class="brand-logo">MobileNurse.io</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/schools">Schools</a></li>
-                <li><a href="/become-a-volunteer">Volunteers</a></li>
-                <li><a href="/signin">Login</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li><a href="/schools">Schools</a></li>
-                <li><a href="/become-a-volunteer">Volunteers</a></li>
-                <li><a href="/signin">Login</a></li>
-            </ul>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluidx">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">mobilenurse.io</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-    <!-- Main -->
-    <main>
-        <div class="row section center-align" id="top-banner">
-            <div class="col s12 m12 margin-top-100 center-align" id="landing-panel-transparent">
-                <h1 class="h1">On Demand.</h1>
-                <h1 class="h1">Mobile Medical Exams.</h1>
-                <a class="waves-effect waves-light btn-large hoverable" href="/become-a-volunteer">Get Started</a>
-            </div>
+    <div class="row">
+        <div class="jumbotron">
+            <h1 class="display-3">On Demand</h1>
+            <h1 class="display-3">mobile medical exams</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </p>
         </div>
-        <!-- Get Started -->
-        <div class="row section center-align" id="helping-banner">
-            <div class="col s12 m12 margin-top-30 margin-top-media-805">
-                <h4 class="h4"><strong>Schedule an Exam with MobileNurse</strong></h4>
-                <h4 class="h4">Recieve RealTime Updates, RealTime Transparency</h4>
-                <hr>
-                <div class="row margin-top-50 margin-top-media-805">
-                </div>
-                <div class="row margin-top-30 margin-top-media-805">
-                    <div class="col s12 m4">
-                        <img src="images/volunteers-icon.png" alt="Volunteers" class="icon">
-                        <h5 class="h5">Licsened Medical Practioners</h5>
-                        <p class="p-thirds">MobileNurse fleet of liscensed medical professionals are standing by to provide your client the most professional service available</p>
-                    </div>
-                    <div class="col s12 m4">
-                        <img src="images/one-icon.png" alt="One" class="icon">
-                        <h5 class="h5">Transparency</h5>
-                        <p class="p-thirds">Our goal is provide you with full transparency throughout the exam process, it just makes sense</p>
-                    </div>
-                    <div class="col s12 m4">
-                        <img src="images/student-icon.png" alt="Student" class="icon">
-                        <h5 class="h5">RealTime Notifications</h5>
-                        <p class="p-thirds">Receive realtime notifications regarding your client's exam status via SMS, email and push messages to you, your assistant and your client</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row section center-align" id="experts-banner">
-            <div class="col s12 m6" id="expert-background"></div>
-            <div class="col s12 m6" id="experts-text">
-                <h2 class="h2">Become a MobileNurse.</h2>
-                <h5 class="h5">Your Time.  Your Money.  Your Schedule.</h5>
-                <hr>
-                <p class="margin-top-50 p-text">MobileNurse is constantly expanding our fleet of medical practioners looking for motivated and liscensed professionals to increase coverage throughout Chicagoland.... and we don't plan on stopping there.</p>
-                <a class="waves-effect waves-light btn-large hoverable" href="/listings">See Volunteers</a>
-            </div>
-        </div>
-        <div class="row section center-align" id="works-banner">
-            <div class="col s12 m12 margin-top-50 margin-top-media-600">
-                <h4 class="h4">How it Works</h4>
-                <hr>
-                <div class="row margin-top-50">
-                    <div class="col s12 m4">
-                        <img src="images/post-icon.png" alt="Search" class="icon">
-                        <h5 class="h5">1. Volunteers post.</h5>
-                        <p class="p-thirds">Let us know what you want to help with, let schools contact you.</p>
-                    </div>
-                    <div class="col s12 m4">
-                        <img src="images/search-icon.png" alt="Search" class="icon">
-                        <h5 class="h5">2. Schools find.</h5>
-                        <p class="p-thirds">Search for exactly what your students need, volunteers take it from there.</p>
-                    </div>
-                    <div class="col s12 m4">
-                        <img src="images/learning-icon.png" alt="Search" class="icon">
-                        <h5 class="h5">3. Learning happens.</h5>
-                        <p class="p-thirds">Provide kids with experiences that stretch their learning beyond the classroom.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Our Volunteers Do It All-->
-        <div class="row section center-align" id="all-banner">
-            <div class="col s12 m6">
-                <h4 class="margin-top-50">MobileNurse can do it all</h4>
-                <hr>
-                <div class="row">
-                    <div class="col s6 m6 margin-top-50 margin-top-media-785">
-                        <ul class="left-align margin-left-504 checks bold">
-                            <li>PBU</li>
-                            <li>PBU + EKG</li>
-                            <li>In Home health checks</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6" id="officer">
-                <img src="images/officer.jpg" alt="Officer" id="officer-img">
-            </div>
-        </div>
-    </main>
-    <!-- Footer -->
-    <footer class="page-footer">
-        <div class="footer-container">
+    </div>
+    <div class="container">
+        <div class="container-fluid text-center">
+            <h2>a modern solution for mobile medical exams</h2>
+            <br>
             <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Edu-care</h5>
-                    <p class="grey-text text-lighten-4">Edu-care connects schools with volunteers.</p>
+                <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-hand-up logo-small"></span>
+                    <h4>PROFESSIONAL</h4>
+                    <p>schedule an exam with mobile nurse and rest assured a licensed healthcare professional will provide your client with highest quality of service</p>
                 </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Learn More</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Edu-care Github</a></li>
-                    </ul>
+                <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-heart"></span>
+                    <h4>REALTIME</h4>
+                    <p>stay connected to your client's exam, we will notify you via automated SMS & email</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                    <h4>TRANSPARENCY</h4>
+                    <p>your user dashboard will offer the ability to order exams, make a schedling change, all with full transparency - it just makes sense</p>
                 </div>
             </div>
+            <hr>
         </div>
-        <div class="footer-copyright">
-            <div class="footer-container">
-                © 2017 Team Edu-care
+        <div class="container-fluid text-center">
+            <div class="row">
+                <h2>Interested in becoming a mobile nurse?</h2>
+                <h3>Work when you want, earn what you need</h3>
             </div>
+                    <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-hand-up logo-small"></span>
+                    <h4>PROFESSIONAL</h4>
+                    <p>schedule an exam with mobile nurse and rest assured a licensed healthcare professional will provide your client with highest quality of service</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-heart"></span>
+                    <h4>REALTIME</h4>
+                    <p>stay connected to your client's exam, we will notify you via automated SMS & email</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                    <h4>TRANSPARENCY</h4>
+                    <p>your user dashboard will offer the ability to order exams, make a schedling change, all with full transparency - it just makes sense</p>
+                </div>
+
         </div>
-    </footer>
-    <!-- Materialize initialization -->
-    <script type="text/javascript" src="js/initialization.js"></script>
-    <script type="text/javascript" src="js/form.js"></script>
+    </div>
+    </div>
 </body>
 
 </html>
