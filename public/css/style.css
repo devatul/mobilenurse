@@ -1,4 +1,10 @@
 /* Nav bar */
+.navbar-brand{
+	font-family: 'Gruppo', cursive; 
+	font-weight: bold;	
+}
+
+
 
 /*LANDING JUMBOTRON*/
 .container-fluid {
@@ -9,8 +15,13 @@
 .jumbotron {
     text-align: center;
     font-family: 'Gruppo', cursive; 
-	font-weight: bold;
-	
+	font-weight: bold;	
+}
+
+.mobilenurse-header{
+	font-family: 'Gruppo', cursive; 
+	font-weight: bold;	
+	font-size: 30px;
 }
 
 text{
@@ -30,13 +41,15 @@ text{
 
 .button {
     background-color: #4CAF50; /* Green */
+    font-family: 'Gruppo', cursive;
+    font-weight: bold;
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 /*SIGNIN FORM */
