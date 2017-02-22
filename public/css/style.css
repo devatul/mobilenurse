@@ -39,8 +39,8 @@ text{
 
 }
 
-.button {
-    background-color: #4CAF50; /* Green */
+#bootstrap-btn-overrides {
+    background-color: #000; /* Green */
     font-family: 'Gruppo', cursive;
     font-weight: bold;
     border: none;
@@ -50,6 +50,7 @@ text{
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
+    width: 300px;
 }
 
 /*SIGNIN FORM */
