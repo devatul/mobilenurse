@@ -8,6 +8,8 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
+var stormpath = require('express-stormpath');
+
 
 //creating instance of database for User table
 var User = db.User;
@@ -16,6 +18,8 @@ var User = db.User;
 // Server setup variables
 var app = express();
 var PORT = process.env.PORT || 8000;
+
+
 
 
 // passport.use(User.createStrategy());
@@ -36,6 +40,13 @@ app.use(function(req, res, next) {
     }
     next();
 });
+
+//Stormpath must be the last initialized middleware and come before any custom route code.
+app.use(stormpath.init(app, {
+    website: true
+}));
+
+
 
 // Define handlesbars engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
