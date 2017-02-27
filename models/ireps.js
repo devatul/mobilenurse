@@ -14,15 +14,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        firm:{
+        firm: {
             type: DataTypes.STRING,
-            allowNull:false
+            allowNull: false
         },
-        officeAddress:{
+        officeAddress: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        city:{
+        city: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -31,39 +31,39 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         zipcode: {
-            type:DataTypes.INTEGER,
-            allowNull: false,
-        },
-        officePhone:{
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        cellPhone:{
+        officePhone: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        email:{
+        cellPhone: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        email: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        assistantEmail:{
+        assistantEmail: {
             type: DataTypes.STRING,
-            allowNull:true
+            allowNull: true
         },
         insuranceRepId: {
             type: DataTypes.STRING,
-            allowNull:false,
+            allowNull: false,
             primaryKey: true
         },
-        isActive:{
+        isActive: {
             type: DataTypes.BOOLEAN,
             allowNull: false
         },
         updatedAt: {
             type: DataTypes.DATE,
-            defaultValue: sequelize.literal('NOW()')
+            //   defaultValue: sequelize.literal('NOW()')
         }
-        }
+    });
 
-    })
-}
+    return InsuranceReps;
+};

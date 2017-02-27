@@ -18,9 +18,9 @@ var app = express();
 var PORT = process.env.PORT || 8000;
 
 
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.use(User.createStrategy());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 
 app.use(bodyParser()); // -- caused error in terminal - KS
@@ -53,14 +53,13 @@ app.use(methodOverride('_method'));
 
 // Require the routes in controllers
 require('./controllers/html-routes.js')(app);
-require('./controllers/volunteers_controller.js')(app);
-require('./controllers/passports_controller.js')(app);
+
 
 // Static directory
 app.use(express.static("/public"));
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync().then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
