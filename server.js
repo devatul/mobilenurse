@@ -1,79 +1,82 @@
-// Require dependencies
+
 var express = require('express');
-var methodOverride = require('method-override');
-var bodyParser = require('body-parser');
-var exphbs = require('express-handlebars');
-var db = require('./models');
-var passport = require('passport');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var flash = require('connect-flash');
 var stormpath = require('express-stormpath');
+var bodyParser = require('body-parser');
+var webpack = require('webpack');
+var config = require('./webpack.config');
 
-
-//creating instance of database for User table
-var User = db.User;
-
-
-// Server setup variables
 var app = express();
-var PORT = process.env.PORT || 8000;
+var path = require('path');
 
-
-
-
-// passport.use(User.createStrategy());
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-
-
-///app.use(bodyParser()); // -- caused error in terminal - KS
-app.use(require('connect-multiparty')());
-app.use(cookieParser());
-app.use(session({ secret: 'super-secret' })); // -- caused error in terminal - KS
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(function(req, res, next) {
-    if (req.user) {
-        console.log(req.user);
-    }
-    next();
-});
-
-//Stormpath must be the last initialized middleware and come before any custom route code.
-app.use(stormpath.init(app, {
-    website: true
+var compiler = webpack(config);
+ 
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
 }));
 
+app.use(stormpath.init(app, {
+  web: {
+    produces: ['application/json']
+  }
+}));
 
-
-// Define handlesbars engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-// Set handlebars engine
-app.set('view engine', 'handlebars');
-
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + '/public'));
-
-// Parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Override with POST having ?_method=DELETE
-app.use(methodOverride('_method'));
-
-// Require the routes in controllers
-require('./controllers/html-routes.js')(app);
-
-
-// Static directory
-app.use(express.static("/public"));
-
-// Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: true }).then(function() {
-    app.listen(PORT, function() {
-        console.log("App listening on PORT " + PORT);
+app.post('/me', bodyParser.json(), stormpath.loginRequired, function (req, res) {
+  function writeError(message) {
+    res.status(400);
+    res.json({ message: message, status: 400 });
+    res.end();
+  }
+ 
+  function saveAccount () {
+    req.user.givenName = req.body.givenName;
+    req.user.surname = req.body.surname;
+    req.user.email = req.body.email;
+ 
+    req.user.save(function (err) {
+      if (err) {
+        return writeError(err.userMessage || err.message);
+      }
+      res.end();
     });
-}).catch(function(err) {
-    console.log(err);
+  }
+ 
+  if (req.body.password) {
+    var application = req.app.get('stormpathApplication');
+ 
+    application.authenticateAccount({
+      username: req.user.username,
+      password: req.body.existingPassword
+    }, function (err) {
+      if (err) {
+        return writeError('The existing password that you entered was incorrect.');
+      }
+ 
+      req.user.password = req.body.password;
+ 
+      saveAccount();
+    });
+  } else {
+    saveAccount();
+  }
+});
+
+
+app.get('/css/bootstrap.min.css', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build/css/bootstrap.min.css'));
+});
+ 
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build/index.html'));
+});
+
+
+
+app.on('stormpath.ready', function () {
+  app.listen(3000, 'localhost', function (err) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log('Listening at http://localhost:3000');
+  });
 });

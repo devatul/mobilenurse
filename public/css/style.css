@@ -12,6 +12,10 @@
     padding-bottom: 25px;
 }
 
+.display-header {
+    font-size: 45px;
+}
+
 .jumbotron {
     text-align: center;
     font-family: 'Gruppo', cursive; 
@@ -21,7 +25,7 @@
 .mobilenurse-header{
 	font-family: 'Gruppo', cursive; 
 	font-weight: bold;	
-	font-size: 30px;
+	font-size: 60px;
 }
 
 text{
