@@ -8,7 +8,43 @@ import {IndexRoute, Route, browserHistory } from 'react-router';
 
 ReactStormpath.init();
 
+
 ReactDOM.render(
+  <Router history={browserHistory}>
+    <Route path='/' component={MasterPage}>
+        <IndexRoute component={IndexPage} />
+    </Route>
+  </Router>,
+ 
+  document.getElementById('app-container')
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*ReactDOM.render(
     <Router history={browserHistory}>
         <HomeRoute path='/' component={MasterPage}>
             <IndexRoute component={IndexPage} />
@@ -20,4 +56,4 @@ ReactDOM.render(
         </HomeRoute>
     </Router>,
   document.getElementById('app-container')
-);
+);*/

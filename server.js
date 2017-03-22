@@ -1,4 +1,4 @@
-
+var path = require('path');
 var express = require('express');
 var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
@@ -6,7 +6,7 @@ var webpack = require('webpack');
 var config = require('./webpack.config');
 
 var app = express();
-var path = require('path');
+
 
 var compiler = webpack(config);
  
