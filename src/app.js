@@ -2,51 +2,17 @@ import { MasterPage, IndexPage, LoginPage, RegistrationPage, ProfilePage } from 
 import ReactStormpath, { Router, HomeRoute, LoginRoute, AuthenticatedRoute } from 'react-stormpath';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {IndexRoute, Route, browserHistory } from 'react-router';
+import {IndexRoute, Route, hashHistory } from 'react-router';
+import { HashRouter } from 'react-router-dom';
 
 
 
 ReactStormpath.init();
-
-
+console.log(hashHistory );
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path='/' component={MasterPage}>
-        <IndexRoute component={IndexPage} />
-    </Route>
-  </Router>,
- 
-  document.getElementById('app-container')
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*ReactDOM.render(
-    <Router history={browserHistory}>
+    <Router history={hashHistory}>
         <HomeRoute path='/' component={MasterPage}>
+
             <IndexRoute component={IndexPage} />
             <AuthenticatedRoute>
                  <HomeRoute path='/profile' component={ProfilePage} />
@@ -56,4 +22,4 @@ ReactDOM.render(
         </HomeRoute>
     </Router>,
   document.getElementById('app-container')
-);*/
+);

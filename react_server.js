@@ -24,7 +24,7 @@ app.use(stormpath.init(app, {
 app.post('/me', bodyParser.json(), stormpath.loginRequired, function (req, res) {
   function writeError(message) {
     res.status(400);
-    res.json({ message: message, status: 400 });
+    res.json({ message: message, status: 400});
     res.end();
   }
  

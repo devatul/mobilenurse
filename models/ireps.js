@@ -63,6 +63,16 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DATE,
             //   defaultValue: sequelize.literal('NOW()')
         }
+    },{
+        //Method to allow Ireps to have may exam requests
+    classMethods: {
+        associate: function(models) {
+            // associating volunteer with listings
+            models.ireps.hasMany(models.Exams, {
+                onDelete: "cascade"
+            });
+            models.InsuranceReps.belongsTo(models.User);
+        }
     });
 
     return InsuranceReps;
