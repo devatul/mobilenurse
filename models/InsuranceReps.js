@@ -64,16 +64,18 @@ module.exports = function(sequelize, DataTypes) {
             //   defaultValue: sequelize.literal('NOW()')
         }
     },{
-        //Method to allow Ireps to have may exam requests
+        //Method to allow Ireps to have many exam requests
     classMethods: {
         associate: function(models) {
-            // associating volunteer with listings
-            models.ireps.hasMany(models.Exams, {
+            // associating insurance reps with many exams
+            models.InsuranceReps.hasMany(models.Exams, {
                 onDelete: "cascade"
             });
             models.InsuranceReps.belongsTo(models.User);
         }
+    }
     });
 
     return InsuranceReps;
 };
+

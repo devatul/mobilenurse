@@ -1,3 +1,5 @@
+
+
 module.exports = function(sequelize, DataTypes) {
     var Exams = sequelize.define('Exams', {
         id: {
@@ -20,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         SubmitDate: {
-            type: DataTypes.Date,
+            type: DataTypes.DATE,
            // defaulvalue: sequelize.literal('NOW()')    
         },
         InsuranceRep: {
@@ -33,20 +35,28 @@ module.exports = function(sequelize, DataTypes) {
         },
         ExamID: {
             type: DataTypes.INTEGER,
-            autoIncrement: true,
             allowNull: false
         },
         ExamDate:{
-            type: DataTypes.Date,
+            type: DataTypes.DATE,
             allowNull: false
         },
         ExamTime: {
-            type: DataTypes.Time,
+            type: DataTypes.TIME,
         }
     },{
         classMethods: {
-            function(models) {
-                
-            }
-        }
-    }
+            associate: function(models) {
+                models.Exams.hasOne(models.InsuranceReps, {
+                    onDelete: "cascade"
+                }
+            models.Exams.belongsTo(InsuranceReps, {as: 'Ireps'});
+         });
+  
+           return Exams;
+      };
+//};
+   // });
+
+  
+//};
