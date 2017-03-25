@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 // Associating Volunteer with Listing
-                models.User.hasOne(models.ireps, {
+                models.User.hasOne(models.InsuranceReps, {
                     onDelete: "cascade"
                 });
             }
