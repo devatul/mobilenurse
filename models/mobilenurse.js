@@ -1,5 +1,5 @@
-module.exports = function(sequalize, DataTypes) {
-    var MobileNurse = sequalize.define('MobileNurse', {
+module.exports = function(sequelize, DataTypes) {
+    var MobileNurse = sequelize.define('MobileNurse', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -48,7 +48,7 @@ module.exports = function(sequalize, DataTypes) {
         },
         timestamp: {
             type: DataTypes.DATE,
-            //  defaultValue: sequalize.literal('NOW()')
+            defaultValue: sequelize.NOW
         },
         isActive: {
             type: DataTypes.BOOLEAN,

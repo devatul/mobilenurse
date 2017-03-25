@@ -61,7 +61,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         updatedAt: {
             type: DataTypes.DATE,
-            //   defaultValue: sequelize.literal('NOW()')
+            defaultValue: sequelize.NOW
         }
     },{
         //Method to allow Ireps to have many exam requests

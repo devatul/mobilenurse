@@ -1,43 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-   
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
-   
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+
     <!-- link to css -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
-   
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
-  
-  <title>mobilenurse</title>
 </head>
+
 <body>
     <div class="wrapper">
-    <form class="form-signin" action='/login' method="post">       
+    <form class="form-signin" method='post' action='/register'>       
       <h1 class="form-signin-heading"><strong>mobilenurse.io</strong></h1>
       <h3 class="form-signin-heading"> mobile medical exams</h3>
+      <h3 class="form-signin-heading">NEW USER REGISTRATION</h3>
 
-      <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
+      <input type="text" class="form-control" name="username" placeholder="Email" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
-      <label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-      </label>
-      <button id="bootstrap-btn-overrides" type="submit">LOGIN</button>
+      <button id="bootstrap-btn-overrides" type="submit">REGISTER</button>
       <br>
-      <a class="form-signin" href="/register">create account</a>
     </form>
   </div>
 </body>
 </html>
-
-
-<!-- class="btn btn-lg btn-primary btn-block"  -->

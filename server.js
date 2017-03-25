@@ -57,6 +57,7 @@ app.use(methodOverride('_method'));
 
 // Require the routes in controllers
 require('./controllers/html-routes.js')(app);
+require('./controllers/passports_controller.js')(app);
 
 
 // Static directory
