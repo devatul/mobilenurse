@@ -19,5 +19,18 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname + "/../public/new_user.html"));
     });
 
+    app.get("/profile",ensureAuthenticated, function(req, res) {
+        res.sendFile(path.join(__dirname + "/../public/profile/index.html"));
+    });
+
+
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    else
+        res.redirect('/signin');
+}
+
 
 };
