@@ -80,6 +80,6 @@ function validate(values) {
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['firstName' ,'categories','content'],
+    fields: ['firstName' ,'lastName','content'],
     validate
 }, null,{ createPost } ) (PostsNew); 

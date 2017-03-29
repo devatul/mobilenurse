@@ -24,6 +24,10 @@ module.exports = function(app) {
     });
 
 
+    app.get("*", ensureAuthenticated, function(req,res) {
+        res.sendFile(path.join(__dirname + '/../index.html'));
+    });
+
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated())
@@ -31,6 +35,10 @@ function ensureAuthenticated(req, res, next) {
     else
         res.redirect('/signin');
 }
+
+
+
+
 
 
 };

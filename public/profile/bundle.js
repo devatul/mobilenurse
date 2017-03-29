@@ -31930,7 +31930,7 @@
 	    _reactRouter.Route,
 	    { path: '/profile/', component: _app2.default },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _posts_index2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/profile/posts/new', component: _posts_new2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/new', component: _posts_new2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/profile/posts/:id', component: _posts_show2.default })
 	);
 
@@ -32247,7 +32247,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstName', 'categories', 'content'],
+	    fields: ['firstName', 'lastName', 'content'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 
