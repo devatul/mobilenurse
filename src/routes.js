@@ -8,7 +8,7 @@ import PostsShow from './components/posts_show';
 
 
 export default (
-    <Route path="/" component={App}>
+    <Route path="/profile/" component={App}>
         <IndexRoute component={PostsIndex} />
         <Route path="posts/new" component={PostsNew} />
         <Route path="posts/:id" component={PostsShow} />
