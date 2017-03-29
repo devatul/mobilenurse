@@ -8,7 +8,6 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
-var stormpath = require('express-stormpath');
 
 
 //creating instance of database for User table
