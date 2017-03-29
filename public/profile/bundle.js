@@ -31930,8 +31930,8 @@
 	    _reactRouter.Route,
 	    { path: '/profile/', component: _app2.default },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _posts_index2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'posts/new', component: _posts_new2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'posts/:id', component: _posts_show2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/profile/posts/new', component: _posts_new2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/profile/posts/:id', component: _posts_show2.default })
 	);
 
 /***/ },
@@ -32146,8 +32146,8 @@
 	        value: function render() {
 	            var _props = this.props,
 	                _props$fields = _props.fields,
-	                title = _props$fields.title,
-	                categories = _props$fields.categories,
+	                firstName = _props$fields.firstName,
+	                lastName = _props$fields.lastName,
 	                content = _props$fields.content,
 	                handleSubmit = _props.handleSubmit;
 
@@ -32157,7 +32157,7 @@
 	                _react2.default.createElement(
 	                    'h3',
 	                    null,
-	                    ' Create a New Post'
+	                    'Request an Exam'
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -32165,13 +32165,13 @@
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'Title'
+	                        'Firstname'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'text', className: 'form-control' }, title)),
+	                    _react2.default.createElement('input', _extends({ type: 'text', className: 'form-control' }, firstName)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        title.touched ? title.error : ''
+	                        firstName.touched ? firstName.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -32180,13 +32180,13 @@
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'Categories'
+	                        'Lastname'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'text', className: 'form-control' }, categories)),
+	                    _react2.default.createElement('input', _extends({ type: 'text', className: 'form-control' }, lastName)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        categories.touched ? categories.error : ''
+	                        lastName.touched ? lastName.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -32229,11 +32229,11 @@
 	function validate(values) {
 	    var errors = {};
 
-	    if (!values.title) {
-	        errors.title = 'Enter a username';
+	    if (!values.firstName) {
+	        errors.firstName = 'Enter client firstname';
 	    }
-	    if (!values.categories) {
-	        errors.categories = 'Enter a category';
+	    if (!values.lastName) {
+	        errors.lastName = 'Enter client lastname';
 	    }
 	    if (!values.content) {
 	        errors.content = 'Enter content';
@@ -32247,7 +32247,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['title', 'categories', 'content'],
+	    fields: ['firstName', 'categories', 'content'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 

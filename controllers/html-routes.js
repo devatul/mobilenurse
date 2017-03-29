@@ -19,7 +19,7 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname + "/../public/new_user.html"));
     });
 
-    app.get("/profile",ensureAuthenticated, function(req, res) {
+    app.get("/profile/",ensureAuthenticated, function(req, res) {
         res.sendFile(path.join(__dirname + "/../public/profile/index.html"));
     });
 

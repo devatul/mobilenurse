@@ -21,24 +21,24 @@ class PostsNew extends Component {
 
 
     render() {
-        const { fields: {title, categories, content }, handleSubmit } = this.props;
+        const { fields: {firstName, lastName, content }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-              <h3> Create a New Post</h3>
+              <h3>Request an Exam</h3>
               
                 <div className='form-group'>
-                    <label>Title</label> 
-                    <input type="text" className="form-control" {...title} />
+                    <label>Firstname</label> 
+                    <input type="text" className="form-control" {...firstName} />
                     <div className='text-help'>
-                        {title.touched ? title.error: ''}
+                        {firstName.touched ? firstName.error: ''}
                     </div> 
                 </div> 
 
                 <div className='form-group'>
-                    <label>Categories</label> 
-                    <input type="text" className="form-control" {...categories} />
+                    <label>Lastname</label> 
+                    <input type="text" className="form-control" {...lastName} />
                     <div className='text-help'>
-                        {categories.touched ? categories.error: ''}
+                        {lastName.touched ? lastName.error: ''}
                     </div> 
                 </div> 
                 
@@ -61,11 +61,11 @@ class PostsNew extends Component {
 function validate(values) {
     const errors = {};
 
-    if (!values.title) {
-        errors.title = 'Enter a username';
+    if (!values.firstName) {
+        errors.firstName = 'Enter client firstname';
     }
-    if (!values.categories) {
-        errors.categories = 'Enter a category';
+    if (!values.lastName) {
+        errors.lastName = 'Enter client lastname';
     }
     if (!values.content) {
         errors.content = 'Enter content'
@@ -80,6 +80,6 @@ function validate(values) {
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['title' ,'categories','content'],
+    fields: ['firstName' ,'categories','content'],
     validate
 }, null,{ createPost } ) (PostsNew); 
