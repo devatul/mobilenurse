@@ -27439,7 +27439,9 @@
 	var FETCH_POST = exports.FETCH_POST = 'FETCH_POST';
 	var DELETE_POST = exports.DELETE_POST = 'DELETE_POST';
 
-	var ROOT_URL = 'http://reduxblog.herokuapp.com/api';
+	// const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
+
+	var ROOT_URL = '/api';
 	var API_KEY = "?Key=Tonto";
 
 	function fetchPosts() {
@@ -32030,6 +32032,7 @@
 	    }, {
 	        key: 'renderPosts',
 	        value: function renderPosts() {
+	            console.log(this.props.posts);
 	            return this.props.posts.map(function (post) {
 	                return _react2.default.createElement(
 	                    'li',
@@ -32040,12 +32043,12 @@
 	                        _react2.default.createElement(
 	                            'span',
 	                            { className: 'pull-xs-right' },
-	                            post.categories
+	                            post.comments
 	                        ),
 	                        _react2.default.createElement(
 	                            'strong',
 	                            null,
-	                            post.title
+	                            post.firstName
 	                        )
 	                    )
 	                );
@@ -32063,13 +32066,13 @@
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
 	                        { to: '/posts/new', className: 'btn btn-primary' },
-	                        'Add A Post'
+	                        'EXAM REQUEST'
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'Posts'
+	                    'EXAMS'
 	                ),
 	                _react2.default.createElement(
 	                    'ul',
@@ -32138,7 +32141,7 @@
 	            this.props.createPost(props).then(function () {
 	                // blog post has been created, navigate the user to the index
 	                // we navigate by calling this.context.router.push
-	                _this2.context.router.push('/');
+	                _this2.context.router.push('/posts/new');
 	            });
 	        }
 	    }, {
@@ -32148,7 +32151,7 @@
 	                _props$fields = _props.fields,
 	                firstName = _props$fields.firstName,
 	                lastName = _props$fields.lastName,
-	                content = _props$fields.content,
+	                comments = _props$fields.comments,
 	                handleSubmit = _props.handleSubmit;
 
 	            return _react2.default.createElement(
@@ -32195,14 +32198,10 @@
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'Content'
+	                        'Comments'
 	                    ),
-	                    _react2.default.createElement('textarea', _extends({ className: 'form-control' }, content)),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'text-help' },
-	                        content.touched ? content.error : ''
-	                    )
+	                    _react2.default.createElement('textarea', _extends({ className: 'form-control' }, comments)),
+	                    _react2.default.createElement('div', { className: 'text-help' })
 	                ),
 	                _react2.default.createElement(
 	                    'button',
@@ -32211,7 +32210,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/', className: 'btn btn-danger' },
+	                    { to: '/profile/', className: 'btn btn-danger' },
 	                    'CANCEL'
 	                )
 	            );
@@ -32235,10 +32234,6 @@
 	    if (!values.lastName) {
 	        errors.lastName = 'Enter client lastname';
 	    }
-	    if (!values.content) {
-	        errors.content = 'Enter content';
-	    }
-
 	    return errors;
 	}
 
@@ -32247,7 +32242,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstName', 'lastName', 'content'],
+	    fields: ['firstName', 'lastName', 'comments'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 
@@ -32322,7 +32317,7 @@
 	                null,
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/' },
+	                    { to: '/profile/' },
 	                    'Back'
 	                ),
 	                _react2.default.createElement(
@@ -32335,19 +32330,19 @@
 	                _react2.default.createElement(
 	                    'h3',
 	                    null,
-	                    'Title: ',
-	                    post.title
+	                    'Firstname: ',
+	                    post.firstName
 	                ),
 	                _react2.default.createElement(
 	                    'h6',
 	                    null,
-	                    'Categories: ',
-	                    post.categories
+	                    'Lastname: ',
+	                    post.lastName
 	                ),
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    post.content,
+	                    post.comments,
 	                    ' '
 	                )
 	            );

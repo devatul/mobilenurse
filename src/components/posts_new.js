@@ -15,13 +15,13 @@ class PostsNew extends Component {
             .then(() => {
                 // blog post has been created, navigate the user to the index
                 // we navigate by calling this.context.router.push
-                this.context.router.push('/');
+                this.context.router.push('/posts/new');
             });
     }
 
 
     render() {
-        const { fields: {firstName, lastName, content }, handleSubmit } = this.props;
+        const { fields: {firstName, lastName, comments }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <h3>Request an Exam</h3>
@@ -43,15 +43,14 @@ class PostsNew extends Component {
                 </div> 
                 
                 <div className='form-group'>
-                    <label>Content</label> 
-                    <textarea className="form-control" {...content}/>
+                    <label>Comments</label> 
+                    <textarea className="form-control" {...comments}/>
                     <div className='text-help'>
-                        {content.touched ? content.error: ''}
                     </div> 
                 </div>
 
                 <button type="submit" className="btn btn-primary">SUBMIT</button> 
-                <Link to="/" className="btn btn-danger">CANCEL</Link> 
+                <Link to="/profile/" className="btn btn-danger">CANCEL</Link> 
             </form> 
         );
     }
@@ -67,10 +66,6 @@ function validate(values) {
     if (!values.lastName) {
         errors.lastName = 'Enter client lastname';
     }
-    if (!values.content) {
-        errors.content = 'Enter content'
-    }
-
     return errors;
 }
 
@@ -80,6 +75,6 @@ function validate(values) {
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['firstName' ,'lastName','content'],
+    fields: ['firstName' ,'lastName','comments'],
     validate
 }, null,{ createPost } ) (PostsNew); 

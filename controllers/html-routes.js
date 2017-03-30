@@ -1,4 +1,5 @@
 var path = require('path');
+var db = require('../models');
 
 module.exports = function(app) {
 
@@ -23,10 +24,26 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname + "/../public/profile/index.html"));
     });
 
+    app.post('/api/posts', ensureAuthenticated, function(req,res) {
+        res.json(req.body);
+   ///     console.log(req.body);
+        db.ReqExams.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            comments: req.body.comments
+        });
+    });
+
+// need a app.get route for backend
+
+// eveything above this //  
 
     app.get("*", ensureAuthenticated, function(req,res) {
         res.sendFile(path.join(__dirname + '/../index.html'));
     });
+
+
+
 
 
 function ensureAuthenticated(req, res, next) {
@@ -35,10 +52,5 @@ function ensureAuthenticated(req, res, next) {
     else
         res.redirect('/signin');
 }
-
-
-
-
-
 
 };

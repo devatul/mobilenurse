@@ -9,12 +9,13 @@ class PostsIndex extends Component {
     }
 
 renderPosts() {
+    console.log(this.props.posts)
     return this.props.posts.map((post) => {
         return (
              <li className="list-group-item" key={post.id}>
                  <Link to={"posts/" + post.id}> 
-                    <span className="pull-xs-right">{post.categories}</span>
-                    <strong>{post.title}</strong> 
+                    <span className="pull-xs-right">{post.comments}</span>
+                    <strong>{post.firstName}</strong> 
                  </Link> 
             </li>
         );
@@ -28,10 +29,10 @@ renderPosts() {
             <div>
                 <div className="text-xs-right">
                     <Link to="/posts/new" className="btn btn-primary">
-                      Add A Post
+                      EXAM REQUEST
                     </Link>
                 </div>         
-                <h4>Posts</h4> 
+                <h4>EXAMS</h4> 
                 <ul className="list-group">
                     { this.renderPosts() }
                 </ul>
