@@ -27439,8 +27439,6 @@
 	var FETCH_POST = exports.FETCH_POST = 'FETCH_POST';
 	var DELETE_POST = exports.DELETE_POST = 'DELETE_POST';
 
-	// const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
-
 	var ROOT_URL = '/api';
 	var API_KEY = "?Key=Tonto";
 

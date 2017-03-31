@@ -24,6 +24,8 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname + "/../public/profile/index.html"));
     });
 
+                            //// API ROUTES /////
+
     app.post('/api/posts', ensureAuthenticated, function(req,res) {
         res.json(req.body);
         db.ReqExams.create({
@@ -44,6 +46,9 @@ module.exports = function(app) {
 
 
     app.get('/api/posts', ensureAuthenticated, function (req, res) {
+            db.ReqExams.findAll({}).then(function (result) {
+                return res.json(result);
+            });
         });
 
 
