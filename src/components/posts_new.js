@@ -25,8 +25,8 @@ class PostsNew extends Component {
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <h3>Request an Exam</h3>
-              
-                <div className='form-group'>
+                    <Link to="/profile/">Back</Link>
+                <div className={`'form-group ${firstName.touched && firstName.invalid ? 'has-danger' : ''}`}>
                     <label>Firstname</label> 
                     <input type="text" className="form-control" {...firstName} />
                     <div className='text-help'>
@@ -34,7 +34,7 @@ class PostsNew extends Component {
                     </div> 
                 </div> 
 
-                <div className='form-group'>
+                <div className={`'form-group ${lastName.touched && lastName.invalid ? 'has-danger' : ''}`}>
                     <label>Lastname</label> 
                     <input type="text" className="form-control" {...lastName} />
                     <div className='text-help'>
@@ -50,7 +50,9 @@ class PostsNew extends Component {
                 </div>
 
                 <button type="submit" className="btn btn-primary">SUBMIT</button> 
-                <Link to="/profile/" className="btn btn-danger">CANCEL</Link> 
+                <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
+                <br></br>
+       
             </form> 
         );
     }
@@ -61,10 +63,10 @@ function validate(values) {
     const errors = {};
 
     if (!values.firstName) {
-        errors.firstName = 'Enter client firstname';
+        errors.firstName = 'Enter client Firstname';
     }
     if (!values.lastName) {
-        errors.lastName = 'Enter client lastname';
+        errors.lastName = 'Enter client Lastname';
     }
     return errors;
 }

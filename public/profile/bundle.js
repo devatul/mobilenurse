@@ -32165,8 +32165,13 @@
 	                    'Request an Exam'
 	                ),
 	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/profile/' },
+	                    'Back'
+	                ),
+	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'form-group' },
+	                    { className: '\'form-group ' + (firstName.touched && firstName.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
@@ -32181,7 +32186,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'form-group' },
+	                    { className: '\'form-group ' + (lastName.touched && lastName.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
@@ -32214,7 +32219,8 @@
 	                    _reactRouter.Link,
 	                    { to: '/profile/', className: 'btn btn-danger' },
 	                    'CANCEL'
-	                )
+	                ),
+	                _react2.default.createElement('br', null)
 	            );
 	        }
 	    }]);
@@ -32231,10 +32237,10 @@
 	    var errors = {};
 
 	    if (!values.firstName) {
-	        errors.firstName = 'Enter client firstname';
+	        errors.firstName = 'Enter client Firstname';
 	    }
 	    if (!values.lastName) {
-	        errors.lastName = 'Enter client lastname';
+	        errors.lastName = 'Enter client Lastname';
 	    }
 	    return errors;
 	}
@@ -32298,7 +32304,7 @@
 	            var _this2 = this;
 
 	            this.props.deletePost(this.props.params.id).then(function () {
-	                _this2.context.router.push('/');
+	                _this2.context.router.push('/profile');
 	            });
 	        }
 	    }, {

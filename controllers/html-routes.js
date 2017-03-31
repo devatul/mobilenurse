@@ -42,6 +42,17 @@ module.exports = function(app) {
             });
         });
 
+//get exam by post id
+    app.get('/api/posts/:id', ensureAuthenticated, function (req, res) {
+        db.ReqExams.findAll({
+            where: {
+                id: req.params.id
+            }
+         }).then(function(result){
+             return res.json(result);
+         });
+    });
+
 
     app.get("*", ensureAuthenticated, function(req,res) {
         res.sendFile(path.join(__dirname + '/../index.html'));
