@@ -35,15 +35,6 @@ module.exports = function(app) {
         });
     });
 
-        app.post('/api/posts', ensureAuthenticated, function(req,res) {
-        res.json(req.body);
-        db.ReqExams.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            comments: req.body.comments
-        });
-    });
-
 
     app.get('/api/posts', ensureAuthenticated, function (req, res) {
             db.ReqExams.findAll({}).then(function (result) {

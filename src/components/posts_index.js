@@ -15,7 +15,7 @@ renderPosts() {
              <li className="list-group-item" key={post.id}>
                  <Link to={"posts/" + post.id}> 
                     <span className="pull-xs-right">{post.comments}</span>
-                    <strong>{post.firstName}</strong> 
+                    <strong> {post.firstName} {post.lastName} </strong> 
                  </Link> 
             </li>
         );
@@ -32,7 +32,7 @@ renderPosts() {
                       EXAM REQUEST
                     </Link>
                 </div>         
-                <h4>EXAMS</h4> 
+                <h4>EXAMS REQUESTED</h4> 
                 <ul className="list-group">
                     { this.renderPosts() }
                 </ul>

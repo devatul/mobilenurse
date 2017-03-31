@@ -34,7 +34,7 @@ class PostsShow extends Component {
                 <button 
                     className="btn btn-danger pull-xs-right"
                     onClick={this.onDeleteClick.bind(this)}>
-                    DELETE POST 
+                    CANCEL EXAM
                 </button> 
                 <h3>Firstname: {post.firstName}</h3>
                 <h6>Lastname: {post.lastName}</h6>

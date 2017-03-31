@@ -31931,7 +31931,7 @@
 	    { path: '/profile/', component: _app2.default },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _posts_index2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/new', component: _posts_new2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/profile/posts/:id', component: _posts_show2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/:id', component: _posts_show2.default })
 	);
 
 /***/ },
@@ -32046,7 +32046,11 @@
 	                        _react2.default.createElement(
 	                            'strong',
 	                            null,
-	                            post.firstName
+	                            ' ',
+	                            post.firstName,
+	                            ' ',
+	                            post.lastName,
+	                            ' '
 	                        )
 	                    )
 	                );
@@ -32070,7 +32074,7 @@
 	                _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'EXAMS'
+	                    'EXAMS REQUESTED'
 	                ),
 	                _react2.default.createElement(
 	                    'ul',
@@ -32323,7 +32327,7 @@
 	                    {
 	                        className: 'btn btn-danger pull-xs-right',
 	                        onClick: this.onDeleteClick.bind(this) },
-	                    'DELETE POST'
+	                    'CANCEL EXAM'
 	                ),
 	                _react2.default.createElement(
 	                    'h3',
