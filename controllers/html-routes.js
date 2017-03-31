@@ -33,19 +33,23 @@ module.exports = function(app) {
         });
     });
 
+        app.post('/api/posts', ensureAuthenticated, function(req,res) {
+        res.json(req.body);
+        db.ReqExams.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            comments: req.body.comments
+        });
+    });
+
+
     app.get('/api/posts', ensureAuthenticated, function (req, res) {
         });
 
-// need a app.get route for backend
-
-// eveything above this //  
 
     app.get("*", ensureAuthenticated, function(req,res) {
         res.sendFile(path.join(__dirname + '/../index.html'));
     });
-
-
-
 
 
 function ensureAuthenticated(req, res, next) {
