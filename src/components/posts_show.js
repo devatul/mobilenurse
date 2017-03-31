@@ -11,8 +11,8 @@ class PostsShow extends Component {
 
 
     componentWillMount() {
-        this.props.fetchPost(this.props.params.id);
-    }
+        this.props.fetchPost(this.props.params.id); 
+}
 
     onDeleteClick() {
         this.props.deletePost(this.props.params.id)
@@ -37,8 +37,8 @@ class PostsShow extends Component {
                     CANCEL EXAM
                 </button> 
                 <h3>Firstname: {post.firstName}</h3>
-                <h6>Lastname: {post.lastName}</h6>
-                <p>{post.comments} </p>   
+                <h3>Lastname: {post.lastName}</h3>
+                <p>Comments: {post.comments} </p>   
              </div>
         );
     }

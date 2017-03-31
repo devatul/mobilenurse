@@ -13,7 +13,7 @@ class PostsNew extends Component {
     onSubmit(props) {
         this.props.createPost(props)
             .then(() => {
-                // blog post has been created, navigate the user to the index
+                // exams post has been created, navigate the user to the index
                 // we navigate by calling this.context.router.push
                 this.context.router.push('/profile/');
             });
@@ -52,7 +52,6 @@ class PostsNew extends Component {
                 <button type="submit" className="btn btn-primary">SUBMIT</button> 
                 <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
                 <br></br>
-       
             </form> 
         );
     }

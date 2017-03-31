@@ -27462,7 +27462,7 @@
 	}
 
 	function fetchPost(id) {
-	  var request = _axios2.default.get(ROOT_URL + '/posts/' + id + API_KEY);
+	  var request = _axios2.default.get(ROOT_URL + '/posts/' + id);
 
 	  return {
 	    type: FETCH_POST,
@@ -27471,7 +27471,7 @@
 	}
 
 	function deletePost(id) {
-	  var request = _axios2.default.delete(ROOT_URL + '/posts/' + id + API_KEY);
+	  var request = _axios2.default.delete(ROOT_URL + '/posts/' + id);
 
 	  return {
 	    type: DELETE_POST,
@@ -32141,7 +32141,7 @@
 	            var _this2 = this;
 
 	            this.props.createPost(props).then(function () {
-	                // blog post has been created, navigate the user to the index
+	                // exams post has been created, navigate the user to the index
 	                // we navigate by calling this.context.router.push
 	                _this2.context.router.push('/profile/');
 	            });
@@ -32342,7 +32342,7 @@
 	                    post.firstName
 	                ),
 	                _react2.default.createElement(
-	                    'h6',
+	                    'h3',
 	                    null,
 	                    'Lastname: ',
 	                    post.lastName
@@ -32350,6 +32350,7 @@
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
+	                    'Comments: ',
 	                    post.comments,
 	                    ' '
 	                )
