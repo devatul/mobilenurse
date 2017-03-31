@@ -17,7 +17,7 @@ class PostsShow extends Component {
     onDeleteClick() {
         this.props.deletePost(this.props.params.id)
         .then(() => {
-            this.context.router.push('/profile');
+            this.context.router.push('/profile/');
         });
     }
 

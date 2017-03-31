@@ -32074,7 +32074,7 @@
 	                _react2.default.createElement(
 	                    'h4',
 	                    null,
-	                    'EXAMS REQUESTED'
+	                    'PENDING EXAMS'
 	                ),
 	                _react2.default.createElement(
 	                    'ul',
@@ -32143,7 +32143,7 @@
 	            this.props.createPost(props).then(function () {
 	                // blog post has been created, navigate the user to the index
 	                // we navigate by calling this.context.router.push
-	                _this2.context.router.push('/posts/new');
+	                _this2.context.router.push('/profile/');
 	            });
 	        }
 	    }, {
@@ -32304,7 +32304,7 @@
 	            var _this2 = this;
 
 	            this.props.deletePost(this.props.params.id).then(function () {
-	                _this2.context.router.push('/profile');
+	                _this2.context.router.push('/profile/');
 	            });
 	        }
 	    }, {

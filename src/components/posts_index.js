@@ -32,7 +32,7 @@ renderPosts() {
                       EXAM REQUEST
                     </Link>
                 </div>         
-                <h4>EXAMS REQUESTED</h4> 
+                <h4>PENDING EXAMS</h4> 
                 <ul className="list-group">
                     { this.renderPosts() }
                 </ul>

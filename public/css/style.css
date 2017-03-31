@@ -4,6 +4,11 @@
 	font-weight: bold;	
 }
 
+form a {
+    margin-left: 10px;
+}
+
+
 
 
 /*LANDING JUMBOTRON*/
@@ -19,7 +24,7 @@
 .jumbotron {
     text-align: center;
     font-family: 'Gruppo', cursive; 
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 .mobilenurse-header{

@@ -15,7 +15,7 @@ class PostsNew extends Component {
             .then(() => {
                 // blog post has been created, navigate the user to the index
                 // we navigate by calling this.context.router.push
-                this.context.router.push('/posts/new');
+                this.context.router.push('/profile/');
             });
     }
 
