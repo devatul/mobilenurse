@@ -1,8 +1,8 @@
 import React, { Component, PropTypes  } from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, formValueSelector } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
-
+//List of available services provided
 
 class PostsNew extends Component {
     static contextTypes = {
@@ -20,14 +20,16 @@ class PostsNew extends Component {
     }
 
 
+
+
     render() {
-        const { fields: {firstName, lastName, comments }, handleSubmit } = this.props;
+        const { fields: {firstName, lastName, examType }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-              <h3>Request an Exam</h3>
+              <h3>SCHEDULE AN EXAM</h3>
                     <Link to="/profile/">Back</Link>
                 <div className={`'form-group ${firstName.touched && firstName.invalid ? 'has-danger' : ''}`}>
-                    <label>Firstname</label> 
+                    <label>FIRSTNAME</label> 
                     <input type="text" className="form-control" {...firstName} />
                     <div className='text-help'>
                         {firstName.touched ? firstName.error: ''}
@@ -35,18 +37,21 @@ class PostsNew extends Component {
                 </div> 
 
                 <div className={`'form-group ${lastName.touched && lastName.invalid ? 'has-danger' : ''}`}>
-                    <label>Lastname</label> 
+                    <label>LASTNAME</label> 
                     <input type="text" className="form-control" {...lastName} />
                     <div className='text-help'>
                         {lastName.touched ? lastName.error: ''}
                     </div> 
                 </div> 
                 
-                <div className='form-group'>
-                    <label>Test</label> 
-                    <textarea className="form-control" {...comments}/>
-                    <div className='text-help'>
-                    </div> 
+                <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
+                    <select>
+                        <label>EXAM TYPE</label> 
+                        <option className="form-control" value="PBU">PBU</option>
+                        <option className="form-control" value="PBUEKG">PBU + EKG</option>
+                        <div className='text-help'>
+                        </div> 
+                    </select>
                 </div>
 
                 <button type="submit" className="btn btn-primary">SUBMIT</button> 
@@ -76,6 +81,6 @@ function validate(values) {
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['firstName' ,'lastName','comments'],
+    fields: ['firstName' ,'lastName','examType'],
     validate
 }, null,{ createPost } ) (PostsNew); 
