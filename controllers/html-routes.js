@@ -49,8 +49,8 @@ module.exports = function(app) {
                 id: req.params.id
             }
          }).then(function(result){
-             console.log(result);
-             return res.json(result);
+             console.log(result[0]);
+             return res.json(result[0]);
          });
     });
 

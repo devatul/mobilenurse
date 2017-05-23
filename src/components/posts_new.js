@@ -43,7 +43,7 @@ class PostsNew extends Component {
                 </div> 
                 
                 <div className='form-group'>
-                    <label>Comments</label> 
+                    <label>Test</label> 
                     <textarea className="form-control" {...comments}/>
                     <div className='text-help'>
                     </div> 
