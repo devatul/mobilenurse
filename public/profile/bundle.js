@@ -33102,12 +33102,19 @@
 	                    'div',
 	                    { className: '\'form-group ' + (examType.touched && examType.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'EXAM TYPE'
+	                    ),
+	                    ' ',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(
 	                        'select',
 	                        null,
 	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'EXAM TYPE'
+	                            'option',
+	                            { className: 'form-control', value: '' },
+	                            'SELECT'
 	                        ),
 	                        _react2.default.createElement(
 	                            'option',
@@ -33120,7 +33127,8 @@
 	                            'PBU + EKG'
 	                        ),
 	                        _react2.default.createElement('div', { className: 'text-help' })
-	                    )
+	                    ),
+	                    _react2.default.createElement('br', null)
 	                ),
 	                _react2.default.createElement(
 	                    'button',
@@ -33132,6 +33140,7 @@
 	                    { to: '/profile/', className: 'btn btn-danger' },
 	                    'CANCEL'
 	                ),
+	                _react2.default.createElement('br', null),
 	                _react2.default.createElement('br', null)
 	            );
 	        }
