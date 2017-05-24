@@ -3,6 +3,8 @@ import { reduxForm, formValueSelector } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
 //List of available services provided
+import DateTimePicker from 'react-widgets/lib/DateTimePicker'
+
 
 class PostsNew extends Component {
     static contextTypes = {
@@ -50,8 +52,8 @@ class PostsNew extends Component {
                         <option className="form-control" value="">SELECT</option>
                         <option className="form-control" value="PBU">PBU</option>
                         <option className="form-control" value="PBUEKG">PBU + EKG</option>
-                        <div className='text-help'>
-                        </div> 
+                        {/*<div className='text-help'>
+                        </div> */}
                     </select>
                     <br/>
                 </div>
