@@ -65,6 +65,7 @@ class PostsNew extends Component {
                 </div>
 
                 <div className='form-group'>
+                    <label>EXAM DATE</label> <br/>
                     <DatePicker/>
                 </div>
 
