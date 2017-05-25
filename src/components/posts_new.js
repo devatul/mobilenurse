@@ -2,13 +2,14 @@ import React, { Component, PropTypes  } from 'react';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
+import { Select, Button, DatePicker } from 'antd';
 //List of available services provided
-import DateTimePicker from 'react-widgets/lib/DateTimePicker';
-import momentLocaliser from 'react-widgets/lib/localizers/moment';
+// import DateTimePicker from 'react-widgets/lib/DateTimePicker';
+// import momentLocaliser from 'react-widgets/lib/localizers/moment';
 import moment from 'moment';
-//import 'react-widgets/dist/css/react-widgets.css';
+// //import 'react-widgets/dist/css/react-widgets.css';
 
-momentLocaliser(moment)
+//momentLocaliser(moment)
 
 
 class PostsNew extends Component {
@@ -63,9 +64,11 @@ class PostsNew extends Component {
                     <br/>
                 </div>
 
-                <div> 
-                <DateTimePicker/>
-                </div> 
+                <div className='form-group'>
+                    <DatePicker/>
+                </div>
+
+
 
                 <button type="submit" className="btn btn-primary">SUBMIT</button> 
                 <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
