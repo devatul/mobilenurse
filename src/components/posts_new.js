@@ -62,19 +62,6 @@ class PostsNew extends Component {
                     </div> 
                 </div> 
 
-                
-                <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
-                    <label>EXAM TYPE</label> <br/>
-                    <select>
-                        <option className="form-control" value="">SELECT</option>
-                        <option className="form-control" value="PBU">PBU</option>
-                        <option className="form-control" value="PBUEKG">PBU + EKG</option>
-                        {/*<div className='text-help'>
-                        </div> */}
-                    </select>
-                    <br/>
-                </div>
-
                 <div className='form-group'>
                     <label>EXAM DATE</label> <br/>
                     <DatePicker placeholder='SELECT'/>
@@ -87,7 +74,18 @@ class PostsNew extends Component {
                         format='hh:mm a'/>
                 </div>
 
-
+                
+                <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
+                    <label>EXAM TYPE</label> <br/>
+                    <select>
+                        <option className="form-control" value="">SELECT</option>
+                        <option className="form-control" value="PBU">PBU</option>
+                        <option className="form-control" value="PBUEKG">PBU + EKG</option>
+                        {/*<div className='text-help'>
+                        </div> */}
+                    </select>
+                    <br/>
+                </div>
 
                 <button type="submit" className="btn btn-primary">SUBMIT</button> 
                 <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
