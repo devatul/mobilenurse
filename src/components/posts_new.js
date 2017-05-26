@@ -2,7 +2,7 @@ import React, { Component, PropTypes  } from 'react';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
-import { Select, Button, DatePicker } from 'antd';
+import { Select, Button, DatePicker, TimePicker } from 'antd';
 //List of available services provided
 // import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 // import momentLocaliser from 'react-widgets/lib/localizers/moment';
@@ -33,7 +33,7 @@ class PostsNew extends Component {
 
 
     render() {
-        const { fields: {firstName, lastName, examType }, handleSubmit } = this.props;
+        const { fields: {firstName, lastName, examType, streetAdress }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <h3>SCHEDULE AN EXAM</h3>
@@ -53,6 +53,15 @@ class PostsNew extends Component {
                         {lastName.touched ? lastName.error: ''}
                     </div> 
                 </div> 
+
+                <div className={`'form-group ${streetAdress.touched && streetAdress.invalid ? 'has-danger' : ''}`}>
+                    <label>STREET ADDRESS</label> 
+                    <input type="ADDRESS" className="form-control" {...streetAdress} />
+                    <div className='text-help'>
+                    {streetAdress.touched ? streetAdress.error: ''}
+                    </div> 
+                </div> 
+
                 
                 <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
                     <label>EXAM TYPE</label> <br/>
@@ -68,7 +77,14 @@ class PostsNew extends Component {
 
                 <div className='form-group'>
                     <label>EXAM DATE</label> <br/>
-                    <DatePicker/>
+                    <DatePicker placeholder='SELECT'/>
+                </div>
+
+                <div className='form-group'>
+                    <label>EXAM TIME</label> <br/>
+                    <TimePicker 
+                        placeholder='SELECT'
+                        format='hh:mm a'/>
                 </div>
 
 
@@ -87,10 +103,13 @@ function validate(values) {
     const errors = {};
 
     if (!values.firstName) {
-        errors.firstName = 'Enter client Firstname';
+        errors.firstName = 'enter client firstname';
     }
     if (!values.lastName) {
-        errors.lastName = 'Enter client Lastname';
+        errors.lastName = 'enter client lastname';
+    }
+    if (!values.streetAdress) {
+        errors.streetAdress = 'enter street address of exam';
     }
     return errors;
 }
@@ -101,6 +120,6 @@ function validate(values) {
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['firstName' ,'lastName','examType'],
+    fields: ['firstName' ,'lastName','examType', 'streetAdress'],
     validate
 }, null,{ createPost } ) (PostsNew); 
