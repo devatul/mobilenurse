@@ -51388,16 +51388,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//List of available services provided
-	// import DateTimePicker from 'react-widgets/lib/DateTimePicker';
-	// import momentLocaliser from 'react-widgets/lib/localizers/moment';
-
-
-	// //import 'react-widgets/dist/css/react-widgets.css';
-
-
-	//momentLocaliser(moment)
-
 
 	var PostsNew = function (_Component) {
 	    _inherits(PostsNew, _Component);
@@ -51427,7 +51417,10 @@
 	                firstName = _props$fields.firstName,
 	                lastName = _props$fields.lastName,
 	                examType = _props$fields.examType,
-	                streetAdress = _props$fields.streetAdress,
+	                examStreetAdress = _props$fields.examStreetAdress,
+	                examCity = _props$fields.examCity,
+	                examState = _props$fields.examState,
+	                examZipCode = _props$fields.examZipCode,
 	                handleSubmit = _props.handleSubmit;
 
 	            return _react2.default.createElement(
@@ -51475,17 +51468,62 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (streetAdress.touched && streetAdress.invalid ? 'has-danger' : '') },
+	                    { className: '\'form-group ' + (examStreetAdress.touched && examStreetAdress.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
 	                        'STREET ADDRESS'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', className: 'form-control' }, streetAdress)),
+	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', className: 'form-control' }, examStreetAdress)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        streetAdress.touched ? streetAdress.error : ''
+	                        examStreetAdress.touched ? examStreetAdress.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'col-md-6 form-group ' + (examCity.touched && examCity.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'CITY'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'CITY', className: 'form-control' }, examCity)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        examCity.touched ? examCity.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'col-md-6 form-group ' + (examState.touched && examState.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'STATE'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'text', className: 'form-control' }, examState)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        examState.touched ? examState.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'col-md-6 form-group ' + (examZipCode.touched && examZipCode.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'ZIP'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'number', className: 'form-control' }, examZipCode)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        examZipCode.touched ? examZipCode.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -51578,8 +51616,11 @@
 	    if (!values.lastName) {
 	        errors.lastName = 'enter client lastname';
 	    }
-	    if (!values.streetAdress) {
-	        errors.streetAdress = 'enter street address of exam';
+	    if (!values.examStreetAdress) {
+	        errors.examStreetAdress = 'enter street address of exam';
+	    }
+	    if (!values.examCity) {
+	        errors.examCity = 'enter city of exam';
 	    }
 	    return errors;
 	}
@@ -51589,7 +51630,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstName', 'lastName', 'examType', 'streetAdress'],
+	    fields: ['firstName', 'lastName', 'examType', 'examStreetAdress', 'examCity', 'examState', 'examZipCode'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 

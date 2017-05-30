@@ -3,15 +3,7 @@ import { reduxForm, formValueSelector } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
 import { Select, Button, DatePicker, TimePicker } from 'antd';
-//List of available services provided
-// import DateTimePicker from 'react-widgets/lib/DateTimePicker';
-// import momentLocaliser from 'react-widgets/lib/localizers/moment';
 import moment from 'moment';
-// //import 'react-widgets/dist/css/react-widgets.css';
-
-
-
-//momentLocaliser(moment)
 
 
 class PostsNew extends Component {
@@ -30,10 +22,8 @@ class PostsNew extends Component {
     }
 
 
-
-
     render() {
-        const { fields: {firstName, lastName, examType, streetAdress }, handleSubmit } = this.props;
+        const { fields: {firstName, lastName, examType, examStreetAdress, examCity, examState, examZipCode }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <h3>SCHEDULE AN EXAM</h3>
@@ -54,13 +44,39 @@ class PostsNew extends Component {
                     </div> 
                 </div> 
 
-                <div className={`'form-group ${streetAdress.touched && streetAdress.invalid ? 'has-danger' : ''}`}>
+                <div className={`'form-group ${examStreetAdress.touched && examStreetAdress.invalid ? 'has-danger' : ''}`}>
                     <label>STREET ADDRESS</label> 
-                    <input type="ADDRESS" className="form-control" {...streetAdress} />
+                    <input type="ADDRESS" className="form-control" {...examStreetAdress} />
                     <div className='text-help'>
-                    {streetAdress.touched ? streetAdress.error: ''}
+                    {examStreetAdress.touched ? examStreetAdress.error: ''}
                     </div> 
                 </div> 
+
+                <div className={`'col-md-6 form-group ${examCity.touched && examCity.invalid ? 'has-danger' : ''}`}>
+                    <label>CITY</label> 
+                    <input type="CITY" className="form-control" {...examCity} />
+                    <div className='text-help'>
+                    {examCity.touched ? examCity.error: ''}
+                    </div> 
+                </div> 
+
+                <div className={`'col-md-6 form-group ${examState.touched && examState.invalid ? 'has-danger' : ''}`}>
+                    <label>STATE</label> 
+                    <input type="text" className="form-control" {...examState} />
+                    <div className='text-help'>
+                    {examState.touched ? examState.error: ''}
+                    </div> 
+                </div> 
+
+                <div className={`'col-md-6 form-group ${examZipCode.touched && examZipCode.invalid ? 'has-danger' : ''}`}>
+                    <label>ZIP</label> 
+                    <input type="number" className="form-control" {...examZipCode} />
+                    <div className='text-help'>
+                    {examZipCode.touched ? examZipCode.error: ''}
+                    </div> 
+                </div> 
+
+
 
                 <div className='form-group'>
                     <label>EXAM DATE</label> <br/>
@@ -106,8 +122,11 @@ function validate(values) {
     if (!values.lastName) {
         errors.lastName = 'enter client lastname';
     }
-    if (!values.streetAdress) {
-        errors.streetAdress = 'enter street address of exam';
+    if (!values.examStreetAdress) {
+        errors.examStreetAdress = 'enter street address of exam';
+    }
+        if (!values.examCity) {
+        errors.examCity = 'enter city of exam';
     }
     return errors;
 }
@@ -118,6 +137,6 @@ function validate(values) {
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['firstName' ,'lastName','examType', 'streetAdress'],
+    fields: ['firstName' ,'lastName','examType', 'examStreetAdress', 'examCity', 'examState','examZipCode'],
     validate
 }, null,{ createPost } ) (PostsNew); 
