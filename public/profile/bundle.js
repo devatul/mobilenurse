@@ -51411,8 +51411,17 @@
 	            });
 	        }
 	    }, {
+	        key: 'handleUpdateDate',
+	        value: function handleUpdateDate(newValMoment, newValString) {
+	            this.setState({
+	                date: newValString
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this3 = this;
+
 	            var _props = this.props,
 	                _props$fields = _props.fields,
 	                firstName = _props$fields.firstName,
@@ -51595,7 +51604,19 @@
 	                    ),
 	                    ' ',
 	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(_datePicker2.default, { placeholder: 'SELECT' })
+	                    _react2.default.createElement(_datePicker2.default, {
+	                        defaultValue: (0, _moment2.default)(this.state.date),
+	                        onChange: _moment2.default.value, placeholder: 'SELECT' })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-row' },
+	                    _react2.default.createElement(_datePicker2.default, {
+	                        defaultValue: (0, _moment2.default)(this.state.date),
+	                        onChange: function onChange(newValMoment, newValString) {
+	                            return _this3.handleUpdateDate(newValMoment, newValString);
+	                        }
+	                    })
 	                ),
 	                _react2.default.createElement(
 	                    'div',

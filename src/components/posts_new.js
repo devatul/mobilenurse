@@ -21,6 +21,15 @@ class PostsNew extends Component {
             });
     }
 
+  handleUpdateDate(newValMoment, newValString) {
+    this.setState({
+      date: newValString
+    });
+  }
+
+
+
+
 
     render() {
         const { fields: {firstName, 
@@ -31,13 +40,14 @@ class PostsNew extends Component {
                         examStreetAdress,
                         examCity,
                         examState,
-                        examZipCode, policyAmount }, handleSubmit } = this.props;
+                        examZipCode,
+                        policyAmount }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <h3>SCHEDULE AN EXAM</h3>
               <hr/> 
               <br/>
-              
+
                 <div className="text-xs-right">
                     <Link to="/profile/">BACK</Link>
                 </div>
@@ -108,9 +118,6 @@ class PostsNew extends Component {
                     </div> 
                 </div> 
 
-
-
-
                 <div className={`'form-group ${policyAmount.touched && policyAmount.invalid ? 'has-danger' : ''}`}>
                     <label>POLICY AMOUNT</label> 
                     <input type="number" placeholder="policy amount" className="col-lg-6 form-control" {...policyAmount} />
@@ -121,8 +128,22 @@ class PostsNew extends Component {
 
                 <div className='form-group col-sm-4'>
                     <label>EXAM DATE</label> <br/>
-                    <DatePicker placeholder='SELECT'/>
+                    <DatePicker
+                      defaultValue={moment(this.state.date)}
+                     onChange={moment.value} placeholder='SELECT'/>
                 </div>
+
+
+          <div className='form-row'>
+            <DatePicker
+              defaultValue={moment(this.state.date)}
+              onChange={(newValMoment, newValString) =>
+                this.handleUpdateDate(newValMoment, newValString)
+              }
+            />
+          </div>
+
+
 
                 <div className='form-group col-sm-4 '>
                     <label>EXAM TIME</label> <br/>
