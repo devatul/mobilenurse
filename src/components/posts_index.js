@@ -31,8 +31,10 @@ renderPosts() {
                     <Link to="/posts/new" className="btn btn-primary">
                       EXAM REQUEST
                     </Link>
-                </div>         
-                <h4>PENDING EXAMS</h4> 
+              
+                <h4 className="text-xs-left">PENDING EXAMS</h4> 
+            </div>    
+                <br/>
                 <ul className="list-group">
                     { this.renderPosts() }
                 </ul>

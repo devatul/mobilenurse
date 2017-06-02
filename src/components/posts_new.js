@@ -23,15 +23,25 @@ class PostsNew extends Component {
 
 
     render() {
-        const { fields: {firstName, lastName, examType, examStreetAdress, examCity, examState, examZipCode, policyAmount }, handleSubmit } = this.props;
+        const { fields: {firstName, 
+                        lastName,
+                        clientDOB,
+                        clientPhone,
+                        examType,
+                        examStreetAdress,
+                        examCity,
+                        examState,
+                        examZipCode, policyAmount }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <h3>SCHEDULE AN EXAM</h3>
               <hr/> 
               <br/>
+              
                 <div className="text-xs-right">
-                    <Link to="/profile/">Back</Link>
+                    <Link to="/profile/">BACK</Link>
                 </div>
+
                 <div>
                     <div className={`'form-group ${firstName.touched && firstName.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
@@ -47,6 +57,22 @@ class PostsNew extends Component {
                     <input type="text" placeholder="lastname" className="form-control" {...lastName} />
                     <div className='text-help'>
                         {lastName.touched ? lastName.error: ''}
+                    </div> 
+                </div> 
+
+                <div className={`'form-group ${clientDOB.touched && clientDOB.invalid ? 'has-danger' : ''}`}>
+                    <label>DATE OF BIRTH</label> 
+                    <input type="DATE" placeholder="DOB" format="YYYY-MM-DD" className="col-lg-6 form-control" {...clientDOB} />
+                    <div className='text-help'>
+                    {clientDOB.touched ? clientDOB.error: ''}
+                    </div> 
+                </div> 
+
+                <div className={`'form-group ${clientPhone.touched && clientPhone.invalid ? 'has-danger' : ''}`}>
+                    <label>PHONE NUMBER</label> 
+                    <input type="number" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...clientPhone} />
+                    <div className='text-help'>
+                    {clientPhone.touched ? clientPhone.error: ''}
                     </div> 
                 </div> 
 
@@ -81,6 +107,9 @@ class PostsNew extends Component {
                     {examZipCode.touched ? examZipCode.error: ''}
                     </div> 
                 </div> 
+
+
+
 
                 <div className={`'form-group ${policyAmount.touched && policyAmount.invalid ? 'has-danger' : ''}`}>
                     <label>POLICY AMOUNT</label> 
@@ -132,19 +161,28 @@ function validate(values) {
     const errors = {};
 
     if (!values.firstName) {
-        errors.firstName = 'enter client firstname';
+        errors.firstName = 'client firstname';
     }
     if (!values.lastName) {
-        errors.lastName = 'enter client lastname';
+        errors.lastName = 'client lastname';
+    }
+    if (!values.clientDOB) {
+        errors.clientDOB = 'client date of birth';
     }
     if (!values.examStreetAdress) {
-        errors.examStreetAdress = 'enter street address of exam';
+        errors.examStreetAdress = 'street address of exam';
     }
     if (!values.examState) {
-    errors.examState = 'enter state of exam';
+    errors.examState = 'state of exam';
+    }
+    if (!values.examCity) {
+    errors.examCity = 'city of exam';
     }
     if (!values.examZipCode) {
-    errors.examZipCode = 'enter zipcode of exam';
+    errors.examZipCode = 'zipcode of exam';
+    }
+    if (!values.policyAmount) {
+    errors.policyAmount = 'policy amount';
     }
     return errors;
 }
@@ -155,6 +193,15 @@ function validate(values) {
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['firstName' ,'lastName','examType', 'examStreetAdress', 'examCity', 'examState','examZipCode', 'policyAmount'],
+    fields: ['firstName',
+            'lastName',
+            'examType',
+            'examStreetAdress',
+            'examCity',
+            'examState',
+            'examZipCode',
+            'policyAmount',
+            'clientDOB',
+            'clientPhone'],
     validate
 }, null,{ createPost } ) (PostsNew); 

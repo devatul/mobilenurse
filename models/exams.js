@@ -29,7 +29,8 @@ module.exports = function(sequelize, DataTypes) {
         },
         Status: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            default: "pending confirmation"
         },
         ExamID: {
             type: DataTypes.INTEGER,
