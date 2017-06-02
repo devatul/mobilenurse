@@ -143,8 +143,6 @@ class PostsNew extends Component {
             />
           </div>
 
-
-
                 <div className='form-group col-sm-4 '>
                     <label>EXAM TIME</label> <br/>
                     <TimePicker 
