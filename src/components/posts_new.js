@@ -12,6 +12,17 @@ class PostsNew extends Component {
     };
 
 
+  // Setting Initial State
+
+  initializeState() {
+    this.setState({
+      title: this.props.defaultTitle || '',
+      category: this.props.defaultCategory || '',
+      date: this.props.defaultDate || moment()
+    });
+  }
+
+
     onSubmit(props) {
         this.props.createPost(props)
             .then(() => {
@@ -129,19 +140,12 @@ class PostsNew extends Component {
                 <div className='form-group col-sm-4'>
                     <label>EXAM DATE</label> <br/>
                     <DatePicker
-                      defaultValue={moment(this.state.date)}
-                     onChange={moment.value} placeholder='SELECT'/>
+                        defaultValue={moment(this.state.date)}
+                        onChange={(newValMoment, newValString) =>
+                            this.handleUpdateDate(newValMoment, newValString)
+                        }
+                        />
                 </div>
-
-
-          <div className='form-row'>
-            <DatePicker
-              defaultValue={moment(this.state.date)}
-              onChange={(newValMoment, newValString) =>
-                this.handleUpdateDate(newValMoment, newValString)
-              }
-            />
-          </div>
 
                 <div className='form-group col-sm-4 '>
                     <label>EXAM TIME</label> <br/>
@@ -153,7 +157,7 @@ class PostsNew extends Component {
                 <div className="col-sm-4">
                     <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
                         <label>EXAM TYPE</label> <br/>
-                        <select>
+                        <select style={{ width: 120 }} >
                             <option className="form-control" value="">SELECT</option>
                             <option className="form-control" value="PBU">PBU</option>
                             <option className="form-control" value="PBUEKG">PBU + EKG</option>

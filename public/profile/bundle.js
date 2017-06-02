@@ -51400,6 +51400,19 @@
 	    }
 
 	    _createClass(PostsNew, [{
+	        key: 'initializeState',
+
+
+	        // Setting Initial State
+
+	        value: function initializeState() {
+	            this.setState({
+	                title: this.props.defaultTitle || '',
+	                category: this.props.defaultCategory || '',
+	                date: this.props.defaultDate || (0, _moment2.default)()
+	            });
+	        }
+	    }, {
 	        key: 'onSubmit',
 	        value: function onSubmit(props) {
 	            var _this2 = this;
@@ -51606,13 +51619,6 @@
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(_datePicker2.default, {
 	                        defaultValue: (0, _moment2.default)(this.state.date),
-	                        onChange: _moment2.default.value, placeholder: 'SELECT' })
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-row' },
-	                    _react2.default.createElement(_datePicker2.default, {
-	                        defaultValue: (0, _moment2.default)(this.state.date),
 	                        onChange: function onChange(newValMoment, newValString) {
 	                            return _this3.handleUpdateDate(newValMoment, newValString);
 	                        }
@@ -51647,7 +51653,7 @@
 	                        _react2.default.createElement('br', null),
 	                        _react2.default.createElement(
 	                            'select',
-	                            null,
+	                            { style: { width: 120 } },
 	                            _react2.default.createElement(
 	                                'option',
 	                                { className: 'form-control', value: '' },
