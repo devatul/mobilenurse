@@ -28,6 +28,7 @@ module.exports = function(app) {
 
     app.post('/api/posts', ensureAuthenticated, function(req,res) {
         res.json(req.body);
+        console.log(req.body);
         db.Exams.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,

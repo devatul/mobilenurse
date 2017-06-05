@@ -51400,20 +51400,19 @@
 	    }
 
 	    _createClass(PostsNew, [{
-	        key: 'initializeState',
+	        key: 'onSubmit',
 
 
 	        // Setting Initial State
 
-	        value: function initializeState() {
-	            this.setState({
-	                title: this.props.defaultTitle || '',
-	                category: this.props.defaultCategory || '',
-	                date: this.props.defaultDate || (0, _moment2.default)()
-	            });
-	        }
-	    }, {
-	        key: 'onSubmit',
+	        //   initializeState() {
+	        //     this.setState({
+	        //       title: this.props.defaultTitle || '',
+	        //       category: this.props.defaultCategory || '',
+	        //       date: this.props.defaultDate || moment()
+	        //     });
+	        //   }
+
 	        value: function onSubmit(props) {
 	            var _this2 = this;
 
@@ -51441,12 +51440,13 @@
 	                lastName = _props$fields.lastName,
 	                clientDOB = _props$fields.clientDOB,
 	                clientPhone = _props$fields.clientPhone,
-	                examType = _props$fields.examType,
-	                examStreetAdress = _props$fields.examStreetAdress,
+	                examStreetAddress = _props$fields.examStreetAddress,
 	                examCity = _props$fields.examCity,
 	                examState = _props$fields.examState,
 	                examZipCode = _props$fields.examZipCode,
 	                policyAmount = _props$fields.policyAmount,
+	                examDate = _props$fields.examDate,
+	                examType = _props$fields.examType,
 	                handleSubmit = _props.handleSubmit;
 
 	            return _react2.default.createElement(
@@ -51534,17 +51534,17 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (examStreetAdress.touched && examStreetAdress.invalid ? 'has-danger' : '') },
+	                    { className: '\'form-group ' + (examStreetAddress.touched && examStreetAddress.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
 	                        'STREET ADDRESS'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', placeholder: 'street address', className: 'form-control' }, examStreetAdress)),
+	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', placeholder: 'street address', className: 'form-control' }, examStreetAddress)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        examStreetAdress.touched ? examStreetAdress.error : ''
+	                        examStreetAddress.touched ? examStreetAddress.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -51618,7 +51618,7 @@
 	                    ' ',
 	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(_datePicker2.default, {
-	                        defaultValue: (0, _moment2.default)(this.state.date),
+	                        // defaultValue={moment(this.state.date)}
 	                        onChange: function onChange(newValMoment, newValString) {
 	                            return _this3.handleUpdateDate(newValMoment, newValString);
 	                        }
@@ -51713,8 +51713,8 @@
 	    if (!values.clientDOB) {
 	        errors.clientDOB = 'client date of birth';
 	    }
-	    if (!values.examStreetAdress) {
-	        errors.examStreetAdress = 'street address of exam';
+	    if (!values.examStreetAddress) {
+	        errors.examStreetAddress = 'street address of exam';
 	    }
 	    if (!values.examState) {
 	        errors.examState = 'state of exam';
@@ -51736,7 +51736,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstName', 'lastName', 'examType', 'examStreetAdress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone'],
+	    fields: ['firstName', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 

@@ -14,14 +14,13 @@ class PostsNew extends Component {
 
   // Setting Initial State
 
-  initializeState() {
-    this.setState({
-      title: this.props.defaultTitle || '',
-      category: this.props.defaultCategory || '',
-      date: this.props.defaultDate || moment()
-    });
-  }
-
+//   initializeState() {
+//     this.setState({
+//       title: this.props.defaultTitle || '',
+//       category: this.props.defaultCategory || '',
+//       date: this.props.defaultDate || moment()
+//     });
+//   }
 
     onSubmit(props) {
         this.props.createPost(props)
@@ -38,21 +37,18 @@ class PostsNew extends Component {
     });
   }
 
-
-
-
-
     render() {
         const { fields: {firstName, 
                         lastName,
                         clientDOB,
                         clientPhone,
-                        examType,
-                        examStreetAdress,
+                        examStreetAddress,
                         examCity,
                         examState,
                         examZipCode,
-                        policyAmount }, handleSubmit } = this.props;
+                        policyAmount,
+                        examDate,
+                        examType }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <h3>SCHEDULE AN EXAM</h3>
@@ -97,11 +93,11 @@ class PostsNew extends Component {
                     </div> 
                 </div> 
 
-                <div className={`'form-group ${examStreetAdress.touched && examStreetAdress.invalid ? 'has-danger' : ''}`}>
+                <div className={`'form-group ${examStreetAddress.touched && examStreetAddress.invalid ? 'has-danger' : ''}`}>
                     <label>STREET ADDRESS</label> 
-                    <input type="ADDRESS" placeholder="street address" className="form-control" {...examStreetAdress} />
+                    <input type="ADDRESS" placeholder="street address" className="form-control" {...examStreetAddress} />
                     <div className='text-help'>
-                    {examStreetAdress.touched ? examStreetAdress.error: ''}
+                    {examStreetAddress.touched ? examStreetAddress.error: ''}
                     </div> 
                 </div> 
 
@@ -140,7 +136,7 @@ class PostsNew extends Component {
                 <div className='form-group col-sm-4'>
                     <label>EXAM DATE</label> <br/>
                     <DatePicker
-                        defaultValue={moment(this.state.date)}
+                       // defaultValue={moment(this.state.date)}
                         onChange={(newValMoment, newValString) =>
                             this.handleUpdateDate(newValMoment, newValString)
                         }
@@ -192,8 +188,8 @@ function validate(values) {
     if (!values.clientDOB) {
         errors.clientDOB = 'client date of birth';
     }
-    if (!values.examStreetAdress) {
-        errors.examStreetAdress = 'street address of exam';
+    if (!values.examStreetAddress) {
+        errors.examStreetAddress = 'street address of exam';
     }
     if (!values.examState) {
     errors.examState = 'state of exam';
@@ -219,12 +215,13 @@ export default reduxForm({
     fields: ['firstName',
             'lastName',
             'examType',
-            'examStreetAdress',
+            'examStreetAddress',
             'examCity',
             'examState',
             'examZipCode',
             'policyAmount',
             'clientDOB',
-            'clientPhone'],
+            'clientPhone',
+            'examDate'],
     validate
 }, null,{ createPost } ) (PostsNew); 

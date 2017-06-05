@@ -6,42 +6,66 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             allowNull: false
         },
-        FirstName: {
+        firstName: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        LastName: {
+        lastName: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        ExamType: {
-          //this needs to converted into a drop down
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        SubmitDate: {
+        clientDOB: {
             type: DataTypes.DATE,
-           // defaulvalue: sequelize.literal('NOW()')    
+            allowNull: true
         },
-        IRep: {
+        clientPhone: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        examStreetAddress:{ 
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        Status: {
+        examCity: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        examState: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        examZipCode: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        policyAmount: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        examDate:{
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        examType: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        submitDate: {
+            type: DataTypes.DATE,
+            defaulvalue: DataTypes.DATE   
+        },
+        iRep: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        status: {
             type: DataTypes.STRING,
             allowNull: false,
-            default: "pending confirmation"
+            default: "pending"
         },
-        ExamID: {
+        examID: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        ExamDate:{
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        ExamTime: {
-            type: DataTypes.TIME,
         }
     },{
         classMethods: {
