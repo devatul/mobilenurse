@@ -67,16 +67,14 @@ module.exports = function(sequelize, DataTypes) {
         //     type: DataTypes.INTEGER,
         //     allowNull: true
         // }
-    // },
-    
-    // {
-    //     classMethods: {
-    //         associate: function(models) {
-    //             //Associating Exams to 1 individual Insurance Rep
-    //             models.Exams.belongsTo(models.InsuranceReps);
-    //             models.Exams.belongsTo(models.User)
-    //          }
-    //         }
+    // }, {
+        // classMethods: {
+        //     associate: function(models) {
+        //         //Associating Exams to 1 individual Insurance Rep
+        //         models.Exams.belongsTo(models.InsuranceReps);
+        //         models.Exams.belongsTo(models.User)
+        //      }
+        //     }
          });
   
            return Exams;
