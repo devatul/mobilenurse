@@ -87,7 +87,7 @@ class PostsNew extends Component {
 
                 <div className={`'form-group ${clientPhone.touched && clientPhone.invalid ? 'has-danger' : ''}`}>
                     <label>PHONE NUMBER</label> 
-                    <input type="number" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...clientPhone} />
+                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...clientPhone} />
                     <div className='text-help'>
                     {clientPhone.touched ? clientPhone.error: ''}
                     </div> 

@@ -51525,7 +51525,7 @@
 	                        null,
 	                        'PHONE NUMBER'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'number', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, clientPhone)),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, clientPhone)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
