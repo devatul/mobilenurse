@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         clientDOB: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: true
         },
         clientPhone: {
@@ -41,40 +41,42 @@ module.exports = function(sequelize, DataTypes) {
         policyAmount: {
             type: DataTypes.INTEGER,
             allowNull: true
-        },
-        examDate:{
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        examType: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        submitDate: {
-            type: DataTypes.DATE,
-            defaulvalue: DataTypes.DATE   
-        },
-        iRep: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        status: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            default: "pending"
-        },
-        examID: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
-    },{
-        classMethods: {
-            associate: function(models) {
-                //Associating Exams to 1 individual Insurance Rep
-                models.Exams.belongsTo(models.InsuranceReps);
-                models.Exams.belongsTo(models.User)
-             }
-            }
+        // examDate:{
+        //     type: DataTypes.DATE,
+        //     allowNull: true
+        // },
+        // examType: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
+        // submitDate: {
+        //     type: DataTypes.DATE,
+        //     allowNull: true
+        // },
+        // iRep: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
+        // status: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //     default: "pending"
+        // },
+        // examID: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: true
+        // }
+    // },
+    
+    // {
+    //     classMethods: {
+    //         associate: function(models) {
+    //             //Associating Exams to 1 individual Insurance Rep
+    //             models.Exams.belongsTo(models.InsuranceReps);
+    //             models.Exams.belongsTo(models.User)
+    //          }
+    //         }
          });
   
            return Exams;

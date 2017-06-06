@@ -28,11 +28,19 @@ module.exports = function(app) {
 
     app.post('/api/posts', ensureAuthenticated, function(req,res) {
         res.json(req.body);
-        console.log(req.body);
+        console.log(req.body)
         db.Exams.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            examType: req.body.examType
+            clientDOB: req.body.clientDOB,
+            clientPhone: req.body.clientPhone,
+            examStreetAddress: req.body.examStreetAddress,
+            examCity: req.body.examCity,
+            examState: req.body.examState,
+            examZipCode: req.body.examZipCode,
+            policyAmount: req.body.policyAmount,
+            examDate: req.body.examDate,
+            submitDate: req.body.submitDate
         });
     });
 
