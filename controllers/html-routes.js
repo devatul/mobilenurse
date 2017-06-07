@@ -47,6 +47,7 @@ module.exports = function(app) {
             examState: req.body.examState,
             examZipCode: req.body.examZipCode,
             policyAmount: req.body.policyAmount,
+            examDate: req.body.examDate,
         });
     });
 

@@ -51446,6 +51446,7 @@
 	                examZipCode = _props$fields.examZipCode,
 	                policyAmount = _props$fields.policyAmount,
 	                examDate = _props$fields.examDate,
+	                examTime = _props$fields.examTime,
 	                examType = _props$fields.examType,
 	                handleSubmit = _props.handleSubmit;
 
@@ -51736,7 +51737,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstName', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate'],
+	    fields: ['firstName', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 

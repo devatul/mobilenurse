@@ -48,6 +48,7 @@ class PostsNew extends Component {
                         examZipCode,
                         policyAmount,
                         examDate,
+                        examTime,
                         examType }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -222,6 +223,8 @@ export default reduxForm({
             'policyAmount',
             'clientDOB',
             'clientPhone',
-            'examDate'],
+            'examDate',
+            'examTime',
+            'examType'],
     validate
 }, null,{ createPost } ) (PostsNew); 

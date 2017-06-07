@@ -41,15 +41,19 @@ module.exports = function(sequelize, DataTypes) {
         policyAmount: {
             type: DataTypes.BIGINT,
             allowNull: true
+        },
+        examDate:{
+            type: DataTypes.DATEONLY,
+            allowNull: true
+        },
+        examTime: {
+            type: DataTypes.TIME,
+            allowNull: true
+        },
+        examType: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
-        // examDate:{
-        //     type: DataTypes.DATE,
-        //     allowNull: true
-        // },
-        // examType: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true
-        // },
         // submitDate: {
         //     type: DataTypes.DATE,
         //     allowNull: true
