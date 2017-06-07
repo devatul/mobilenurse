@@ -35,6 +35,8 @@ module.exports = function(app) {
             );
         };
 
+        var defaultStatus = 'pending'
+
         res.json(req.body);
         console.log(req.body)
         db.Exams.create({

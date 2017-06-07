@@ -53,7 +53,12 @@ module.exports = function(sequelize, DataTypes) {
         examType: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+        examStatus: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            default: 'pending'
+        },
         // submitDate: {
         //     type: DataTypes.DATE,
         //     allowNull: true

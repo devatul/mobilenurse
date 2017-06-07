@@ -36,6 +36,7 @@ class PostsNew extends Component {
       date: newValString
     });
   }
+  
 
     render() {
         const { fields: {firstName, 
