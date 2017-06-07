@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         clientDOB: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATEONLY,
             allowNull: true
         },
         clientPhone: {
@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         policyAmount: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             allowNull: true
         }
         // examDate:{
