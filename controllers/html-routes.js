@@ -27,11 +27,26 @@ module.exports = function(app) {
                             //// API ROUTES /////
 
     app.post('/api/posts', ensureAuthenticated, function(req,res) {
+        String.prototype.toProperCase = function(){
+            return this.toLowerCase().replace(/(^[a-z]| [a-z]|-[a-z])/g, 
+                function($1){
+                    return $1.toUpperCase();
+                }
+            );
+        };
+
         res.json(req.body);
-        db.ReqExams.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            comments: req.body.comments
+        console.log(req.body)
+        db.Exams.create({
+            firstName: req.body.firstName.toProperCase(),
+            lastName: req.body.lastName.toProperCase(),
+            clientDOB: req.body.clientDOB,
+            clientPhone: req.body.clientPhone,
+            examStreetAddress: req.body.examStreetAddress.toProperCase(),
+            examCity: req.body.examCity.toProperCase(),
+            examState: req.body.examState,
+            examZipCode: req.body.examZipCode,
+            policyAmount: req.body.policyAmount,
         });
     });
 
@@ -49,8 +64,8 @@ module.exports = function(app) {
                 id: req.params.id
             }
          }).then(function(result){
-             console.log(result);
-             return res.json(result);
+             console.log(result[0]);
+             return res.json(result[0]);
          });
     });
 

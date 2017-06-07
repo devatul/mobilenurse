@@ -1,3 +1,4 @@
+import '../style/antd.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -7,6 +8,8 @@ import reducers from './reducers';
 import routes from './routes';
 import promise from 'redux-promise';
 
+
+// /Users/petertountas/Documents/Development/ApplicationDev/mobilenurse/style/antd.css
 
 const createStoreWithMiddleware = applyMiddleware(
   promise 

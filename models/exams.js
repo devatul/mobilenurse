@@ -6,50 +6,75 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             allowNull: false
         },
-        FirstName: {
+        firstName: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        LastName: {
+        lastName: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        ExamType: {
-          //this needs to converted into a drop down
+        clientDOB: {
+            type: DataTypes.DATEONLY,
+            allowNull: true
+        },
+        clientPhone: {
+            type: DataTypes.BIGINT,
+            allowNull: true
+        },
+        examStreetAddress:{ 
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        SubmitDate: {
-            type: DataTypes.DATE,
-           // defaulvalue: sequelize.literal('NOW()')    
-        },
-        IRep: {
+        examCity: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        Status: {
+        examState: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        ExamID: {
+        examZipCode: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
-        ExamDate:{
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        ExamTime: {
-            type: DataTypes.TIME,
+        policyAmount: {
+            type: DataTypes.BIGINT,
+            allowNull: true
         }
-    },{
-        classMethods: {
-            associate: function(models) {
-                //Associating Exams to 1 individual Insurance Rep
-                models.Exams.belongsTo(models.InsuranceReps);
-                models.Exams.belongsTo(models.User)
-             }
-            }
+        // examDate:{
+        //     type: DataTypes.DATE,
+        //     allowNull: true
+        // },
+        // examType: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
+        // submitDate: {
+        //     type: DataTypes.DATE,
+        //     allowNull: true
+        // },
+        // iRep: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
+        // status: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //     default: "pending"
+        // },
+        // examID: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: true
+        // }
+    // }, {
+        // classMethods: {
+        //     associate: function(models) {
+        //         //Associating Exams to 1 individual Insurance Rep
+        //         models.Exams.belongsTo(models.InsuranceReps);
+        //         models.Exams.belongsTo(models.User)
+        //      }
+        //     }
          });
   
            return Exams;
