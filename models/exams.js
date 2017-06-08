@@ -72,6 +72,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.UUID,
             allowNull: false,
             defaultValue: DataTypes.UUIDV1 
+        },
+        scheduler: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "none"
         }
         
         // submitDate: {
