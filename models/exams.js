@@ -1,3 +1,7 @@
+var shortid = require('shortid');
+// use $ and @ instead of - and _ 
+shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
+
 module.exports = function(sequelize, DataTypes) {
     var Exams = sequelize.define('Exams', {
         id: {
@@ -59,9 +63,14 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
             defaultValue: 'pending'
         },
+        examid: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: shortid.generate 
+        },
         uuid: {
             type: DataTypes.UUID,
-            allowNull: true,
+            allowNull: false,
             defaultValue: DataTypes.UUIDV1 
         }
         
