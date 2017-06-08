@@ -1,5 +1,7 @@
 var path = require('path');
 var db = require('../models');
+// Generate a v1 UUID (time-based) 
+const uuidV1 = require('uuid/v1');
 
 module.exports = function(app) {
 
@@ -27,6 +29,7 @@ module.exports = function(app) {
                             //// API ROUTES /////
 
     app.post('/api/posts', ensureAuthenticated, function(req,res) {
+        
         String.prototype.toProperCase = function(){
             return this.toLowerCase().replace(/(^[a-z]| [a-z]|-[a-z])/g, 
                 function($1){
