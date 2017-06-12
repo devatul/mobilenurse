@@ -77,6 +77,18 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: "none"
+        }, 
+        tracking: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
+        },
+        canceled: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
         }
         
         // submitDate: {
