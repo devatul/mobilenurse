@@ -51436,7 +51436,7 @@
 
 	            var _props = this.props,
 	                _props$fields = _props.fields,
-	                firstName = _props$fields.firstName,
+	                firstname = _props$fields.firstname,
 	                lastName = _props$fields.lastName,
 	                clientDOB = _props$fields.clientDOB,
 	                clientPhone = _props$fields.clientPhone,
@@ -51474,17 +51474,17 @@
 	                    null,
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: '\'form-group ' + (firstName.touched && firstName.invalid ? 'has-danger' : '') },
+	                        { className: '\'form-group ' + (firstname.touched && firstname.invalid ? 'has-danger' : '') },
 	                        _react2.default.createElement(
 	                            'label',
 	                            null,
 	                            'FIRSTNAME'
 	                        ),
-	                        _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'firstname', className: 'form-control' }, firstName)),
+	                        _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'firstname', className: 'form-control' }, firstname)),
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'text-help' },
-	                            firstName.touched ? firstName.error : ''
+	                            firstname.touched ? firstname.error : ''
 	                        )
 	                    )
 	                ),
@@ -51705,8 +51705,8 @@
 	function validate(values) {
 	    var errors = {};
 
-	    if (!values.firstName) {
-	        errors.firstName = 'client firstname';
+	    if (!values.firstname) {
+	        errors.firstname = 'client firstname';
 	    }
 	    if (!values.lastName) {
 	        errors.lastName = 'client lastname';
@@ -51737,7 +51737,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstName', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType'],
+	    fields: ['firstname', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 

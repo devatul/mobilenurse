@@ -43,7 +43,7 @@ module.exports = function(app) {
         res.json(req.body);
         console.log(req.body)
         db.Exams.create({
-            firstName: req.body.firstName.toProperCase(),
+            firstname: req.body.firstname.toProperCase(),
             lastName: req.body.lastName.toProperCase(),
             clientDOB: req.body.clientDOB,
             clientPhone: req.body.clientPhone,

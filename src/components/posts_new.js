@@ -39,7 +39,7 @@ class PostsNew extends Component {
   
 
     render() {
-        const { fields: {firstName, 
+        const { fields: {firstname, 
                         lastName,
                         clientDOB,
                         clientPhone,
@@ -62,11 +62,11 @@ class PostsNew extends Component {
                 </div>
 
                 <div>
-                    <div className={`'form-group ${firstName.touched && firstName.invalid ? 'has-danger' : ''}`}>
+                    <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
-                        <input type="text" placeholder="firstname" className="form-control" {...firstName} />
+                        <input type="text" placeholder="firstname" className="form-control" {...firstname} />
                         <div className='text-help'>
-                            {firstName.touched ? firstName.error: ''}
+                            {firstname.touched ? firstname.error: ''}
                         </div> 
                     </div> 
                 </div> 
@@ -181,8 +181,8 @@ class PostsNew extends Component {
 function validate(values) {
     const errors = {};
 
-    if (!values.firstName) {
-        errors.firstName = 'client firstname';
+    if (!values.firstname) {
+        errors.firstname = 'client firstname';
     }
     if (!values.lastName) {
         errors.lastName = 'client lastname';
@@ -214,7 +214,7 @@ function validate(values) {
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['firstName',
+    fields: ['firstname',
             'lastName',
             'examType',
             'examStreetAddress',
