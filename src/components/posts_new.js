@@ -2,9 +2,11 @@ import React, { Component, PropTypes  } from 'react';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
-import { Select, Button, DatePicker, TimePicker } from 'antd';
+import { Select, Button, TimePicker } from 'antd';
 import moment from 'moment';
+require('react-datetime');
 
+import {Datetime} from 'react-widgets';
 
 class PostsNew extends Component {
     static contextTypes = {
@@ -141,6 +143,10 @@ class PostsNew extends Component {
                         onChange={(newValMoment, newValString) =>
                             this.handleUpdateDate(newValMoment, newValString)}
                         />
+                </div>*/}
+
+                {/*<div className="form-group col-sm4">
+                <Datetime dateformat={false}/>
                 </div>*/}
 
                 <div className={`'form-group ${examDate.touched && examDate.invalid ? 'has-danger' : ''}`}>

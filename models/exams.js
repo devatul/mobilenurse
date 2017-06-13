@@ -89,6 +89,11 @@ module.exports = function(sequelize, DataTypes) {
         canceled: {
             type: DataTypes.BOOLEAN,
             allowNull: true
+        },
+        submit: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: true
         }
         
         // submitDate: {
