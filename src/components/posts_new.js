@@ -13,7 +13,6 @@ class PostsNew extends Component {
 
 
   // Setting Initial State
-
 //   initializeState() {
 //     this.setState({
 //       title: this.props.defaultTitle || '',
@@ -33,7 +32,7 @@ class PostsNew extends Component {
 
   handleUpdateDate(newValMoment, newValString) {
     this.setState({
-      date: newValString
+      examDate: newValString
     });
   }
   
@@ -135,15 +134,22 @@ class PostsNew extends Component {
                     </div> 
                 </div> 
 
-                <div className='form-group col-sm-4'>
+                {/*<div className='form-group col-sm-4'>
                     <label>EXAM DATE</label> <br/>
                     <DatePicker
-                       // defaultValue={moment(this.state.date)}
+                         defaultValue={moment('2015-01-01', 'YYYY-MM-DD')} 
                         onChange={(newValMoment, newValString) =>
-                            this.handleUpdateDate(newValMoment, newValString)
-                        }
+                            this.handleUpdateDate(newValMoment, newValString)}
                         />
-                </div>
+                </div>*/}
+
+                <div className={`'form-group ${examDate.touched && examDate.invalid ? 'has-danger' : ''}`}>
+                    <label>DATE OF EXAM</label> 
+                    <input type="DATE" placeholder="EXAM DATE" format="YYYY-MM-DD" className="col-lg-6 form-control" {...examDate} />
+                    <div className='text-help'>
+                    {examDate.touched ? examDate.error: ''}
+                    </div> 
+                </div> 
 
                 <div className='form-group col-sm-4 '>
                     <label>EXAM TIME</label> <br/>
@@ -207,7 +213,6 @@ function validate(values) {
     }
     return errors;
 }
-
 
 //connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
 // reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps
