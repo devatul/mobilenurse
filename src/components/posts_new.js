@@ -2,7 +2,7 @@ import React, { Component, PropTypes  } from 'react';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
-import { Select, Button, TimePicker } from 'antd';
+import { Select, Button,DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
 require('react-datetime');
 
@@ -13,17 +13,17 @@ class PostsNew extends Component {
         router: PropTypes.object
     };
 
-
-  // Setting Initial State
-//   initializeState() {
-//     this.setState({
-//       title: this.props.defaultTitle || '',
-//       category: this.props.defaultCategory || '',
-//       date: this.props.defaultDate || moment()
-//     });
-//   }
+    constructor(props) {
+        super(props);
+        this.state = {
+            examTime:null,
+            examDate:null
+        }
+        this.handleExamTypeChange = this.handleExamTypeChange.bind(this);
+    }
 
     onSubmit(props) {
+        // debugger
         this.props.createPost(props)
             .then(() => {
                 // exams post has been created, navigate the user to the index
@@ -34,8 +34,20 @@ class PostsNew extends Component {
 
   handleUpdateDate(newValMoment, newValString) {
     this.setState({
-      examDate: newValString
+      examDate: newValMoment
     });
+  }
+
+  handleUpdateTime(newValMoment, newValString) {
+      console.log("Just called handle update time with new value " + newValString);
+    this.setState({
+      examTime: newValString
+    });
+  }
+
+  handleExamTypeChange(event) {
+    console.log("New updated exam type is " + event.target.value);
+      this.setState({examType : event.target.value});
   }
   
 
@@ -136,14 +148,15 @@ class PostsNew extends Component {
                     </div> 
                 </div> 
 
-                {/*<div className='form-group col-sm-4'>
+                <div className='form-group col-sm-4'>
                     <label>EXAM DATE</label> <br/>
                     <DatePicker
-                         defaultValue={moment('2015-01-01', 'YYYY-MM-DD')} 
+                         {...examDate}
+                         value={this.state.examDate}
                         onChange={(newValMoment, newValString) =>
                             this.handleUpdateDate(newValMoment, newValString)}
                         />
-                </div>*/}
+                </div>
 
                 {/*<div className="form-group col-sm4">
                 <Datetime dateformat={false}/>
@@ -151,23 +164,28 @@ class PostsNew extends Component {
 
                 <div className={`'form-group ${examDate.touched && examDate.invalid ? 'has-danger' : ''}`}>
                     <label>DATE OF EXAM</label> 
-                    <input type="DATE" placeholder="EXAM DATE" format="YYYY-MM-DD" className="col-lg-6 form-control" {...examDate} />
+                    <input type="DATE" placeholder="EXAM DATE" format="YYYY-MM-DD" className="col-lg-6 form-control"  />
                     <div className='text-help'>
                     {examDate.touched ? examDate.error: ''}
                     </div> 
                 </div> 
 
                 <div className='form-group col-sm-4 '>
-                    <label>EXAM TIME</label> <br/>
+                    <label>EXAM TIME</label> <br/>               
                     <TimePicker 
                         placeholder='SELECT'
-                        format='hh:mm a'/>
+                        format='hh:mm a'
+                        {...examTime}
+                        currentValue={this.state.examTime}
+                        onChange={(newValMoment, newValString) =>
+                            this.handleUpdateTime(newValMoment, newValString)}
+                            />
                 </div>
 
                 <div className="col-sm-4">
                     <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
                         <label>EXAM TYPE</label> <br/>
-                        <select style={{ width: 120 }} >
+                        <select style={{ width: 120 }} onChange={this.handleExamTypeChange} {...examType}>
                             <option className="form-control" value="">SELECT</option>
                             <option className="form-control" value="PBU">PBU</option>
                             <option className="form-control" value="PBUEKG">PBU + EKG</option>

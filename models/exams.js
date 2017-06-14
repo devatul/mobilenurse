@@ -90,11 +90,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: true
         },
-        submit: {
+        submitdate: {
             type: 'TIMESTAMP',
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: true
         }
+        // submittime: {}
         
         // submitDate: {
         //     type: DataTypes.DATE,
