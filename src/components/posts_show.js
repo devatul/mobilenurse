@@ -21,7 +21,6 @@ class PostsShow extends Component {
         });
     }
 
-
     render() {
         const { post } = this.props;
 
@@ -36,14 +35,15 @@ class PostsShow extends Component {
                     onClick={this.onDeleteClick.bind(this)}>
                     CANCEL EXAM
                 </button> 
-                <h3>Firstname: {post.firstname}</h3>
-                <h3>Lastname: {post.lastName}</h3>
-                <p>Exam Status: {post.examStatus} </p>   
+                <h1> EXAM INFORMATION </h1>
+                <hr/>
+                <h3>FIRSTNAME: {post.firstname}</h3>
+                <h3>LASTNAME: {post.lastName}</h3>
+                <p>EXAM STATUS: {post.examStatus} </p>   
              </div>
         );
     }
 }
-
 
 function mapStateToProps(state) {
     return { post: state.posts.post };

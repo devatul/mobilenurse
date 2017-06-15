@@ -61,7 +61,7 @@ module.exports = function(sequelize, DataTypes) {
         examStatus: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: 'pending'
+            defaultValue: 'Pending'
         },
         examid: {
             type: DataTypes.STRING,

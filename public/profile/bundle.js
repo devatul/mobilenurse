@@ -64231,21 +64231,27 @@
 	                    'CANCEL EXAM'
 	                ),
 	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    ' EXAM INFORMATION '
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
 	                    'h3',
 	                    null,
-	                    'Firstname: ',
+	                    'FIRSTNAME: ',
 	                    post.firstname
 	                ),
 	                _react2.default.createElement(
 	                    'h3',
 	                    null,
-	                    'Lastname: ',
+	                    'LASTNAME: ',
 	                    post.lastName
 	                ),
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    'Exam Status: ',
+	                    'EXAM STATUS: ',
 	                    post.examStatus,
 	                    ' '
 	                )
