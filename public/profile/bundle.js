@@ -64234,7 +64234,7 @@
 	                    'h3',
 	                    null,
 	                    'Firstname: ',
-	                    post.firstName
+	                    post.firstname
 	                ),
 	                _react2.default.createElement(
 	                    'h3',
@@ -64245,8 +64245,8 @@
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    'Comments: ',
-	                    post.comments,
+	                    'Exam Status: ',
+	                    post.examStatus,
 	                    ' '
 	                )
 	            );
