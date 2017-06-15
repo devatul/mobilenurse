@@ -2,11 +2,11 @@ import React, { Component, PropTypes  } from 'react';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
-import { Select, Button,DatePicker, TimePicker } from 'antd';
+import { Select, Button, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
-require('react-datetime');
+// require('react-datetime');
 
-import {Datetime} from 'react-widgets';
+// import {Datetime} from 'react-widgets';
 
 class PostsNew extends Component {
     static contextTypes = {
@@ -158,18 +158,6 @@ class PostsNew extends Component {
                         />
                 </div>
 
-                {/*<div className="form-group col-sm4">
-                <Datetime dateformat={false}/>
-                </div>*/}
-
-                <div className={`'form-group ${examDate.touched && examDate.invalid ? 'has-danger' : ''}`}>
-                    <label>DATE OF EXAM</label> 
-                    <input type="DATE" placeholder="EXAM DATE" format="YYYY-MM-DD" className="col-lg-6 form-control"  />
-                    <div className='text-help'>
-                    {examDate.touched ? examDate.error: ''}
-                    </div> 
-                </div> 
-
                 <div className='form-group col-sm-4 '>
                     <label>EXAM TIME</label> <br/>               
                     <TimePicker 
@@ -185,10 +173,16 @@ class PostsNew extends Component {
                 <div className="col-sm-4">
                     <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
                         <label>EXAM TYPE</label> <br/>
-                        <select style={{ width: 120 }} onChange={this.handleExamTypeChange} {...examType}>
+                        <select style={{ width: 180 }} onChange={this.handleExamTypeChange} {...examType}>
                             <option className="form-control" value="">SELECT</option>
                             <option className="form-control" value="PBU">PBU</option>
-                            <option className="form-control" value="PBUEKG">PBU + EKG</option>
+                            <option className="form-control" value="PBU + EKG">PBU + EKG</option>
+                            <option className="form-control" value="EKG">EKG</option>
+                            <option className="form-control" value="BLOOD">BLOOD ONLY</option>
+                            <option className="form-control" value="URINE">URINE ONLY</option>
+                            <option className="form-control" value="PHYSICAL MEASUREMENTS">PHYSICAL MEASUREMENTS</option>
+                            <option className="form-control" value="BLOOD PRESSURE">BLOOD PRESSURE</option>
+
                             {/*<div className='text-help'>
                             </div> */}
                         </select>
