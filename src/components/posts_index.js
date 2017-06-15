@@ -14,8 +14,8 @@ renderPosts() {
         return (
              <li className="list-group-item" key={post.id}>
                  <Link to={"posts/" + post.id}> 
-                    <span className="pull-xs-right">{post.comments}</span>
-                    <strong> {post.firstName} {post.lastName} </strong> 
+                    <span className="pull-xs-right">{post.examStatus}</span>
+                    <strong>CLIENT: {post.firstname} {post.lastName} </strong> 
                  </Link> 
             </li>
         );

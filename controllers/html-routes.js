@@ -60,14 +60,14 @@ module.exports = function(app) {
 
 
     app.get('/api/posts', ensureAuthenticated, function (req, res) {
-            db.ReqExams.findAll({}).then(function (result) {
+            db.Exams.findAll({}).then(function (result) {
                 return res.json(result);
             });
         });
 
 //get exam by post id
     app.get('/api/posts/:id', ensureAuthenticated, function (req, res) {
-        db.ReqExams.findAll({
+        db.Exams.findAll({
             where: {
                 id: req.params.id
             }

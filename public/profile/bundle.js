@@ -51292,13 +51292,13 @@
 	                        _react2.default.createElement(
 	                            'span',
 	                            { className: 'pull-xs-right' },
-	                            post.comments
+	                            post.examStatus
 	                        ),
 	                        _react2.default.createElement(
 	                            'strong',
 	                            null,
-	                            ' ',
-	                            post.firstName,
+	                            'CLIENT: ',
+	                            post.firstname,
 	                            ' ',
 	                            post.lastName,
 	                            ' '
