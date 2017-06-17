@@ -51415,7 +51415,6 @@
 	        value: function onSubmit(props) {
 	            var _this2 = this;
 
-	            // debugger
 	            this.props.createPost(props).then(function () {
 	                // exams post has been created, navigate the user to the index
 	                // we navigate by calling this.context.router.push

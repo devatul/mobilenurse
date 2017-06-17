@@ -23,7 +23,6 @@ class PostsNew extends Component {
     }
 
     onSubmit(props) {
-        // debugger
         this.props.createPost(props)
             .then(() => {
                 // exams post has been created, navigate the user to the index
