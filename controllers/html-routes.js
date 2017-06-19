@@ -54,7 +54,8 @@ module.exports = function(app) {
             policyAmount: req.body.policyAmount,
             examDate: req.body.examDate,
             examTime: req.body.examTime,
-            examType: req.body.examType
+            examType: req.body.examType,
+            examNotes: req.body.examNote
         });
     });
 

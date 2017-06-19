@@ -51461,6 +51461,7 @@
 	                examDate = _props$fields.examDate,
 	                examTime = _props$fields.examTime,
 	                examType = _props$fields.examType,
+	                examNotes = _props$fields.examNotes,
 	                handleSubmit = _props.handleSubmit;
 
 	            return _react2.default.createElement(
@@ -51713,10 +51714,27 @@
 	                                'option',
 	                                { className: 'form-control', value: 'BLOOD PRESSURE' },
 	                                'BLOOD PRESSURE'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'SPECIAL' },
+	                                'SPECIAL ORDER'
 	                            )
 	                        ),
 	                        _react2.default.createElement('br', null)
 	                    )
+	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group text-xs-left' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'COMMENTS'
+	                    ),
+	                    _react2.default.createElement('textarea', _extends({ className: 'form-control' }, examNotes)),
+	                    _react2.default.createElement('div', { className: 'text-help' })
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -51781,7 +51799,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstname', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType'],
+	    fields: ['firstname', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType', 'examNotes'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 

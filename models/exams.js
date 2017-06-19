@@ -94,6 +94,10 @@ module.exports = function(sequelize, DataTypes) {
             type: 'TIMESTAMP',
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: true
+        },
+        examNotes: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
         // submittime: {}
         

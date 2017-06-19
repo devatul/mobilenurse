@@ -62,7 +62,8 @@ class PostsNew extends Component {
                         policyAmount,
                         examDate,
                         examTime,
-                        examType }, handleSubmit } = this.props;
+                        examType,
+                        examNotes }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <h3>SCHEDULE AN EXAM</h3>
@@ -181,12 +182,21 @@ class PostsNew extends Component {
                             <option className="form-control" value="URINE">URINE ONLY</option>
                             <option className="form-control" value="PHYSICAL MEASUREMENTS">PHYSICAL MEASUREMENTS</option>
                             <option className="form-control" value="BLOOD PRESSURE">BLOOD PRESSURE</option>
+                            <option className="form-control" value="SPECIAL">SPECIAL ORDER</option>
 
                             {/*<div className='text-help'>
                             </div> */}
                         </select>
                         <br/>
                     </div>
+                </div>
+
+                <br/>
+                <div className='form-group text-xs-left'>
+                    <label>COMMENTS</label> 
+                    <textarea className="form-control" {...examNotes}/>
+                    <div className='text-help'>
+                    </div> 
                 </div>
 
                 <div className="col-xs-12" >
@@ -248,6 +258,7 @@ export default reduxForm({
             'clientPhone',
             'examDate',
             'examTime',
-            'examType'],
+            'examType',
+            'examNotes'],
     validate
 }, null,{ createPost } ) (PostsNew); 
