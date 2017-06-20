@@ -97,6 +97,10 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: true
         },
+        gender:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         examNotes: {
             type: DataTypes.STRING,
             allowNull: true,

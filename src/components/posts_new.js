@@ -48,6 +48,10 @@ class PostsNew extends Component {
     console.log("New updated exam type is " + event.target.value);
       this.setState({examType : event.target.value});
   }
+
+handleGenderUpdate(event) {
+    this.setState({gender: event.target.gender});
+}
   
 
     render() {
@@ -63,6 +67,7 @@ class PostsNew extends Component {
                         examDate,
                         examTime,
                         examType,
+                        gender,
                         examNotes }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -148,7 +153,7 @@ class PostsNew extends Component {
                     </div> 
                 </div> 
 
-                <div className='form-group col-sm-4'>
+                <div className='form-group col-sm-6'>
                     <label>EXAM DATE</label> <br/>
                     <DatePicker
                          {...examDate}
@@ -158,7 +163,7 @@ class PostsNew extends Component {
                         />
                 </div>
 
-                <div className='form-group col-sm-4 '>
+                <div className='form-group col-sm-6'>
                     <label>EXAM TIME</label> <br/>               
                     <TimePicker 
                         placeholder='SELECT'
@@ -170,7 +175,7 @@ class PostsNew extends Component {
                             />
                 </div>
 
-                <div className="col-sm-4">
+                <div className="col-sm-6">
                     <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
                         <label>EXAM TYPE</label> <br/>
                         <select style={{ width: 180 }} onChange={this.handleExamTypeChange} {...examType}>
@@ -191,6 +196,18 @@ class PostsNew extends Component {
                     </div>
                 </div>
 
+
+                <div classname="col-sm-6">
+                    <div className={`'form-group ${gender.touched && gender.invalid ? 'has-danger' : ''}`}>
+                        <label>GENDER</label><br/>
+                        <select style={{width: 180 }} onChange={this.handleGenderUpdate} {...gender}>
+                            <option className="form-control" value="">SELECT</option>
+                            <option className="form-control" value="MALE">MALE</option>
+                            <option className="form-control" value="FEMALE">FEMALE</option>
+                        </select>
+                        <br/>
+                    </div>
+                </div> 
                
                 <div className='form-group text-xs-left'>
                      <br/><br/>
@@ -258,6 +275,7 @@ export default reduxForm({
             'examDate',
             'examTime',
             'examType',
+            'gender',
             'examNotes'],
     validate
 }, null,{ createPost } ) (PostsNew); 

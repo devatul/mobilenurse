@@ -51443,6 +51443,11 @@
 	            this.setState({ examType: event.target.value });
 	        }
 	    }, {
+	        key: 'handleGenderUpdate',
+	        value: function handleGenderUpdate(event) {
+	            this.setState({ gender: event.target.gender });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this3 = this;
@@ -51461,6 +51466,7 @@
 	                examDate = _props$fields.examDate,
 	                examTime = _props$fields.examTime,
 	                examType = _props$fields.examType,
+	                gender = _props$fields.gender,
 	                examNotes = _props$fields.examNotes,
 	                handleSubmit = _props.handleSubmit;
 
@@ -51624,7 +51630,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'form-group col-sm-4' },
+	                    { className: 'form-group col-sm-6' },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
@@ -51641,7 +51647,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'form-group col-sm-4 ' },
+	                    { className: 'form-group col-sm-6' },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
@@ -51661,7 +51667,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-sm-4' },
+	                    { className: 'col-sm-6' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: '\'form-group ' + (examType.touched && examType.invalid ? 'has-danger' : '') },
@@ -51719,6 +51725,40 @@
 	                                'option',
 	                                { className: 'form-control', value: 'SPECIAL' },
 	                                'SPECIAL ORDER'
+	                            )
+	                        ),
+	                        _react2.default.createElement('br', null)
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { classname: 'col-sm-6' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: '\'form-group ' + (gender.touched && gender.invalid ? 'has-danger' : '') },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'GENDER'
+	                        ),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement(
+	                            'select',
+	                            _extends({ style: { width: 180 }, onChange: this.handleGenderUpdate }, gender),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: '' },
+	                                'SELECT'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'MALE' },
+	                                'MALE'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'FEMALE' },
+	                                'FEMALE'
 	                            )
 	                        ),
 	                        _react2.default.createElement('br', null)
@@ -51801,7 +51841,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstname', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType', 'examNotes'],
+	    fields: ['firstname', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType', 'gender', 'examNotes'],
 	    validate: validate
 	}, null, { createPost: _index.createPost })(PostsNew);
 
