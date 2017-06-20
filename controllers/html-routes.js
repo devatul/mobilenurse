@@ -55,7 +55,7 @@ module.exports = function(app) {
             examDate: req.body.examDate,
             examTime: req.body.examTime,
             examType: req.body.examType,
-            examNotes: req.body.examNote
+            examNotes: req.body.examNotes
         });
     });
 
