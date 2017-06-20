@@ -51725,6 +51725,7 @@
 	                    )
 	                ),
 	                _react2.default.createElement('br', null),
+	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'form-group text-xs-left' },
@@ -51733,8 +51734,7 @@
 	                        null,
 	                        'COMMENTS'
 	                    ),
-	                    _react2.default.createElement('textarea', _extends({ className: 'form-control' }, examNotes)),
-	                    _react2.default.createElement('div', { className: 'text-help' })
+	                    _react2.default.createElement('textarea', _extends({ placeholder: 'special instructions', className: 'form-control' }, examNotes))
 	                ),
 	                _react2.default.createElement(
 	                    'div',

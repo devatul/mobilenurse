@@ -191,12 +191,10 @@ class PostsNew extends Component {
                     </div>
                 </div>
 
-                <br/>
+                <br/><br/>
                 <div className='form-group text-xs-left'>
                     <label>COMMENTS</label> 
-                    <textarea className="form-control" {...examNotes}/>
-                    <div className='text-help'>
-                    </div> 
+                    <textarea placeholder="special instructions" className="form-control" {...examNotes}/>
                 </div>
 
                 <div className="col-xs-12" >
