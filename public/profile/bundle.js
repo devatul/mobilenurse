@@ -51833,6 +51833,9 @@
 	    if (!values.policyAmount) {
 	        errors.policyAmount = 'policy amount';
 	    }
+	    if (!values.clientPhone) {
+	        errors.clientPhone = 'client phone number';
+	    }
 	    return errors;
 	}
 
