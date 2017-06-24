@@ -77,13 +77,11 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reduxPromise = __webpack_require__(668);
+	var _reduxPromise = __webpack_require__(669);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// /Users/petertountas/Documents/Development/ApplicationDev/mobilenurse/style/antd.css
 
 	var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxPromise2.default)(_redux.createStore);
 
@@ -33420,6 +33418,10 @@
 
 	var _posts_show2 = _interopRequireDefault(_posts_show);
 
+	var _post_profile = __webpack_require__(668);
+
+	var _post_profile2 = _interopRequireDefault(_post_profile);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createElement(
@@ -33427,7 +33429,8 @@
 	    { path: '/profile/', component: _app2.default },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _posts_index2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/new', component: _posts_new2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/:id', component: _posts_show2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/:id', component: _posts_show2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/test/new', component: _post_profile2.default })
 	);
 
 /***/ }),
@@ -51491,6 +51494,15 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
+	                    { className: 'text-xs-left' },
+	                    _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '/test/new' },
+	                        'PROFILE'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
 	                    null,
 	                    _react2.default.createElement(
 	                        'div',
@@ -51732,7 +51744,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { classname: 'col-sm-6' },
+	                    { className: 'col-sm-6' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: '\'form-group ' + (gender.touched && gender.invalid ? 'has-danger' : '') },
@@ -64341,13 +64353,359 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(8);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reduxForm = __webpack_require__(303);
+
+	var _index = __webpack_require__(277);
+
+	var _reactRouter = __webpack_require__(214);
+
+	var _moment = __webpack_require__(436);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var PostProfile = function (_Component) {
+	    _inherits(PostProfile, _Component);
+
+	    function PostProfile(props) {
+	        _classCallCheck(this, PostProfile);
+
+	        var _this = _possibleConstructorReturn(this, (PostProfile.__proto__ || Object.getPrototypeOf(PostProfile)).call(this, props));
+
+	        _this.state = {
+	            examTime: null,
+	            examDate: null
+	        };
+	        _this.handleExamTypeChange = _this.handleExamTypeChange.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(PostProfile, [{
+	        key: 'onSubmit',
+	        value: function onSubmit(props) {
+	            var _this2 = this;
+
+	            this.props.createPost(props).then(function () {
+	                // exams post has been created, navigate the user to the index
+	                // we navigate by calling this.context.router.push
+	                _this2.context.router.push('/profile/');
+	            });
+	        }
+	    }, {
+	        key: 'handleUpdateDate',
+	        value: function handleUpdateDate(newValMoment, newValString) {
+	            this.setState({
+	                examDate: newValMoment
+	            });
+	        }
+	    }, {
+	        key: 'handleUpdateTime',
+	        value: function handleUpdateTime(newValMoment, newValString) {
+	            console.log("Just called handle update time with new value " + newValString);
+	            this.setState({
+	                examTime: newValString
+	            });
+	        }
+	    }, {
+	        key: 'handleExamTypeChange',
+	        value: function handleExamTypeChange(event) {
+	            console.log("New updated exam type is " + event.target.value);
+	            this.setState({ examType: event.target.value });
+	        }
+	    }, {
+	        key: 'handleGenderUpdate',
+	        value: function handleGenderUpdate(event) {
+	            this.setState({ gender: event.target.gender });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _props = this.props,
+	                _props$fields = _props.fields,
+	                firstname = _props$fields.firstname,
+	                lastName = _props$fields.lastName,
+	                officeAddress = _props$fields.officeAddress,
+	                repCity = _props$fields.repCity,
+	                repState = _props$fields.repState,
+	                repZipCode = _props$fields.repZipCode,
+	                repOfficePhone = _props$fields.repOfficePhone,
+	                repCellPhone = _props$fields.repCellPhone,
+	                repEmail = _props$fields.repEmail,
+	                repAssistantEmail = _props$fields.repAssistantEmail,
+	                handleSubmit = _props.handleSubmit;
+
+	            return _react2.default.createElement(
+	                'form',
+	                { onSubmit: handleSubmit(this.onSubmit.bind(this)) },
+	                _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    'PROFILE'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'text-xs-right' },
+	                    _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '/profile/' },
+	                        'BACK'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: '\'form-group ' + (firstname.touched && firstname.invalid ? 'has-danger' : '') },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'FIRSTNAME'
+	                        ),
+	                        _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'tester', className: 'form-control' }, firstname)),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'text-help' },
+	                            firstname.touched ? firstname.error : ''
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (lastName.touched && lastName.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'LASTNAME'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'lastname', className: 'form-control' }, lastName)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        lastName.touched ? lastName.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (repOfficePhone.touched && repOfficePhone.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'OFFICE NUMBER'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, repOfficePhone)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repOfficePhone.touched ? repOfficePhone.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (repCellPhone.touched && repCellPhone.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'MOBILE NUMBER'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, repCellPhone)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repCellPhone.touched ? repCellPhone.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (officeAddress.touched && officeAddress.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'OFFICE ADDRESS'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', placeholder: 'street address', className: 'form-control' }, officeAddress)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        officeAddress.touched ? officeAddress.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (repCity.touched && repCity.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'CITY'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'CITY', placeholder: 'city', className: 'form-control col-md-4' }, repCity)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repCity.touched ? repCity.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group ' + (repState.touched && repState.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'STATE'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'state', className: 'form-control col-md-4' }, repState)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repState.touched ? repState.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (repZipCode.touched && repZipCode.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'ZIP'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'number', placeholder: 'zip', className: 'col-lg-6 form-control' }, repZipCode)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repZipCode.touched ? repZipCode.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (repEmail.touched && repEmail.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'EMAIL'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'EMAIL', className: 'col-lg-6 form-control' }, repEmail)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repEmail.touched ? repEmail.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'ASSISTANT EMAIL'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'EMAIL', className: 'col-lg-6 form-control' }, repAssistantEmail)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repAssistantEmail.touched ? repAssistantEmail.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-12' },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { type: 'submit', className: 'btn btn-primary' },
+	                        'SUBMIT'
+	                    ),
+	                    _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '/profile/', className: 'btn btn-danger' },
+	                        'CANCEL'
+	                    ),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null)
+	                )
+	            );
+	        }
+	    }]);
+
+	    return PostProfile;
+	}(_react.Component);
+
+	// function validate(values) {
+	//     const errors = {};
+
+	//     if (!values.firstname) {
+	//         errors.firstname = 'client firstname';
+	//     }
+	//     if (!values.lastName) {
+	//         errors.lastName = 'client lastname';
+	//     }
+	//     if (!values.clientDOB) {
+	//         errors.clientDOB = 'client date of birth';
+	//     }
+	//     if (!values.examStreetAddress) {
+	//         errors.examStreetAddress = 'street address of exam';
+	//     }
+	//     if (!values.examState) {
+	//     errors.examState = 'state of exam';
+	//     }
+	//     if (!values.examCity) {
+	//     errors.examCity = 'city of exam';
+	//     }
+	//     if (!values.examZipCode) {
+	//     errors.examZipCode = 'zipcode of exam';
+	//     }
+	//     if (!values.policyAmount) {
+	//     errors.policyAmount = 'policy amount';
+	//    }
+	//     if (!values.clientPhone) {
+	//     errors.clientPhone = 'client phone number';
+	//     }
+	//     return errors;
+	// }
+
+	//connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
+	// reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps
+
+	PostProfile.contextTypes = {
+	    router: _react.PropTypes.object
+	};
+	exports.default = (0, _reduxForm.reduxForm)({
+	    form: "PostsNewForm",
+	    fields: ['firstname', 'lastName', 'officeAddress', 'repCity', 'repState', 'repZipCode', 'repOfficePhone', 'repCellPhone', 'repEmail', 'repAssistantEmail']
+	}, null, { createPost: _index.createPost })(PostProfile);
+
+/***/ }),
+/* 669 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	exports.__esModule = true;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(669);
+	var _fluxStandardAction = __webpack_require__(670);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -64374,7 +64732,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 669 */
+/* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64385,7 +64743,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(670);
+	var _lodashIsplainobject = __webpack_require__(671);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -64404,7 +64762,7 @@
 	}
 
 /***/ }),
-/* 670 */
+/* 671 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -64415,9 +64773,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(671),
-	    isArguments = __webpack_require__(672),
-	    keysIn = __webpack_require__(673);
+	var baseFor = __webpack_require__(672),
+	    isArguments = __webpack_require__(673),
+	    keysIn = __webpack_require__(674);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -64513,7 +64871,7 @@
 
 
 /***/ }),
-/* 671 */
+/* 672 */
 /***/ (function(module, exports) {
 
 	/**
@@ -64567,7 +64925,7 @@
 
 
 /***/ }),
-/* 672 */
+/* 673 */
 /***/ (function(module, exports) {
 
 	/**
@@ -64802,7 +65160,7 @@
 
 
 /***/ }),
-/* 673 */
+/* 674 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -64813,8 +65171,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(672),
-	    isArray = __webpack_require__(674);
+	var isArguments = __webpack_require__(673),
+	    isArray = __webpack_require__(675);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -64940,7 +65298,7 @@
 
 
 /***/ }),
-/* 674 */
+/* 675 */
 /***/ (function(module, exports) {
 
 	/**

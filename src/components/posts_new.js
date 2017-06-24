@@ -79,6 +79,10 @@ handleGenderUpdate(event) {
                     <Link to="/profile/">BACK</Link>
                 </div>
 
+                <div className="text-xs-left">
+                    <Link to="/test/new">PROFILE</Link>
+                </div>
+
                 <div>
                     <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
@@ -197,7 +201,7 @@ handleGenderUpdate(event) {
                 </div>
 
 
-                <div classname="col-sm-6">
+                <div className="col-sm-6">
                     <div className={`'form-group ${gender.touched && gender.invalid ? 'has-danger' : ''}`}>
                         <label>GENDER</label><br/>
                         <select style={{width: 180 }} onChange={this.handleGenderUpdate} {...gender}>
