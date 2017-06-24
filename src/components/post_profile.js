@@ -4,11 +4,8 @@ import { createPost } from '../actions/index';
 import { Link } from 'react-router';
 import { Select, Button, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
-// require('react-datetime');
 
-// import {Datetime} from 'react-widgets';
-
-class PostsNew extends Component {
+class PostProfile extends Component {
     static contextTypes = {
         router: PropTypes.object
     };
@@ -197,7 +194,7 @@ handleGenderUpdate(event) {
                 </div>
 
 
-                <div className="col-sm-6">
+                <div classname="col-sm-6">
                     <div className={`'form-group ${gender.touched && gender.invalid ? 'has-danger' : ''}`}>
                         <label>GENDER</label><br/>
                         <select style={{width: 180 }} onChange={this.handleGenderUpdate} {...gender}>
@@ -281,4 +278,4 @@ export default reduxForm({
             'gender',
             'examNotes'],
     validate
-}, null,{ createPost } ) (PostsNew); 
+}, null,{ createPost } ) (PostProfile); 

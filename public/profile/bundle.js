@@ -33420,6 +33420,10 @@
 
 	var _posts_show2 = _interopRequireDefault(_posts_show);
 
+	var _post_profile = __webpack_require__(675);
+
+	var _post_profile2 = _interopRequireDefault(_post_profile);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createElement(
@@ -33427,7 +33431,8 @@
 	    { path: '/profile/', component: _app2.default },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _posts_index2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/new', component: _posts_new2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/:id', component: _posts_show2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/:id', component: _posts_show2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/testprofile/new', component: _post_profile2.default })
 	);
 
 /***/ }),
@@ -51732,7 +51737,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { classname: 'col-sm-6' },
+	                    { className: 'col-sm-6' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: '\'form-group ' + (gender.touched && gender.invalid ? 'has-danger' : '') },
@@ -65124,6 +65129,504 @@
 
 	module.exports = isArray;
 
+
+/***/ }),
+/* 675 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _timePicker = __webpack_require__(560);
+
+	var _timePicker2 = _interopRequireDefault(_timePicker);
+
+	var _datePicker = __webpack_require__(611);
+
+	var _datePicker2 = _interopRequireDefault(_datePicker);
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(8);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reduxForm = __webpack_require__(303);
+
+	var _index = __webpack_require__(277);
+
+	var _reactRouter = __webpack_require__(214);
+
+	var _moment = __webpack_require__(436);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var PostProfile = function (_Component) {
+	    _inherits(PostProfile, _Component);
+
+	    function PostProfile(props) {
+	        _classCallCheck(this, PostProfile);
+
+	        var _this = _possibleConstructorReturn(this, (PostProfile.__proto__ || Object.getPrototypeOf(PostProfile)).call(this, props));
+
+	        _this.state = {
+	            examTime: null,
+	            examDate: null
+	        };
+	        _this.handleExamTypeChange = _this.handleExamTypeChange.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(PostProfile, [{
+	        key: 'onSubmit',
+	        value: function onSubmit(props) {
+	            var _this2 = this;
+
+	            this.props.createPost(props).then(function () {
+	                // exams post has been created, navigate the user to the index
+	                // we navigate by calling this.context.router.push
+	                _this2.context.router.push('/profile/');
+	            });
+	        }
+	    }, {
+	        key: 'handleUpdateDate',
+	        value: function handleUpdateDate(newValMoment, newValString) {
+	            this.setState({
+	                examDate: newValMoment
+	            });
+	        }
+	    }, {
+	        key: 'handleUpdateTime',
+	        value: function handleUpdateTime(newValMoment, newValString) {
+	            console.log("Just called handle update time with new value " + newValString);
+	            this.setState({
+	                examTime: newValString
+	            });
+	        }
+	    }, {
+	        key: 'handleExamTypeChange',
+	        value: function handleExamTypeChange(event) {
+	            console.log("New updated exam type is " + event.target.value);
+	            this.setState({ examType: event.target.value });
+	        }
+	    }, {
+	        key: 'handleGenderUpdate',
+	        value: function handleGenderUpdate(event) {
+	            this.setState({ gender: event.target.gender });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this3 = this;
+
+	            var _props = this.props,
+	                _props$fields = _props.fields,
+	                firstname = _props$fields.firstname,
+	                lastName = _props$fields.lastName,
+	                clientDOB = _props$fields.clientDOB,
+	                clientPhone = _props$fields.clientPhone,
+	                examStreetAddress = _props$fields.examStreetAddress,
+	                examCity = _props$fields.examCity,
+	                examState = _props$fields.examState,
+	                examZipCode = _props$fields.examZipCode,
+	                policyAmount = _props$fields.policyAmount,
+	                examDate = _props$fields.examDate,
+	                examTime = _props$fields.examTime,
+	                examType = _props$fields.examType,
+	                gender = _props$fields.gender,
+	                examNotes = _props$fields.examNotes,
+	                handleSubmit = _props.handleSubmit;
+
+	            return _react2.default.createElement(
+	                'form',
+	                { onSubmit: handleSubmit(this.onSubmit.bind(this)) },
+	                _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    'SCHEDULE AN EXAM'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'text-xs-right' },
+	                    _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '/profile/' },
+	                        'BACK'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: '\'form-group ' + (firstname.touched && firstname.invalid ? 'has-danger' : '') },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'FIRSTNAME'
+	                        ),
+	                        _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'firstname', className: 'form-control' }, firstname)),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'text-help' },
+	                            firstname.touched ? firstname.error : ''
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (lastName.touched && lastName.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'LASTNAME'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'lastname', className: 'form-control' }, lastName)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        lastName.touched ? lastName.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (clientDOB.touched && clientDOB.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'DATE OF BIRTH'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'DATE', placeholder: 'DOB', format: 'YYYY-MM-DD', className: 'col-lg-6 form-control' }, clientDOB)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        clientDOB.touched ? clientDOB.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (clientPhone.touched && clientPhone.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'PHONE NUMBER'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, clientPhone)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        clientPhone.touched ? clientPhone.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (examStreetAddress.touched && examStreetAddress.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'STREET ADDRESS'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', placeholder: 'street address', className: 'form-control' }, examStreetAddress)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        examStreetAddress.touched ? examStreetAddress.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (examCity.touched && examCity.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'CITY'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'CITY', placeholder: 'city', className: 'form-control col-md-4' }, examCity)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        examCity.touched ? examCity.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group ' + (examState.touched && examState.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'STATE'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'state', className: 'form-control col-md-4' }, examState)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        examState.touched ? examState.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (examZipCode.touched && examZipCode.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'ZIP'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'number', placeholder: 'zip', className: 'col-lg-6 form-control' }, examZipCode)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        examZipCode.touched ? examZipCode.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: '\'form-group ' + (policyAmount.touched && policyAmount.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'POLICY AMOUNT'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'number', placeholder: 'policy amount', className: 'col-lg-6 form-control' }, policyAmount)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        policyAmount.touched ? policyAmount.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group col-sm-6' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'EXAM DATE'
+	                    ),
+	                    ' ',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(_datePicker2.default, _extends({}, examDate, {
+	                        value: this.state.examDate,
+	                        onChange: function onChange(newValMoment, newValString) {
+	                            return _this3.handleUpdateDate(newValMoment, newValString);
+	                        }
+	                    }))
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group col-sm-6' },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'EXAM TIME'
+	                    ),
+	                    ' ',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(_timePicker2.default, _extends({
+	                        placeholder: 'SELECT',
+	                        format: 'hh:mm a'
+	                    }, examTime, {
+	                        currentValue: this.state.examTime,
+	                        onChange: function onChange(newValMoment, newValString) {
+	                            return _this3.handleUpdateTime(newValMoment, newValString);
+	                        }
+	                    }))
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-sm-6' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: '\'form-group ' + (examType.touched && examType.invalid ? 'has-danger' : '') },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'EXAM TYPE'
+	                        ),
+	                        ' ',
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement(
+	                            'select',
+	                            _extends({ style: { width: 180 }, onChange: this.handleExamTypeChange }, examType),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: '' },
+	                                'SELECT'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'PBU' },
+	                                'PBU'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'PBU + EKG' },
+	                                'PBU + EKG'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'EKG' },
+	                                'EKG'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'BLOOD' },
+	                                'BLOOD ONLY'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'URINE' },
+	                                'URINE ONLY'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'PHYSICAL MEASUREMENTS' },
+	                                'PHYSICAL MEASUREMENTS'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'BLOOD PRESSURE' },
+	                                'BLOOD PRESSURE'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'SPECIAL' },
+	                                'SPECIAL ORDER'
+	                            )
+	                        ),
+	                        _react2.default.createElement('br', null)
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { classname: 'col-sm-6' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: '\'form-group ' + (gender.touched && gender.invalid ? 'has-danger' : '') },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'GENDER'
+	                        ),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement(
+	                            'select',
+	                            _extends({ style: { width: 180 }, onChange: this.handleGenderUpdate }, gender),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: '' },
+	                                'SELECT'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'MALE' },
+	                                'MALE'
+	                            ),
+	                            _react2.default.createElement(
+	                                'option',
+	                                { className: 'form-control', value: 'FEMALE' },
+	                                'FEMALE'
+	                            )
+	                        ),
+	                        _react2.default.createElement('br', null)
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group text-xs-left' },
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(
+	                        'label',
+	                        { className: 'text-xs-left' },
+	                        'COMMENTS'
+	                    ),
+	                    ' ',
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('textarea', _extends({ placeholder: 'special instructions', className: 'form-control' }, examNotes))
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-12' },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { type: 'submit', className: 'btn btn-primary' },
+	                        'SUBMIT'
+	                    ),
+	                    _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '/profile/', className: 'btn btn-danger' },
+	                        'CANCEL'
+	                    ),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null)
+	                )
+	            );
+	        }
+	    }]);
+
+	    return PostProfile;
+	}(_react.Component);
+
+	PostProfile.contextTypes = {
+	    router: _react.PropTypes.object
+	};
+
+
+	function validate(values) {
+	    var errors = {};
+
+	    if (!values.firstname) {
+	        errors.firstname = 'client firstname';
+	    }
+	    if (!values.lastName) {
+	        errors.lastName = 'client lastname';
+	    }
+	    if (!values.clientDOB) {
+	        errors.clientDOB = 'client date of birth';
+	    }
+	    if (!values.examStreetAddress) {
+	        errors.examStreetAddress = 'street address of exam';
+	    }
+	    if (!values.examState) {
+	        errors.examState = 'state of exam';
+	    }
+	    if (!values.examCity) {
+	        errors.examCity = 'city of exam';
+	    }
+	    if (!values.examZipCode) {
+	        errors.examZipCode = 'zipcode of exam';
+	    }
+	    if (!values.policyAmount) {
+	        errors.policyAmount = 'policy amount';
+	    }
+	    if (!values.clientPhone) {
+	        errors.clientPhone = 'client phone number';
+	    }
+	    return errors;
+	}
+
+	//connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
+	// reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps
+
+	exports.default = (0, _reduxForm.reduxForm)({
+	    form: "PostsNewForm",
+	    fields: ['firstname', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType', 'gender', 'examNotes'],
+	    validate: validate
+	}, null, { createPost: _index.createPost })(PostProfile);
 
 /***/ })
 /******/ ]);
