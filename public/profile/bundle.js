@@ -64357,14 +64357,6 @@
 	    value: true
 	});
 
-	var _timePicker = __webpack_require__(560);
-
-	var _timePicker2 = _interopRequireDefault(_timePicker);
-
-	var _datePicker = __webpack_require__(611);
-
-	var _datePicker2 = _interopRequireDefault(_datePicker);
-
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -64447,24 +64439,18 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this3 = this;
-
 	            var _props = this.props,
 	                _props$fields = _props.fields,
 	                firstname = _props$fields.firstname,
 	                lastName = _props$fields.lastName,
-	                clientDOB = _props$fields.clientDOB,
-	                clientPhone = _props$fields.clientPhone,
-	                examStreetAddress = _props$fields.examStreetAddress,
-	                examCity = _props$fields.examCity,
-	                examState = _props$fields.examState,
-	                examZipCode = _props$fields.examZipCode,
-	                policyAmount = _props$fields.policyAmount,
-	                examDate = _props$fields.examDate,
-	                examTime = _props$fields.examTime,
-	                examType = _props$fields.examType,
-	                gender = _props$fields.gender,
-	                examNotes = _props$fields.examNotes,
+	                officeAddress = _props$fields.officeAddress,
+	                repCity = _props$fields.repCity,
+	                repState = _props$fields.repState,
+	                repZipCode = _props$fields.repZipCode,
+	                repOfficePhone = _props$fields.repOfficePhone,
+	                repCellPhone = _props$fields.repCellPhone,
+	                repEmail = _props$fields.repEmail,
+	                repAssistantEmail = _props$fields.repAssistantEmail,
 	                handleSubmit = _props.handleSubmit;
 
 	            return _react2.default.createElement(
@@ -64473,7 +64459,7 @@
 	                _react2.default.createElement(
 	                    'h3',
 	                    null,
-	                    'SCHEDULE AN EXAM'
+	                    'PROFILE'
 	                ),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement('br', null),
@@ -64522,258 +64508,123 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (clientDOB.touched && clientDOB.invalid ? 'has-danger' : '') },
+	                    { className: '\'form-group ' + (repOfficePhone.touched && repOfficePhone.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'DATE OF BIRTH'
+	                        'OFFICE NUMBER'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'DATE', placeholder: 'DOB', format: 'YYYY-MM-DD', className: 'col-lg-6 form-control' }, clientDOB)),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, repOfficePhone)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        clientDOB.touched ? clientDOB.error : ''
+	                        repOfficePhone.touched ? repOfficePhone.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (clientPhone.touched && clientPhone.invalid ? 'has-danger' : '') },
+	                    { className: '\'form-group ' + (repCellPhone.touched && repCellPhone.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'PHONE NUMBER'
+	                        'MOBILE NUMBER'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, clientPhone)),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, repCellPhone)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        clientPhone.touched ? clientPhone.error : ''
+	                        repCellPhone.touched ? repCellPhone.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (examStreetAddress.touched && examStreetAddress.invalid ? 'has-danger' : '') },
+	                    { className: '\'form-group ' + (officeAddress.touched && officeAddress.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'STREET ADDRESS'
+	                        'OFFICE ADDRESS'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', placeholder: 'street address', className: 'form-control' }, examStreetAddress)),
+	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', placeholder: 'street address', className: 'form-control' }, officeAddress)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        examStreetAddress.touched ? examStreetAddress.error : ''
+	                        officeAddress.touched ? officeAddress.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (examCity.touched && examCity.invalid ? 'has-danger' : '') },
+	                    { className: '\'form-group ' + (repCity.touched && repCity.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
 	                        'CITY'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'CITY', placeholder: 'city', className: 'form-control col-md-4' }, examCity)),
+	                    _react2.default.createElement('input', _extends({ type: 'CITY', placeholder: 'city', className: 'form-control col-md-4' }, repCity)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        examCity.touched ? examCity.error : ''
+	                        repCity.touched ? repCity.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'form-group ' + (examState.touched && examState.invalid ? 'has-danger' : '') },
+	                    { className: 'form-group ' + (repState.touched && repState.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
 	                        'STATE'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'state', className: 'form-control col-md-4' }, examState)),
+	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'state', className: 'form-control col-md-4' }, repState)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        examState.touched ? examState.error : ''
+	                        repState.touched ? repState.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (examZipCode.touched && examZipCode.invalid ? 'has-danger' : '') },
+	                    { className: '\'form-group ' + (repZipCode.touched && repZipCode.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
 	                        'ZIP'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'number', placeholder: 'zip', className: 'col-lg-6 form-control' }, examZipCode)),
+	                    _react2.default.createElement('input', _extends({ type: 'number', placeholder: 'zip', className: 'col-lg-6 form-control' }, repZipCode)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        examZipCode.touched ? examZipCode.error : ''
+	                        repZipCode.touched ? repZipCode.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (policyAmount.touched && policyAmount.invalid ? 'has-danger' : '') },
+	                    { className: '\'form-group ' + (repEmail.touched && repEmail.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'POLICY AMOUNT'
+	                        'EMAIL'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'number', placeholder: 'policy amount', className: 'col-lg-6 form-control' }, policyAmount)),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'EMAIL', className: 'col-lg-6 form-control' }, repEmail)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
-	                        policyAmount.touched ? policyAmount.error : ''
+	                        repEmail.touched ? repEmail.error : ''
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'form-group col-sm-6' },
+	                    { className: '\'form-group ' + (repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'EXAM DATE'
+	                        'ASSISTANT EMAIL'
 	                    ),
-	                    ' ',
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(_datePicker2.default, _extends({}, examDate, {
-	                        value: this.state.examDate,
-	                        onChange: function onChange(newValMoment, newValString) {
-	                            return _this3.handleUpdateDate(newValMoment, newValString);
-	                        }
-	                    }))
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group col-sm-6' },
-	                    _react2.default.createElement(
-	                        'label',
-	                        null,
-	                        'EXAM TIME'
-	                    ),
-	                    ' ',
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(_timePicker2.default, _extends({
-	                        placeholder: 'SELECT',
-	                        format: 'hh:mm a'
-	                    }, examTime, {
-	                        currentValue: this.state.examTime,
-	                        onChange: function onChange(newValMoment, newValString) {
-	                            return _this3.handleUpdateTime(newValMoment, newValString);
-	                        }
-	                    }))
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-6' },
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'EMAIL', className: 'col-lg-6 form-control' }, repAssistantEmail)),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: '\'form-group ' + (examType.touched && examType.invalid ? 'has-danger' : '') },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'EXAM TYPE'
-	                        ),
-	                        ' ',
-	                        _react2.default.createElement('br', null),
-	                        _react2.default.createElement(
-	                            'select',
-	                            _extends({ style: { width: 180 }, onChange: this.handleExamTypeChange }, examType),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: '' },
-	                                'SELECT'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'PBU' },
-	                                'PBU'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'PBU + EKG' },
-	                                'PBU + EKG'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'EKG' },
-	                                'EKG'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'BLOOD' },
-	                                'BLOOD ONLY'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'URINE' },
-	                                'URINE ONLY'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'PHYSICAL MEASUREMENTS' },
-	                                'PHYSICAL MEASUREMENTS'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'BLOOD PRESSURE' },
-	                                'BLOOD PRESSURE'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'SPECIAL' },
-	                                'SPECIAL ORDER'
-	                            )
-	                        ),
-	                        _react2.default.createElement('br', null)
+	                        { className: 'text-help' },
+	                        repAssistantEmail.touched ? repAssistantEmail.error : ''
 	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { classname: 'col-sm-6' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: '\'form-group ' + (gender.touched && gender.invalid ? 'has-danger' : '') },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'GENDER'
-	                        ),
-	                        _react2.default.createElement('br', null),
-	                        _react2.default.createElement(
-	                            'select',
-	                            _extends({ style: { width: 180 }, onChange: this.handleGenderUpdate }, gender),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: '' },
-	                                'SELECT'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'MALE' },
-	                                'MALE'
-	                            ),
-	                            _react2.default.createElement(
-	                                'option',
-	                                { className: 'form-control', value: 'FEMALE' },
-	                                'FEMALE'
-	                            )
-	                        ),
-	                        _react2.default.createElement('br', null)
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group text-xs-left' },
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(
-	                        'label',
-	                        { className: 'text-xs-left' },
-	                        'COMMENTS'
-	                    ),
-	                    ' ',
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('textarea', _extends({ placeholder: 'special instructions', className: 'form-control' }, examNotes))
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -64798,51 +64649,48 @@
 	    return PostProfile;
 	}(_react.Component);
 
-	PostProfile.contextTypes = {
-	    router: _react.PropTypes.object
-	};
+	// function validate(values) {
+	//     const errors = {};
 
-
-	function validate(values) {
-	    var errors = {};
-
-	    if (!values.firstname) {
-	        errors.firstname = 'client firstname';
-	    }
-	    if (!values.lastName) {
-	        errors.lastName = 'client lastname';
-	    }
-	    if (!values.clientDOB) {
-	        errors.clientDOB = 'client date of birth';
-	    }
-	    if (!values.examStreetAddress) {
-	        errors.examStreetAddress = 'street address of exam';
-	    }
-	    if (!values.examState) {
-	        errors.examState = 'state of exam';
-	    }
-	    if (!values.examCity) {
-	        errors.examCity = 'city of exam';
-	    }
-	    if (!values.examZipCode) {
-	        errors.examZipCode = 'zipcode of exam';
-	    }
-	    if (!values.policyAmount) {
-	        errors.policyAmount = 'policy amount';
-	    }
-	    if (!values.clientPhone) {
-	        errors.clientPhone = 'client phone number';
-	    }
-	    return errors;
-	}
+	//     if (!values.firstname) {
+	//         errors.firstname = 'client firstname';
+	//     }
+	//     if (!values.lastName) {
+	//         errors.lastName = 'client lastname';
+	//     }
+	//     if (!values.clientDOB) {
+	//         errors.clientDOB = 'client date of birth';
+	//     }
+	//     if (!values.examStreetAddress) {
+	//         errors.examStreetAddress = 'street address of exam';
+	//     }
+	//     if (!values.examState) {
+	//     errors.examState = 'state of exam';
+	//     }
+	//     if (!values.examCity) {
+	//     errors.examCity = 'city of exam';
+	//     }
+	//     if (!values.examZipCode) {
+	//     errors.examZipCode = 'zipcode of exam';
+	//     }
+	//     if (!values.policyAmount) {
+	//     errors.policyAmount = 'policy amount';
+	//    }
+	//     if (!values.clientPhone) {
+	//     errors.clientPhone = 'client phone number';
+	//     }
+	//     return errors;
+	// }
 
 	//connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
 	// reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps
 
+	PostProfile.contextTypes = {
+	    router: _react.PropTypes.object
+	};
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstname', 'lastName', 'examType', 'examStreetAddress', 'examCity', 'examState', 'examZipCode', 'policyAmount', 'clientDOB', 'clientPhone', 'examDate', 'examTime', 'examType', 'gender', 'examNotes'],
-	    validate: validate
+	    fields: ['firstname', 'lastName', 'officeAddress', 'repCity', 'repState', 'repZipCode', 'repOfficePhone', 'repCellPhone', 'repEmail', 'repAssistantEmail']
 	}, null, { createPost: _index.createPost })(PostProfile);
 
 /***/ }),

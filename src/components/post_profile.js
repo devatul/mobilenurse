@@ -54,21 +54,18 @@ handleGenderUpdate(event) {
     render() {
         const { fields: {firstname, 
                         lastName,
-                        clientDOB,
-                        clientPhone,
-                        examStreetAddress,
-                        examCity,
-                        examState,
-                        examZipCode,
-                        policyAmount,
-                        examDate,
-                        examTime,
-                        examType,
-                        gender,
-                        examNotes }, handleSubmit } = this.props;
+                        officeAddress,
+                        repCity,
+                        repState,
+                        repZipCode,
+                        repOfficePhone,
+                        repCellPhone,
+                        repEmail,
+                        repAssistantEmail,
+                        }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-              <h3>SCHEDULE AN EXAM</h3>
+              <h3>PROFILE</h3>
               <hr/> 
               <br/>
 
@@ -94,122 +91,68 @@ handleGenderUpdate(event) {
                     </div> 
                 </div> 
 
-                <div className={`'form-group ${clientDOB.touched && clientDOB.invalid ? 'has-danger' : ''}`}>
-                    <label>DATE OF BIRTH</label> 
-                    <input type="DATE" placeholder="DOB" format="YYYY-MM-DD" className="col-lg-6 form-control" {...clientDOB} />
+
+                <div className={`'form-group ${repOfficePhone.touched && repOfficePhone.invalid ? 'has-danger' : ''}`}>
+                    <label>OFFICE NUMBER</label> 
+                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...repOfficePhone} />
                     <div className='text-help'>
-                    {clientDOB.touched ? clientDOB.error: ''}
+                    {repOfficePhone.touched ? repOfficePhone.error: ''}
+                    </div> 
+                </div>
+
+                <div className={`'form-group ${repCellPhone.touched && repCellPhone.invalid ? 'has-danger' : ''}`}>
+                    <label>MOBILE NUMBER</label> 
+                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...repCellPhone} />
+                    <div className='text-help'>
+                    {repCellPhone.touched ? repCellPhone.error: ''}
+                    </div> 
+                </div>  
+
+                <div className={`'form-group ${officeAddress.touched && officeAddress.invalid ? 'has-danger' : ''}`}>
+                    <label>OFFICE ADDRESS</label> 
+                    <input type="ADDRESS" placeholder="street address" className="form-control" {...officeAddress} />
+                    <div className='text-help'>
+                    {officeAddress.touched ? officeAddress.error: ''}
                     </div> 
                 </div> 
 
-                <div className={`'form-group ${clientPhone.touched && clientPhone.invalid ? 'has-danger' : ''}`}>
-                    <label>PHONE NUMBER</label> 
-                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...clientPhone} />
-                    <div className='text-help'>
-                    {clientPhone.touched ? clientPhone.error: ''}
-                    </div> 
-                </div> 
-
-                <div className={`'form-group ${examStreetAddress.touched && examStreetAddress.invalid ? 'has-danger' : ''}`}>
-                    <label>STREET ADDRESS</label> 
-                    <input type="ADDRESS" placeholder="street address" className="form-control" {...examStreetAddress} />
-                    <div className='text-help'>
-                    {examStreetAddress.touched ? examStreetAddress.error: ''}
-                    </div> 
-                </div> 
-
-                <div className={`'form-group ${examCity.touched && examCity.invalid ? 'has-danger' : ''}`}>
+                <div className={`'form-group ${repCity.touched && repCity.invalid ? 'has-danger' : ''}`}>
                     <label>CITY</label> 
-                    <input type="CITY" placeholder="city" className="form-control col-md-4" {...examCity} />
+                    <input type="CITY" placeholder="city" className="form-control col-md-4" {...repCity} />
                     <div className='text-help'>
-                    {examCity.touched ? examCity.error: ''}
+                    {repCity.touched ? repCity.error: ''}
                     </div> 
                 </div> 
 
-                <div className={`form-group ${examState.touched && examState.invalid ? 'has-danger' : ''}`}>
+                <div className={`form-group ${repState.touched && repState.invalid ? 'has-danger' : ''}`}>
                     <label>STATE</label> 
-                    <input type="text" placeholder="state" className="form-control col-md-4" {...examState} />
+                    <input type="text" placeholder="state" className="form-control col-md-4" {...repState} />
                     <div className='text-help'>
-                    {examState.touched ? examState.error: ''}
+                    {repState.touched ? repState.error: ''}
                     </div> 
                 </div> 
 
-                <div className={`'form-group ${examZipCode.touched && examZipCode.invalid ? 'has-danger' : ''}`}>
+                <div className={`'form-group ${repZipCode.touched && repZipCode.invalid ? 'has-danger' : ''}`}>
                     <label>ZIP</label> 
-                    <input type="number" placeholder="zip" className="col-lg-6 form-control" {...examZipCode} />
+                    <input type="number" placeholder="zip" className="col-lg-6 form-control" {...repZipCode} />
                     <div className='text-help'>
-                    {examZipCode.touched ? examZipCode.error: ''}
+                    {repZipCode.touched ? repZipCode.error: ''}
                     </div> 
-                </div> 
+                </div>
 
-                <div className={`'form-group ${policyAmount.touched && policyAmount.invalid ? 'has-danger' : ''}`}>
-                    <label>POLICY AMOUNT</label> 
-                    <input type="number" placeholder="policy amount" className="col-lg-6 form-control" {...policyAmount} />
+                <div className={`'form-group ${repEmail.touched && repEmail.invalid ? 'has-danger' : ''}`}>
+                    <label>EMAIL</label> 
+                    <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repEmail} />
                     <div className='text-help'>
-                    {policyAmount.touched ? policyAmount.error: ''}
+                    {repEmail.touched ? repEmail.error: ''}
                     </div> 
-                </div> 
-
-                <div className='form-group col-sm-6'>
-                    <label>EXAM DATE</label> <br/>
-                    <DatePicker
-                         {...examDate}
-                         value={this.state.examDate}
-                        onChange={(newValMoment, newValString) =>
-                            this.handleUpdateDate(newValMoment, newValString)}
-                        />
                 </div>
-
-                <div className='form-group col-sm-6'>
-                    <label>EXAM TIME</label> <br/>               
-                    <TimePicker 
-                        placeholder='SELECT'
-                        format='hh:mm a'
-                        {...examTime}
-                        currentValue={this.state.examTime}
-                        onChange={(newValMoment, newValString) =>
-                            this.handleUpdateTime(newValMoment, newValString)}
-                            />
-                </div>
-
-                <div className="col-sm-6">
-                    <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
-                        <label>EXAM TYPE</label> <br/>
-                        <select style={{ width: 180 }} onChange={this.handleExamTypeChange} {...examType}>
-                            <option className="form-control" value="">SELECT</option>
-                            <option className="form-control" value="PBU">PBU</option>
-                            <option className="form-control" value="PBU + EKG">PBU + EKG</option>
-                            <option className="form-control" value="EKG">EKG</option>
-                            <option className="form-control" value="BLOOD">BLOOD ONLY</option>
-                            <option className="form-control" value="URINE">URINE ONLY</option>
-                            <option className="form-control" value="PHYSICAL MEASUREMENTS">PHYSICAL MEASUREMENTS</option>
-                            <option className="form-control" value="BLOOD PRESSURE">BLOOD PRESSURE</option>
-                            <option className="form-control" value="SPECIAL">SPECIAL ORDER</option>
-
-                            {/*<div className='text-help'>
-                            </div> */}
-                        </select>
-                        <br/>
-                    </div>
-                </div>
-
-
-                <div classname="col-sm-6">
-                    <div className={`'form-group ${gender.touched && gender.invalid ? 'has-danger' : ''}`}>
-                        <label>GENDER</label><br/>
-                        <select style={{width: 180 }} onChange={this.handleGenderUpdate} {...gender}>
-                            <option className="form-control" value="">SELECT</option>
-                            <option className="form-control" value="MALE">MALE</option>
-                            <option className="form-control" value="FEMALE">FEMALE</option>
-                        </select>
-                        <br/>
-                    </div>
-                </div> 
-               
-                <div className='form-group text-xs-left'>
-                     <br/><br/>
-                    <label className="text-xs-left">COMMENTS</label> <br/>
-                    <textarea placeholder="special instructions" className="form-control" {...examNotes}/>
+                <div className={`'form-group ${repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : ''}`}>
+                    <label>ASSISTANT EMAIL</label> 
+                    <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repAssistantEmail} />
+                    <div className='text-help'>
+                    {repAssistantEmail.touched ? repAssistantEmail.error: ''}
+                    </div> 
                 </div>
 
                 <div className="col-xs-12" >
@@ -224,38 +167,38 @@ handleGenderUpdate(event) {
 }
 
 
-function validate(values) {
-    const errors = {};
+// function validate(values) {
+//     const errors = {};
 
-    if (!values.firstname) {
-        errors.firstname = 'client firstname';
-    }
-    if (!values.lastName) {
-        errors.lastName = 'client lastname';
-    }
-    if (!values.clientDOB) {
-        errors.clientDOB = 'client date of birth';
-    }
-    if (!values.examStreetAddress) {
-        errors.examStreetAddress = 'street address of exam';
-    }
-    if (!values.examState) {
-    errors.examState = 'state of exam';
-    }
-    if (!values.examCity) {
-    errors.examCity = 'city of exam';
-    }
-    if (!values.examZipCode) {
-    errors.examZipCode = 'zipcode of exam';
-    }
-    if (!values.policyAmount) {
-    errors.policyAmount = 'policy amount';
-   }
-    if (!values.clientPhone) {
-    errors.clientPhone = 'client phone number';
-    }
-    return errors;
-}
+//     if (!values.firstname) {
+//         errors.firstname = 'client firstname';
+//     }
+//     if (!values.lastName) {
+//         errors.lastName = 'client lastname';
+//     }
+//     if (!values.clientDOB) {
+//         errors.clientDOB = 'client date of birth';
+//     }
+//     if (!values.examStreetAddress) {
+//         errors.examStreetAddress = 'street address of exam';
+//     }
+//     if (!values.examState) {
+//     errors.examState = 'state of exam';
+//     }
+//     if (!values.examCity) {
+//     errors.examCity = 'city of exam';
+//     }
+//     if (!values.examZipCode) {
+//     errors.examZipCode = 'zipcode of exam';
+//     }
+//     if (!values.policyAmount) {
+//     errors.policyAmount = 'policy amount';
+//    }
+//     if (!values.clientPhone) {
+//     errors.clientPhone = 'client phone number';
+//     }
+//     return errors;
+// }
 
 //connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
 // reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps
@@ -264,18 +207,13 @@ export default reduxForm({
     form: "PostsNewForm",
     fields: ['firstname',
             'lastName',
-            'examType',
-            'examStreetAddress',
-            'examCity',
-            'examState',
-            'examZipCode',
-            'policyAmount',
-            'clientDOB',
-            'clientPhone',
-            'examDate',
-            'examTime',
-            'examType',
-            'gender',
-            'examNotes'],
-    validate
+            'officeAddress',
+            'repCity',
+            'repState',
+            'repZipCode',
+            'repOfficePhone',
+            'repCellPhone',
+            'repEmail',
+            'repAssistantEmail'],
+  //  validate
 }, null,{ createPost } ) (PostProfile); 
