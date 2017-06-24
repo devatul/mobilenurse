@@ -79,7 +79,7 @@ handleGenderUpdate(event) {
                 <div>
                     <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
-                        <input type="text" placeholder="firstname" className="form-control" {...firstname} />
+                        <input type="text" placeholder="tester" className="form-control" {...firstname} />
                         <div className='text-help'>
                             {firstname.touched ? firstname.error: ''}
                         </div> 

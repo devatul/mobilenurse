@@ -79,6 +79,10 @@ handleGenderUpdate(event) {
                     <Link to="/profile/">BACK</Link>
                 </div>
 
+                <div className="text-xs-left">
+                    <Link to="/test/new">PROFILE</Link>
+                </div>
+
                 <div>
                     <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
