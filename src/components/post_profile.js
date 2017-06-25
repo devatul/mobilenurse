@@ -70,13 +70,13 @@ handleGenderUpdate(event) {
               <br/>
 
                 <div className="text-xs-right">
-                    <Link to="/profile/">BACK</Link>
+                    <Link to="/repinfo/">BACK</Link>
                 </div>
 
                 <div>
                     <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
-                        <input type="text" placeholder="tester" className="form-control" {...firstname} />
+                        <input type="text" placeholder="firstname" className="form-control" {...firstname} />
                         <div className='text-help'>
                             {firstname.touched ? firstname.error: ''}
                         </div> 
@@ -167,38 +167,17 @@ handleGenderUpdate(event) {
 }
 
 
-// function validate(values) {
-//     const errors = {};
+function validate(values) {
+    const errors = {};
 
-//     if (!values.firstname) {
-//         errors.firstname = 'client firstname';
-//     }
-//     if (!values.lastName) {
-//         errors.lastName = 'client lastname';
-//     }
-//     if (!values.clientDOB) {
-//         errors.clientDOB = 'client date of birth';
-//     }
-//     if (!values.examStreetAddress) {
-//         errors.examStreetAddress = 'street address of exam';
-//     }
-//     if (!values.examState) {
-//     errors.examState = 'state of exam';
-//     }
-//     if (!values.examCity) {
-//     errors.examCity = 'city of exam';
-//     }
-//     if (!values.examZipCode) {
-//     errors.examZipCode = 'zipcode of exam';
-//     }
-//     if (!values.policyAmount) {
-//     errors.policyAmount = 'policy amount';
-//    }
-//     if (!values.clientPhone) {
-//     errors.clientPhone = 'client phone number';
-//     }
-//     return errors;
-// }
+    if (!values.firstname) {
+        errors.firstname = 'client firstname';
+    }
+    if (!values.lastName) {
+        errors.lastName = 'client lastname';
+    }
+    return errors;
+}
 
 //connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
 // reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps

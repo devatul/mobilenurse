@@ -33430,7 +33430,7 @@
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _posts_index2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/new', component: _posts_new2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/posts/:id', component: _posts_show2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/test/new', component: _post_profile2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/repinfo/', component: _post_profile2.default })
 	);
 
 /***/ }),
@@ -51317,6 +51317,11 @@
 	                'div',
 	                null,
 	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/repinfo/' },
+	                    'PROFILE'
+	                ),
+	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'text-xs-right' },
 	                    _react2.default.createElement(
@@ -51497,7 +51502,7 @@
 	                    { className: 'text-xs-left' },
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: '/test/new' },
+	                        { to: '/repinfo/' },
 	                        'PROFILE'
 	                    )
 	                ),
@@ -64468,7 +64473,7 @@
 	                    { className: 'text-xs-right' },
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: '/profile/' },
+	                        { to: '/repinfo/' },
 	                        'BACK'
 	                    )
 	                ),
@@ -64483,7 +64488,7 @@
 	                            null,
 	                            'FIRSTNAME'
 	                        ),
-	                        _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'tester', className: 'form-control' }, firstname)),
+	                        _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'firstname', className: 'form-control' }, firstname)),
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'text-help' },
@@ -64649,45 +64654,26 @@
 	    return PostProfile;
 	}(_react.Component);
 
-	// function validate(values) {
-	//     const errors = {};
+	PostProfile.contextTypes = {
+	    router: _react.PropTypes.object
+	};
 
-	//     if (!values.firstname) {
-	//         errors.firstname = 'client firstname';
-	//     }
-	//     if (!values.lastName) {
-	//         errors.lastName = 'client lastname';
-	//     }
-	//     if (!values.clientDOB) {
-	//         errors.clientDOB = 'client date of birth';
-	//     }
-	//     if (!values.examStreetAddress) {
-	//         errors.examStreetAddress = 'street address of exam';
-	//     }
-	//     if (!values.examState) {
-	//     errors.examState = 'state of exam';
-	//     }
-	//     if (!values.examCity) {
-	//     errors.examCity = 'city of exam';
-	//     }
-	//     if (!values.examZipCode) {
-	//     errors.examZipCode = 'zipcode of exam';
-	//     }
-	//     if (!values.policyAmount) {
-	//     errors.policyAmount = 'policy amount';
-	//    }
-	//     if (!values.clientPhone) {
-	//     errors.clientPhone = 'client phone number';
-	//     }
-	//     return errors;
-	// }
+
+	function validate(values) {
+	    var errors = {};
+
+	    if (!values.firstname) {
+	        errors.firstname = 'client firstname';
+	    }
+	    if (!values.lastName) {
+	        errors.lastName = 'client lastname';
+	    }
+	    return errors;
+	}
 
 	//connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
 	// reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps
 
-	PostProfile.contextTypes = {
-	    router: _react.PropTypes.object
-	};
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
 	    fields: ['firstname', 'lastName', 'officeAddress', 'repCity', 'repState', 'repZipCode', 'repOfficePhone', 'repCellPhone', 'repEmail', 'repAssistantEmail']

@@ -8,11 +8,11 @@ module.exports = function(sequelize, DataTypes) {
         },
         firstname: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         lastname: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         firm: {
             type: DataTypes.STRING,
@@ -22,23 +22,23 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        city: {
+        repCity: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        state: {
+        repState: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        zipcode: {
+        repZipCode: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        officePhone: {
+        repOfficePhone: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        cellPhone: {
+        repCellPhone: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },

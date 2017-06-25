@@ -60,6 +60,14 @@ module.exports = function(app) {
         });
     });
 
+    //post insurance representative profile information to database
+    app.post('/api/repinfo', ensureAuthenticated, function(req, res) {
+        console.log(req.body)
+        db.InsuranceReps.create({
+            
+        })
+    }
+
 
     app.get('/api/posts', ensureAuthenticated, function (req, res) {
             db.Exams.findAll({}).then(function (result) {

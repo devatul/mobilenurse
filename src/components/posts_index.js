@@ -26,7 +26,9 @@ renderPosts() {
 
     render() {
         return (
+
             <div>
+                <Link to="/repinfo/">PROFILE</Link>
                 <div className="text-xs-right">
                     <Link to="/posts/new" className="btn btn-primary">
                       EXAM REQUEST

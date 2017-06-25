@@ -80,7 +80,7 @@ handleGenderUpdate(event) {
                 </div>
 
                 <div className="text-xs-left">
-                    <Link to="/test/new">PROFILE</Link>
+                    <Link to="/repinfo/">PROFILE</Link>
                 </div>
 
                 <div>
