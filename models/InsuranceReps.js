@@ -1,3 +1,11 @@
+var shortid = require('shortid');
+// use $ and @ instead of - and _ 
+shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
+
+
+
+
+
 module.exports = function(sequelize, DataTypes) {
     var InsuranceReps = sequelize.define('InsuranceReps', {
         id: {
@@ -53,7 +61,8 @@ module.exports = function(sequelize, DataTypes) {
         insuranceRepId: {
             type: DataTypes.STRING,
             allowNull: true,
-            primaryKey: true
+            primaryKey: true,
+            defaultValue: shortid.generate 
         },
         isActive: {
             type: DataTypes.BOOLEAN,

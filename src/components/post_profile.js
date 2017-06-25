@@ -173,7 +173,7 @@ function validate(values) {
     if (!values.firstname) {
         errors.firstname = 'client firstname';
     }
-    if (!values.lastName) {
+    if (!values.lastname) {
         errors.lastName = 'client lastname';
     }
     return errors;

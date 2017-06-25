@@ -62,10 +62,20 @@ module.exports = function(app) {
 
     //post insurance representative profile information to database
     app.post('/api/repinfo', ensureAuthenticated, function(req, res) {
-        console.log(req.body)
+
+        String.prototype.toProperCase = function(){
+            return this.toLowerCase().replace(/(^[a-z]| [a-z]|-[a-z])/g, 
+                function($1){
+                    return $1.toUpperCase();
+                }
+            );
+        };        
+         
+        res.json(req.body);
+        console.log(req.body);
         db.InsuranceReps.create({
-            firstname: req.body.firstname.toProperCase(),
-            lastname: req.body.lastname.toProperCase(),
+            firstname: req.body.firstname,
+            lastname: req.body.lastName,
             officeAddress: req.body.officeAddress,
             repCity: req.body.repCity,
             repState: req.body.repState,
