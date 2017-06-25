@@ -1,6 +1,6 @@
 import React, { Component, PropTypes  } from 'react';
 import { reduxForm, formValueSelector } from 'redux-form';
-import { createPost } from '../actions/index';
+import { createRepInfo } from '../actions/index';
 import { Link } from 'react-router';
 import { Select, Button, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
@@ -20,7 +20,7 @@ class PostProfile extends Component {
     }
 
     onSubmit(props) {
-        this.props.createPost(props)
+        this.props.createRepInfo(props)
             .then(() => {
                 // exams post has been created, navigate the user to the index
                 // we navigate by calling this.context.router.push
@@ -34,12 +34,12 @@ class PostProfile extends Component {
     });
   }
 
-  handleUpdateTime(newValMoment, newValString) {
-      console.log("Just called handle update time with new value " + newValString);
-    this.setState({
-      examTime: newValString
-    });
-  }
+//   handleUpdateTime(newValMoment, newValString) {
+//       console.log("Just called handle update time with new value " + newValString);
+//     this.setState({
+//       examTime: newValString
+//     });
+//   }
 
   handleExamTypeChange(event) {
     console.log("New updated exam type is " + event.target.value);
@@ -195,4 +195,4 @@ export default reduxForm({
             'repEmail',
             'repAssistantEmail'],
   //  validate
-}, null,{ createPost } ) (PostProfile); 
+}, null,{ createRepInfo } ) (PostProfile); 

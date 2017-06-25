@@ -28916,9 +28916,10 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.DELETE_POST = exports.FETCH_POST = exports.CREATE_POST = exports.FETCH_POSTS = undefined;
+	exports.CREATE_REP_INFO = exports.DELETE_POST = exports.FETCH_POST = exports.CREATE_POST = exports.FETCH_POSTS = undefined;
 	exports.fetchPosts = fetchPosts;
 	exports.createPost = createPost;
+	exports.createRepInfo = createRepInfo;
 	exports.fetchPost = fetchPost;
 	exports.deletePost = deletePost;
 
@@ -28932,6 +28933,7 @@
 	var CREATE_POST = exports.CREATE_POST = 'CREATE_POST';
 	var FETCH_POST = exports.FETCH_POST = 'FETCH_POST';
 	var DELETE_POST = exports.DELETE_POST = 'DELETE_POST';
+	var CREATE_REP_INFO = exports.CREATE_REP_INFO = 'CREATE_REP_INFO';
 
 	var ROOT_URL = '/api';
 	var API_KEY = "?Key=Tonto";
@@ -28950,6 +28952,16 @@
 
 	  return {
 	    type: CREATE_POST,
+	    payload: request
+
+	  };
+	}
+
+	function createRepInfo(props) {
+	  var request = _axios2.default.post(ROOT_URL + '/repinfo' + API_KEY, props);
+
+	  return {
+	    type: CREATE_REP_INFO,
 	    payload: request
 
 	  };
@@ -64409,7 +64421,7 @@
 	        value: function onSubmit(props) {
 	            var _this2 = this;
 
-	            this.props.createPost(props).then(function () {
+	            this.props.createRepInfo(props).then(function () {
 	                // exams post has been created, navigate the user to the index
 	                // we navigate by calling this.context.router.push
 	                _this2.context.router.push('/profile/');
@@ -64422,14 +64434,14 @@
 	                examDate: newValMoment
 	            });
 	        }
-	    }, {
-	        key: 'handleUpdateTime',
-	        value: function handleUpdateTime(newValMoment, newValString) {
-	            console.log("Just called handle update time with new value " + newValString);
-	            this.setState({
-	                examTime: newValString
-	            });
-	        }
+
+	        //   handleUpdateTime(newValMoment, newValString) {
+	        //       console.log("Just called handle update time with new value " + newValString);
+	        //     this.setState({
+	        //       examTime: newValString
+	        //     });
+	        //   }
+
 	    }, {
 	        key: 'handleExamTypeChange',
 	        value: function handleExamTypeChange(event) {
@@ -64677,7 +64689,7 @@
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
 	    fields: ['firstname', 'lastName', 'officeAddress', 'repCity', 'repState', 'repZipCode', 'repOfficePhone', 'repCellPhone', 'repEmail', 'repAssistantEmail']
-	}, null, { createPost: _index.createPost })(PostProfile);
+	}, null, { createRepInfo: _index.createRepInfo })(PostProfile);
 
 /***/ }),
 /* 669 */

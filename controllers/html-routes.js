@@ -64,9 +64,17 @@ module.exports = function(app) {
     app.post('/api/repinfo', ensureAuthenticated, function(req, res) {
         console.log(req.body)
         db.InsuranceReps.create({
-            
-        })
-    }
+            firstname: req.body.firstname.toProperCase(),
+            lastname: req.body.lastname.toProperCase(),
+            officeAddress: req.body.officeAddress,
+            repCity: req.body.repCity,
+            repState: req.body.repState,
+            repOfficePhone: req.body.repOfficePhone,
+            repCellPhone: req.body.repCellPhone,
+            email: req.body.repEmail,
+            assistantEmail: req.body.repAssistantEmail,
+        });
+    });
 
 
     app.get('/api/posts', ensureAuthenticated, function (req, res) {

@@ -16,35 +16,35 @@ module.exports = function(sequelize, DataTypes) {
         },
         firm: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         officeAddress: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         repCity: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         repState: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         repZipCode: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         repOfficePhone: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         repCellPhone: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         assistantEmail: {
             type: DataTypes.STRING,
@@ -52,12 +52,12 @@ module.exports = function(sequelize, DataTypes) {
         },
         insuranceRepId: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             primaryKey: true
         },
         isActive: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: true
         },
         updatedAt: {
             type: DataTypes.DATE,
