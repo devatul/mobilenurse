@@ -34,13 +34,6 @@ class PostProfile extends Component {
     });
   }
 
-//   handleUpdateTime(newValMoment, newValString) {
-//       console.log("Just called handle update time with new value " + newValString);
-//     this.setState({
-//       examTime: newValString
-//     });
-//   }
-
   handleExamTypeChange(event) {
     console.log("New updated exam type is " + event.target.value);
       this.setState({examType : event.target.value});

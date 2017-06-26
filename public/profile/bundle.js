@@ -64434,14 +64434,6 @@
 	                examDate: newValMoment
 	            });
 	        }
-
-	        //   handleUpdateTime(newValMoment, newValString) {
-	        //       console.log("Just called handle update time with new value " + newValString);
-	        //     this.setState({
-	        //       examTime: newValString
-	        //     });
-	        //   }
-
 	    }, {
 	        key: 'handleExamTypeChange',
 	        value: function handleExamTypeChange(event) {
