@@ -79,6 +79,7 @@ module.exports = function(app) {
             officeAddress: req.body.officeAddress,
             repCity: req.body.repCity,
             repState: req.body.repState,
+            repZipCode: req.body.repZipCode,
             repOfficePhone: req.body.repOfficePhone,
             repCellPhone: req.body.repCellPhone,
             email: req.body.repEmail,
