@@ -30,7 +30,7 @@ renderPosts() {
             <div>
                 <Link to="/repinfo/">PROFILE</Link>
                 <div className="text-xs-right">
-                    <Link to="/posts/new" className="btn btn-primary">
+                    <Link exact to="/posts/new" className="btn btn-primary">
                       EXAM REQUEST
                     </Link>
               
