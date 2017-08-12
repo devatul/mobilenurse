@@ -2,7 +2,6 @@ var shortid = require('shortid');
 // use $ and @ instead of - and _ 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
-
 module.exports = function(sequelize, DataTypes) {
     var InsuranceReps = sequelize.define('InsuranceReps', {
         id: {
