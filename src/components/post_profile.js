@@ -55,6 +55,7 @@ handleGenderUpdate(event) {
                         repCellPhone,
                         repEmail,
                         repAssistantEmail,
+                        repAdminPhone
                         }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -87,7 +88,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repOfficePhone.touched && repOfficePhone.invalid ? 'has-danger' : ''}`}>
                     <label>OFFICE NUMBER</label> 
-                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...repOfficePhone} />
+                    <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repOfficePhone} />
                     <div className='text-help'>
                     {repOfficePhone.touched ? repOfficePhone.error: ''}
                     </div> 
@@ -95,7 +96,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repCellPhone.touched && repCellPhone.invalid ? 'has-danger' : ''}`}>
                     <label>MOBILE NUMBER</label> 
-                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...repCellPhone} />
+                    <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repCellPhone} />
                     <div className='text-help'>
                     {repCellPhone.touched ? repCellPhone.error: ''}
                     </div> 
@@ -140,6 +141,12 @@ handleGenderUpdate(event) {
                     {repEmail.touched ? repEmail.error: ''}
                     </div> 
                 </div>
+
+            <br/><br/>
+                <h5>ADMINISTRATIVE ASSISTANT INFORMATION</h5>
+                <p>lOPTIONAL</p>
+              <hr/> 
+
                 <div className={`'form-group ${repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : ''}`}>
                     <label>ASSISTANT EMAIL</label> 
                     <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repAssistantEmail} />
@@ -148,8 +155,17 @@ handleGenderUpdate(event) {
                     </div> 
                 </div>
 
+
+                <div className={`'form-group ${repAdminPhone.touched && repAdminPhone.invalid ? 'has-danger' : ''}`}>
+                    <label>ADMINISTRATIVE PHONE</label> 
+                    <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repAdminPhone} />
+                    <div className='text-help'>
+                    {repAdminPhone.touched ? repAdminPhone.error: ''}
+                    </div> 
+                </div>
+
                 <div className="col-xs-12" >
-                    <button type="submit" className="btn btn-primary">SUBMIT</button> 
+                    <button type="submit" className="btn btn-primary">UPDATE</button> 
                     <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
                     <br></br>
                     <br></br>
@@ -186,6 +202,8 @@ export default reduxForm({
             'repOfficePhone',
             'repCellPhone',
             'repEmail',
-            'repAssistantEmail'],
+            'repAssistantEmail',
+            'repAdminPhone'
+        ],
   //  validate
 }, null,{ createRepInfo } ) (PostProfile); 
