@@ -144,8 +144,9 @@ handleGenderUpdate(event) {
 
             <br/><br/>
                 <h5>ADMINISTRATIVE ASSISTANT INFORMATION</h5>
-                <p>lOPTIONAL</p>
+                <p>IF APPLICABLE</p>
               <hr/> 
+              <br/>
 
                 <div className={`'form-group ${repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : ''}`}>
                     <label>ASSISTANT EMAIL</label> 
@@ -158,17 +159,16 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repAdminPhone.touched && repAdminPhone.invalid ? 'has-danger' : ''}`}>
                     <label>ADMINISTRATIVE PHONE</label> 
-                    <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repAdminPhone} />
+                    <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repAdminPhone} />
                     <div className='text-help'>
                     {repAdminPhone.touched ? repAdminPhone.error: ''}
                     </div> 
                 </div>
 
+                <br/><br/>
                 <div className="col-xs-12" >
                     <button type="submit" className="btn btn-primary">UPDATE</button> 
                     <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
-                    <br></br>
-                    <br></br>
                 </div> 
             </form> 
         );

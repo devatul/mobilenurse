@@ -65160,9 +65160,10 @@
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    'lOPTIONAL'
+	                    'IF APPLICABLE'
 	                ),
 	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: '\'form-group ' + (repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : '') },
@@ -65186,13 +65187,15 @@
 	                        null,
 	                        'ADMINISTRATIVE PHONE'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'EMAIL', className: 'col-lg-6 form-control' }, repAdminPhone)),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'xxx-xxx-xxxx', className: 'col-lg-6 form-control' }, repAdminPhone)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
 	                        repAdminPhone.touched ? repAdminPhone.error : ''
 	                    )
 	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'col-xs-12' },
@@ -65205,9 +65208,7 @@
 	                        _reactRouter.Link,
 	                        { to: '/profile/', className: 'btn btn-danger' },
 	                        'CANCEL'
-	                    ),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('br', null)
+	                    )
 	                )
 	            );
 	        }
