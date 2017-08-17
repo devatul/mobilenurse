@@ -65,7 +65,7 @@ module.exports = function(sequelize, DataTypes) {
         examStatus: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: 'Pending'
+            defaultValue: 'Pending Confirmation'
         },
         examid: {
             type: DataTypes.STRING,

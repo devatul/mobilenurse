@@ -159,6 +159,7 @@ letters_spaces(e) {
                 <br/>
                 <h5>ADMINISTRATIVE ASSISTANT INFORMATION</h5>
                 <p>IF APPLICABLE</p>
+                <span> </span>
               <hr/> 
               <br/>
 
