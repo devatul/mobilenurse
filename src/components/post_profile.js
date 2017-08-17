@@ -55,7 +55,8 @@ handleGenderUpdate(event) {
                         repCellPhone,
                         repEmail,
                         repAssistantEmail,
-                        repAdminPhone
+                        repAdminPhone,
+                        repAdminName
                         }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -64,7 +65,7 @@ handleGenderUpdate(event) {
               <br/>
 
                 <div className="text-xs-right">
-                    <Link to="/repinfo/">BACK</Link>
+                    <Link to="/profile/">BACK</Link>
                 </div>
 
                 <div>
@@ -148,8 +149,16 @@ handleGenderUpdate(event) {
               <hr/> 
               <br/>
 
+              <div className={`'form-group ${repAdminName.touched && repAdminName.invalid ? 'has-danger' : ''}`}>
+                    <label>NAME</label> 
+                    <input type="TEXT" placeholder="NAME" className="col-lg-6 form-control" {...repAdminName} />
+                    <div className='text-help'>
+                    {repAdminName.touched ? repAdminName.error: ''}
+                    </div> 
+                </div>
+
                 <div className={`'form-group ${repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : ''}`}>
-                    <label>ASSISTANT EMAIL</label> 
+                    <label>EMAIL</label> 
                     <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repAssistantEmail} />
                     <div className='text-help'>
                     {repAssistantEmail.touched ? repAssistantEmail.error: ''}
@@ -158,14 +167,14 @@ handleGenderUpdate(event) {
 
 
                 <div className={`'form-group ${repAdminPhone.touched && repAdminPhone.invalid ? 'has-danger' : ''}`}>
-                    <label>ADMINISTRATIVE PHONE</label> 
+                    <label>PHONE</label> 
                     <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repAdminPhone} />
                     <div className='text-help'>
                     {repAdminPhone.touched ? repAdminPhone.error: ''}
                     </div> 
                 </div>
 
-                <br/><br/>
+                <br/>
                 <div className="col-xs-12" >
                     <button type="submit" className="btn btn-primary">UPDATE</button> 
                     <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
@@ -203,7 +212,8 @@ export default reduxForm({
             'repCellPhone',
             'repEmail',
             'repAssistantEmail',
-            'repAdminPhone'
+            'repAdminPhone',
+            'repAdminName'
         ],
   //  validate
 }, null,{ createRepInfo } ) (PostProfile); 

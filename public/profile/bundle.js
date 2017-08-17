@@ -64990,6 +64990,7 @@
 	                repEmail = _props$fields.repEmail,
 	                repAssistantEmail = _props$fields.repAssistantEmail,
 	                repAdminPhone = _props$fields.repAdminPhone,
+	                repAdminName = _props$fields.repAdminName,
 	                handleSubmit = _props.handleSubmit;
 
 	            return _react2.default.createElement(
@@ -65007,7 +65008,7 @@
 	                    { className: 'text-xs-right' },
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: '/repinfo/' },
+	                        { to: '/profile/' },
 	                        'BACK'
 	                    )
 	                ),
@@ -65166,11 +65167,26 @@
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'div',
+	                    { className: '\'form-group ' + (repAdminName.touched && repAdminName.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'NAME'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'NAME', className: 'col-lg-6 form-control' }, repAdminName)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repAdminName.touched ? repAdminName.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
 	                    { className: '\'form-group ' + (repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'ASSISTANT EMAIL'
+	                        'EMAIL'
 	                    ),
 	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'EMAIL', className: 'col-lg-6 form-control' }, repAssistantEmail)),
 	                    _react2.default.createElement(
@@ -65185,7 +65201,7 @@
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'ADMINISTRATIVE PHONE'
+	                        'PHONE'
 	                    ),
 	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'xxx-xxx-xxxx', className: 'col-lg-6 form-control' }, repAdminPhone)),
 	                    _react2.default.createElement(
@@ -65194,7 +65210,6 @@
 	                        repAdminPhone.touched ? repAdminPhone.error : ''
 	                    )
 	                ),
-	                _react2.default.createElement('br', null),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'div',
@@ -65239,7 +65254,7 @@
 
 	exports.default = (0, _reduxForm.reduxForm)({
 	    form: "PostsNewForm",
-	    fields: ['firstname', 'lastName', 'officeAddress', 'repCity', 'repState', 'repZipCode', 'repOfficePhone', 'repCellPhone', 'repEmail', 'repAssistantEmail', 'repAdminPhone']
+	    fields: ['firstname', 'lastName', 'officeAddress', 'repCity', 'repState', 'repZipCode', 'repOfficePhone', 'repCellPhone', 'repEmail', 'repAssistantEmail', 'repAdminPhone', 'repAdminName']
 	    //  validate
 	}, null, { createRepInfo: _index.createRepInfo })(PostProfile);
 
