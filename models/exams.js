@@ -22,6 +22,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DATEONLY,
             allowNull: true
         },
+        clientAge: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         clientPhone: {
             type: DataTypes.BIGINT,
             allowNull: true
@@ -61,7 +65,7 @@ module.exports = function(sequelize, DataTypes) {
         examStatus: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: 'Pending'
+            defaultValue: 'Pending Confirmation'
         },
         examid: {
             type: DataTypes.STRING,
