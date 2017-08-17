@@ -54,6 +54,15 @@ handleGenderUpdate(event) {
 }
   
 
+  //Form Validator for only Letters and spaces
+  letters_spaces(e) {
+    const re =/^[a-zA-Z\s]*$/;
+    if(!re.test(e.key)) {
+        e.preventDefault();
+    }
+}
+
+
     render() {
         const { fields: {firstname, 
                         lastName,
@@ -111,7 +120,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${clientPhone.touched && clientPhone.invalid ? 'has-danger' : ''}`}>
                     <label>PHONE NUMBER</label> 
-                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...clientPhone} />
+                    <input type="TEXT" placeholder="XXX-XXX-XXXX" className="col-lg-6 form-control" {...clientPhone} />
                     <div className='text-help'>
                     {clientPhone.touched ? clientPhone.error: ''}
                     </div> 
@@ -127,7 +136,8 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${examCity.touched && examCity.invalid ? 'has-danger' : ''}`}>
                     <label>CITY</label> 
-                    <input type="CITY" placeholder="city" className="form-control col-md-4" {...examCity} />
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                        type="CITY" placeholder="city" className="form-control col-md-4" {...examCity} />
                     <div className='text-help'>
                     {examCity.touched ? examCity.error: ''}
                     </div> 

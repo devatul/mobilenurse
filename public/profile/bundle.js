@@ -51516,6 +51516,17 @@
 	        value: function handleGenderUpdate(event) {
 	            this.setState({ gender: event.target.gender });
 	        }
+
+	        //Form Validator for only Letters and spaces
+
+	    }, {
+	        key: 'letters_spaces',
+	        value: function letters_spaces(e) {
+	            var re = /^[a-zA-Z\s]*$/;
+	            if (!re.test(e.key)) {
+	                e.preventDefault();
+	            }
+	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
@@ -51624,7 +51635,7 @@
 	                        null,
 	                        'PHONE NUMBER'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'ex. 8478675309', className: 'col-lg-6 form-control' }, clientPhone)),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'XXX-XXX-XXXX', className: 'col-lg-6 form-control' }, clientPhone)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -51654,7 +51665,10 @@
 	                        null,
 	                        'CITY'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'CITY', placeholder: 'city', className: 'form-control col-md-4' }, examCity)),
+	                    _react2.default.createElement('input', _extends({ ref: 'letters_spaces', onKeyPress: function onKeyPress(e) {
+	                            return _this3.letters_spaces(e);
+	                        },
+	                        type: 'CITY', placeholder: 'city', className: 'form-control col-md-4' }, examCity)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -64974,9 +64988,33 @@
 	        value: function handleGenderUpdate(event) {
 	            this.setState({ gender: event.target.gender });
 	        }
+
+	        //text only inputs no spaces
+
+	    }, {
+	        key: 'text_only',
+	        value: function text_only(e) {
+	            var re = /[a-fA-F]+/g;
+	            if (!re.test(e.key)) {
+	                e.preventDefault();
+	            }
+	        }
+
+	        //Form Validator for only Letters and spaces
+
+	    }, {
+	        key: 'letters_spaces',
+	        value: function letters_spaces(e) {
+	            var re = /^[a-zA-Z\s]*$/;
+	            if (!re.test(e.key)) {
+	                e.preventDefault();
+	            }
+	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this3 = this;
+
 	            var _props = this.props,
 	                _props$fields = _props.fields,
 	                firstname = _props$fields.firstname,
@@ -65023,7 +65061,10 @@
 	                            null,
 	                            'FIRSTNAME'
 	                        ),
-	                        _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'firstname', className: 'form-control' }, firstname)),
+	                        _react2.default.createElement('input', _extends({ ref: 'letters_spaces', onKeyPress: function onKeyPress(e) {
+	                                return _this3.letters_spaces(e);
+	                            },
+	                            type: 'text', placeholder: 'firstname', className: 'form-control' }, firstname)),
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'text-help' },
@@ -65039,7 +65080,10 @@
 	                        null,
 	                        'LASTNAME'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'lastname', className: 'form-control' }, lastName)),
+	                    _react2.default.createElement('input', _extends({ ref: 'letters_spaces', onKeyPress: function onKeyPress(e) {
+	                            return _this3.letters_spaces(e);
+	                        },
+	                        type: 'text', placeholder: 'lastname', className: 'form-control' }, lastName)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -65069,7 +65113,7 @@
 	                        null,
 	                        'MOBILE NUMBER'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'xxx-xxx-xxxx', className: 'col-lg-6 form-control' }, repCellPhone)),
+	                    _react2.default.createElement('input', _extends({ type: 'NUMBER', placeholder: 'xxx-xxx-xxxx', className: 'col-lg-6 form-control' }, repCellPhone)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -65099,7 +65143,10 @@
 	                        null,
 	                        'CITY'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'CITY', placeholder: 'city', className: 'form-control col-md-4' }, repCity)),
+	                    _react2.default.createElement('input', _extends({ ref: 'letters_spaces', onKeyPress: function onKeyPress(e) {
+	                            return _this3.letters_spaces(e);
+	                        },
+	                        type: 'TEXT', placeholder: 'city', className: 'form-control col-md-4' }, repCity)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -65114,7 +65161,10 @@
 	                        null,
 	                        'STATE'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'state', className: 'form-control col-md-4' }, repState)),
+	                    _react2.default.createElement('input', _extends({ ref: 'text_only', onKeyPress: function onKeyPress(e) {
+	                            return _this3.text_only(e);
+	                        },
+	                        type: 'TEXT', placeholder: 'state', className: 'form-control col-md-4' }, repState)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -65129,7 +65179,7 @@
 	                        null,
 	                        'ZIP'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'number', placeholder: 'zip', className: 'col-lg-6 form-control' }, repZipCode)),
+	                    _react2.default.createElement('input', _extends({ type: 'number', maxLength: 5, placeholder: 'zip', className: 'col-lg-6 form-control' }, repZipCode)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -65151,7 +65201,6 @@
 	                        repEmail.touched ? repEmail.error : ''
 	                    )
 	                ),
-	                _react2.default.createElement('br', null),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'h5',

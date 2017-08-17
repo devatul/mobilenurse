@@ -43,6 +43,22 @@ handleGenderUpdate(event) {
     this.setState({gender: event.target.gender});
 }
   
+//text only inputs no spaces
+text_only(e) {
+    const re = /[a-fA-F]+/g;
+    if (!re.test(e.key)) {
+      e.preventDefault();
+    }
+  }
+
+  //Form Validator for only Letters and spaces
+letters_spaces(e) {
+    const re =/^[a-zA-Z\s]*$/;
+    if(!re.test(e.key)) {
+        e.preventDefault();
+    }
+}
+
 
     render() {
         const { fields: {firstname, 
@@ -71,7 +87,8 @@ handleGenderUpdate(event) {
                 <div>
                     <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
-                        <input type="text" placeholder="firstname" className="form-control" {...firstname} />
+                        <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
+                             type="text" placeholder="firstname" className="form-control" {...firstname} />
                         <div className='text-help'>
                             {firstname.touched ? firstname.error: ''}
                         </div> 
@@ -80,7 +97,8 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${lastName.touched && lastName.invalid ? 'has-danger' : ''}`}>
                     <label>LASTNAME</label> 
-                    <input type="text" placeholder="lastname" className="form-control" {...lastName} />
+                    <input  ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                        type="text" placeholder="lastname" className="form-control" {...lastName} />
                     <div className='text-help'>
                         {lastName.touched ? lastName.error: ''}
                     </div> 
@@ -97,7 +115,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repCellPhone.touched && repCellPhone.invalid ? 'has-danger' : ''}`}>
                     <label>MOBILE NUMBER</label> 
-                    <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repCellPhone} />
+                    <input type="NUMBER" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repCellPhone} />
                     <div className='text-help'>
                     {repCellPhone.touched ? repCellPhone.error: ''}
                     </div> 
@@ -113,7 +131,8 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repCity.touched && repCity.invalid ? 'has-danger' : ''}`}>
                     <label>CITY</label> 
-                    <input type="CITY" placeholder="city" className="form-control col-md-4" {...repCity} />
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
+                         type="TEXT" placeholder="city" className="form-control col-md-4" {...repCity} />
                     <div className='text-help'>
                     {repCity.touched ? repCity.error: ''}
                     </div> 
@@ -121,7 +140,8 @@ handleGenderUpdate(event) {
 
                 <div className={`form-group ${repState.touched && repState.invalid ? 'has-danger' : ''}`}>
                     <label>STATE</label> 
-                    <input type="text" placeholder="state" className="form-control col-md-4" {...repState} />
+                    <input ref="text_only" onKeyPress={(e) => this.text_only(e)}
+                            type="TEXT" placeholder="state" className="form-control col-md-4" {...repState} />
                     <div className='text-help'>
                     {repState.touched ? repState.error: ''}
                     </div> 
@@ -129,7 +149,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repZipCode.touched && repZipCode.invalid ? 'has-danger' : ''}`}>
                     <label>ZIP</label> 
-                    <input type="number" placeholder="zip" className="col-lg-6 form-control" {...repZipCode} />
+                    <input type="number" maxLength={5} placeholder="zip" className="col-lg-6 form-control" {...repZipCode} />
                     <div className='text-help'>
                     {repZipCode.touched ? repZipCode.error: ''}
                     </div> 
@@ -143,7 +163,7 @@ handleGenderUpdate(event) {
                     </div> 
                 </div>
 
-            <br/><br/>
+                <br/>
                 <h5>ADMINISTRATIVE ASSISTANT INFORMATION</h5>
                 <p>IF APPLICABLE</p>
               <hr/> 
