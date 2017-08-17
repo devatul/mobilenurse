@@ -84,6 +84,7 @@ module.exports = function(app) {
             repCellPhone: req.body.repCellPhone,
             email: req.body.repEmail,
             assistantEmail: req.body.repAssistantEmail,
+            assistantPhone: req.body.repAssistantPhone
         });
     });
 

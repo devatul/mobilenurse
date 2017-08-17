@@ -44,6 +44,15 @@ handleGenderUpdate(event) {
 }
   
 
+  //Form Validator for only Letters and spaces
+letters_spaces(e) {
+    const re =/^[a-zA-Z\s]*$/;
+    if(!re.test(e.key)) {
+        e.preventDefault();
+    }
+}
+
+
     render() {
         const { fields: {firstname, 
                         lastName,
@@ -55,6 +64,8 @@ handleGenderUpdate(event) {
                         repCellPhone,
                         repEmail,
                         repAssistantEmail,
+                        repAdminPhone,
+                        repAdminName
                         }, handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -63,13 +74,14 @@ handleGenderUpdate(event) {
               <br/>
 
                 <div className="text-xs-right">
-                    <Link to="/repinfo/">BACK</Link>
+                    <Link to="/profile/">BACK</Link>
                 </div>
 
                 <div>
                     <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
-                        <input type="text" placeholder="firstname" className="form-control" {...firstname} />
+                        <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
+                             type="text" placeholder="firstname" className="form-control" {...firstname} />
                         <div className='text-help'>
                             {firstname.touched ? firstname.error: ''}
                         </div> 
@@ -78,7 +90,8 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${lastName.touched && lastName.invalid ? 'has-danger' : ''}`}>
                     <label>LASTNAME</label> 
-                    <input type="text" placeholder="lastname" className="form-control" {...lastName} />
+                    <input  ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                        type="text" placeholder="lastname" className="form-control" {...lastName} />
                     <div className='text-help'>
                         {lastName.touched ? lastName.error: ''}
                     </div> 
@@ -87,7 +100,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repOfficePhone.touched && repOfficePhone.invalid ? 'has-danger' : ''}`}>
                     <label>OFFICE NUMBER</label> 
-                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...repOfficePhone} />
+                    <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repOfficePhone} />
                     <div className='text-help'>
                     {repOfficePhone.touched ? repOfficePhone.error: ''}
                     </div> 
@@ -95,7 +108,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repCellPhone.touched && repCellPhone.invalid ? 'has-danger' : ''}`}>
                     <label>MOBILE NUMBER</label> 
-                    <input type="TEXT" placeholder="ex. 8478675309" className="col-lg-6 form-control" {...repCellPhone} />
+                    <input type="NUMBER" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repCellPhone} />
                     <div className='text-help'>
                     {repCellPhone.touched ? repCellPhone.error: ''}
                     </div> 
@@ -111,7 +124,8 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repCity.touched && repCity.invalid ? 'has-danger' : ''}`}>
                     <label>CITY</label> 
-                    <input type="CITY" placeholder="city" className="form-control col-md-4" {...repCity} />
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
+                         type="TEXT" placeholder="city" className="form-control col-md-4" {...repCity} />
                     <div className='text-help'>
                     {repCity.touched ? repCity.error: ''}
                     </div> 
@@ -119,7 +133,8 @@ handleGenderUpdate(event) {
 
                 <div className={`form-group ${repState.touched && repState.invalid ? 'has-danger' : ''}`}>
                     <label>STATE</label> 
-                    <input type="text" placeholder="state" className="form-control col-md-4" {...repState} />
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
+                            type="TEXT" placeholder="state" className="form-control col-md-4" {...repState} />
                     <div className='text-help'>
                     {repState.touched ? repState.error: ''}
                     </div> 
@@ -127,7 +142,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${repZipCode.touched && repZipCode.invalid ? 'has-danger' : ''}`}>
                     <label>ZIP</label> 
-                    <input type="number" placeholder="zip" className="col-lg-6 form-control" {...repZipCode} />
+                    <input type="number" maxLength={5} placeholder="zip" className="col-lg-6 form-control" {...repZipCode} />
                     <div className='text-help'>
                     {repZipCode.touched ? repZipCode.error: ''}
                     </div> 
@@ -140,19 +155,42 @@ handleGenderUpdate(event) {
                     {repEmail.touched ? repEmail.error: ''}
                     </div> 
                 </div>
+
+                <br/>
+                <h5>ADMINISTRATIVE ASSISTANT INFORMATION</h5>
+                <p>IF APPLICABLE</p>
+              <hr/> 
+              <br/>
+
+              <div className={`'form-group ${repAdminName.touched && repAdminName.invalid ? 'has-danger' : ''}`}>
+                    <label>NAME</label> 
+                    <input type="TEXT" placeholder="NAME" className="col-lg-6 form-control" {...repAdminName} />
+                    <div className='text-help'>
+                    {repAdminName.touched ? repAdminName.error: ''}
+                    </div> 
+                </div>
+
                 <div className={`'form-group ${repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : ''}`}>
-                    <label>ASSISTANT EMAIL</label> 
+                    <label>EMAIL</label> 
                     <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repAssistantEmail} />
                     <div className='text-help'>
                     {repAssistantEmail.touched ? repAssistantEmail.error: ''}
                     </div> 
                 </div>
 
+
+                <div className={`'form-group ${repAdminPhone.touched && repAdminPhone.invalid ? 'has-danger' : ''}`}>
+                    <label>PHONE</label> 
+                    <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repAdminPhone} />
+                    <div className='text-help'>
+                    {repAdminPhone.touched ? repAdminPhone.error: ''}
+                    </div> 
+                </div>
+
+                <br/><br/>
                 <div className="col-xs-12" >
-                    <button type="submit" className="btn btn-primary">SUBMIT</button> 
+                    <button type="submit" className="btn btn-primary">UPDATE</button> 
                     <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
-                    <br></br>
-                    <br></br>
                 </div> 
             </form> 
         );
@@ -186,6 +224,9 @@ export default reduxForm({
             'repOfficePhone',
             'repCellPhone',
             'repEmail',
-            'repAssistantEmail'],
+            'repAssistantEmail',
+            'repAdminPhone',
+            'repAdminName'
+        ],
   //  validate
 }, null,{ createRepInfo } ) (PostProfile); 
