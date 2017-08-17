@@ -64997,11 +64997,10 @@
 	        value: function handleGenderUpdate(event) {
 	            this.setState({ gender: event.target.gender });
 	        }
-
-	        //Form Validator for only Letters and spaces
-
 	    }, {
 	        key: 'letters_spaces',
+
+	        //Form Validator for only Letters and spaces
 	        value: function letters_spaces(e) {
 	            var re = /^[a-zA-Z\s]*$/;
 	            if (!re.test(e.key)) {
