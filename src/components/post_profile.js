@@ -43,13 +43,6 @@ handleGenderUpdate(event) {
     this.setState({gender: event.target.gender});
 }
   
-//text only inputs no spaces
-text_only(e) {
-    const re = /[a-fA-F]+/g;
-    if (!re.test(e.key)) {
-      e.preventDefault();
-    }
-  }
 
   //Form Validator for only Letters and spaces
 letters_spaces(e) {
@@ -140,7 +133,7 @@ letters_spaces(e) {
 
                 <div className={`form-group ${repState.touched && repState.invalid ? 'has-danger' : ''}`}>
                     <label>STATE</label> 
-                    <input ref="text_only" onKeyPress={(e) => this.text_only(e)}
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
                             type="TEXT" placeholder="state" className="form-control col-md-4" {...repState} />
                     <div className='text-help'>
                     {repState.touched ? repState.error: ''}
@@ -194,7 +187,7 @@ letters_spaces(e) {
                     </div> 
                 </div>
 
-                <br/>
+                <br/><br/>
                 <div className="col-xs-12" >
                     <button type="submit" className="btn btn-primary">UPDATE</button> 
                     <Link to="/profile/" className="btn btn-danger">CANCEL</Link>

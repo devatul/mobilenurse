@@ -51589,7 +51589,10 @@
 	                            null,
 	                            'FIRSTNAME'
 	                        ),
-	                        _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'firstname', className: 'form-control' }, firstname)),
+	                        _react2.default.createElement('input', _extends({ ref: 'letters_spaces', onKeyPress: function onKeyPress(e) {
+	                                return _this3.letters_spaces(e);
+	                            },
+	                            type: 'text', placeholder: 'firstname', className: 'form-control' }, firstname)),
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'text-help' },
@@ -51605,7 +51608,10 @@
 	                        null,
 	                        'LASTNAME'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'lastname', className: 'form-control' }, lastName)),
+	                    _react2.default.createElement('input', _extends({ ref: 'letters_spaces', onKeyPress: function onKeyPress(e) {
+	                            return _this3.letters_spaces(e);
+	                        },
+	                        type: 'text', placeholder: 'lastname', className: 'form-control' }, lastName)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -51635,7 +51641,7 @@
 	                        null,
 	                        'PHONE NUMBER'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'XXX-XXX-XXXX', className: 'col-lg-6 form-control' }, clientPhone)),
+	                    _react2.default.createElement('input', _extends({ type: 'TEL', placeholder: 'XXX-XXX-XXXX', className: 'col-lg-6 form-control' }, clientPhone)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -51683,7 +51689,10 @@
 	                        null,
 	                        'STATE'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'text', placeholder: 'state', className: 'form-control col-md-4' }, examState)),
+	                    _react2.default.createElement('input', _extends({ ref: 'letters_spaces', onKeyPress: function onKeyPress(e) {
+	                            return _this3.letters_spaces(e);
+	                        },
+	                        type: 'text', placeholder: 'state', className: 'form-control col-md-4' }, examState)),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'text-help' },
@@ -64989,17 +64998,6 @@
 	            this.setState({ gender: event.target.gender });
 	        }
 
-	        //text only inputs no spaces
-
-	    }, {
-	        key: 'text_only',
-	        value: function text_only(e) {
-	            var re = /[a-fA-F]+/g;
-	            if (!re.test(e.key)) {
-	                e.preventDefault();
-	            }
-	        }
-
 	        //Form Validator for only Letters and spaces
 
 	    }, {
@@ -65161,8 +65159,8 @@
 	                        null,
 	                        'STATE'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ ref: 'text_only', onKeyPress: function onKeyPress(e) {
-	                            return _this3.text_only(e);
+	                    _react2.default.createElement('input', _extends({ ref: 'letters_spaces', onKeyPress: function onKeyPress(e) {
+	                            return _this3.letters_spaces(e);
 	                        },
 	                        type: 'TEXT', placeholder: 'state', className: 'form-control col-md-4' }, repState)),
 	                    _react2.default.createElement(
@@ -65259,6 +65257,7 @@
 	                        repAdminPhone.touched ? repAdminPhone.error : ''
 	                    )
 	                ),
+	                _react2.default.createElement('br', null),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'div',

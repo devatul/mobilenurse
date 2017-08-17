@@ -53,6 +53,7 @@ handleGenderUpdate(event) {
     this.setState({gender: event.target.gender});
 }
   
+  
 
   //Form Validator for only Letters and spaces
   letters_spaces(e) {
@@ -95,7 +96,8 @@ handleGenderUpdate(event) {
                 <div>
                     <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
                         <label>FIRSTNAME</label> 
-                        <input type="text" placeholder="firstname" className="form-control" {...firstname} />
+                        <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                            type="text" placeholder="firstname" className="form-control" {...firstname} />
                         <div className='text-help'>
                             {firstname.touched ? firstname.error: ''}
                         </div> 
@@ -104,7 +106,8 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${lastName.touched && lastName.invalid ? 'has-danger' : ''}`}>
                     <label>LASTNAME</label> 
-                    <input type="text" placeholder="lastname" className="form-control" {...lastName} />
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                         type="text" placeholder="lastname" className="form-control" {...lastName} />
                     <div className='text-help'>
                         {lastName.touched ? lastName.error: ''}
                     </div> 
@@ -120,7 +123,7 @@ handleGenderUpdate(event) {
 
                 <div className={`'form-group ${clientPhone.touched && clientPhone.invalid ? 'has-danger' : ''}`}>
                     <label>PHONE NUMBER</label> 
-                    <input type="TEXT" placeholder="XXX-XXX-XXXX" className="col-lg-6 form-control" {...clientPhone} />
+                    <input type="TEL" placeholder="XXX-XXX-XXXX" className="col-lg-6 form-control" {...clientPhone} />
                     <div className='text-help'>
                     {clientPhone.touched ? clientPhone.error: ''}
                     </div> 
@@ -145,7 +148,8 @@ handleGenderUpdate(event) {
 
                 <div className={`form-group ${examState.touched && examState.invalid ? 'has-danger' : ''}`}>
                     <label>STATE</label> 
-                    <input type="text" placeholder="state" className="form-control col-md-4" {...examState} />
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                        type="text" placeholder="state" className="form-control col-md-4" {...examState} />
                     <div className='text-help'>
                     {examState.touched ? examState.error: ''}
                     </div> 
