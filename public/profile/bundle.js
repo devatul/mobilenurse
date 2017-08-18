@@ -64943,6 +64943,12 @@
 	                    'POLICY AMOUNT: ',
 	                    post.policyAmount
 	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'COMMENTS: ',
+	                    post.examNotes
+	                ),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(

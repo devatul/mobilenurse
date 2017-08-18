@@ -45,6 +45,7 @@ class PostsShow extends Component {
                 <h4>DOB: {post.clientDOB}</h4>
                 <h4>PHONE: {post.clientPhone}</h4>
                 <h4>POLICY AMOUNT: {post.policyAmount}</h4>
+                <h4>COMMENTS: {post.examNotes}</h4>
                 <br/>
                 <br/>
                 <h3>EXAM INFORMATION</h3>
