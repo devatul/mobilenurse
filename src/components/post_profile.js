@@ -97,7 +97,14 @@ letters_spaces(e) {
                     </div> 
                 </div> 
 
-
+                <div className={`'form-group ${repEmail.touched && repEmail.invalid ? 'has-danger' : ''}`}>
+                    <label>EMAIL</label> 
+                    <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repEmail} />
+                    <div className='text-help'>
+                    {repEmail.touched ? repEmail.error: ''}
+                    </div> 
+                </div>
+                
                 <div className={`'form-group ${repOfficePhone.touched && repOfficePhone.invalid ? 'has-danger' : ''}`}>
                     <label>OFFICE NUMBER</label> 
                     <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repOfficePhone} />
@@ -114,8 +121,17 @@ letters_spaces(e) {
                     </div> 
                 </div>  
 
+
+
+                <div>
+                    <br/><br/>
+                        <h5>OFFICE LOCATION</h5>
+                    <hr/> 
+                    <br/>
+                </div>
+
                 <div className={`'form-group ${officeAddress.touched && officeAddress.invalid ? 'has-danger' : ''}`}>
-                    <label>OFFICE ADDRESS</label> 
+                    <label>ADDRESS</label> 
                     <input type="ADDRESS" placeholder="street address" className="form-control" {...officeAddress} />
                     <div className='text-help'>
                     {officeAddress.touched ? officeAddress.error: ''}
@@ -148,20 +164,13 @@ letters_spaces(e) {
                     </div> 
                 </div>
 
-                <div className={`'form-group ${repEmail.touched && repEmail.invalid ? 'has-danger' : ''}`}>
-                    <label>EMAIL</label> 
-                    <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repEmail} />
-                    <div className='text-help'>
-                    {repEmail.touched ? repEmail.error: ''}
-                    </div> 
+                <div>
+                    <br/><br/>
+                        <h5>ADMINISTRATIVE ASSISTANT INFORMATION</h5>
+                        <p>IF APPLICABLE</p>
+                    <hr/> 
+                    <br/>
                 </div>
-
-                <br/>
-                <h5>ADMINISTRATIVE ASSISTANT INFORMATION</h5>
-                <p>IF APPLICABLE</p>
-                <span> </span>
-              <hr/> 
-              <br/>
 
               <div className={`'form-group ${repAdminName.touched && repAdminName.invalid ? 'has-danger' : ''}`}>
                     <label>NAME</label> 

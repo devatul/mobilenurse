@@ -65184,6 +65184,21 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
+	                    { className: '\'form-group ' + (repEmail.touched && repEmail.invalid ? 'has-danger' : '') },
+	                    _react2.default.createElement(
+	                        'label',
+	                        null,
+	                        'EMAIL'
+	                    ),
+	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'EMAIL', className: 'col-lg-6 form-control' }, repEmail)),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'text-help' },
+	                        repEmail.touched ? repEmail.error : ''
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
 	                    { className: '\'form-group ' + (repOfficePhone.touched && repOfficePhone.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
@@ -65214,11 +65229,24 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
+	                    null,
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(
+	                        'h5',
+	                        null,
+	                        'OFFICE LOCATION'
+	                    ),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement('br', null)
+	                ),
+	                _react2.default.createElement(
+	                    'div',
 	                    { className: '\'form-group ' + (officeAddress.touched && officeAddress.invalid ? 'has-danger' : '') },
 	                    _react2.default.createElement(
 	                        'label',
 	                        null,
-	                        'OFFICE ADDRESS'
+	                        'ADDRESS'
 	                    ),
 	                    _react2.default.createElement('input', _extends({ type: 'ADDRESS', placeholder: 'street address', className: 'form-control' }, officeAddress)),
 	                    _react2.default.createElement(
@@ -65280,37 +65308,22 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: '\'form-group ' + (repEmail.touched && repEmail.invalid ? 'has-danger' : '') },
+	                    null,
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
-	                        'label',
+	                        'h5',
 	                        null,
-	                        'EMAIL'
+	                        'ADMINISTRATIVE ASSISTANT INFORMATION'
 	                    ),
-	                    _react2.default.createElement('input', _extends({ type: 'TEXT', placeholder: 'EMAIL', className: 'col-lg-6 form-control' }, repEmail)),
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'text-help' },
-	                        repEmail.touched ? repEmail.error : ''
-	                    )
+	                        'p',
+	                        null,
+	                        'IF APPLICABLE'
+	                    ),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement('br', null)
 	                ),
-	                _react2.default.createElement('br', null),
-	                _react2.default.createElement(
-	                    'h5',
-	                    null,
-	                    'ADMINISTRATIVE ASSISTANT INFORMATION'
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'IF APPLICABLE'
-	                ),
-	                _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    ' '
-	                ),
-	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: '\'form-group ' + (repAdminName.touched && repAdminName.invalid ? 'has-danger' : '') },
