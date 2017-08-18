@@ -15,7 +15,9 @@ renderPosts() {
              <li className="list-group-item" key={post.id}>
                  <Link to={"posts/" + post.id}> 
                     <span className="pull-xs-right">{post.examStatus}</span>
-                    <strong>CLIENT: {post.firstname} {post.lastName} </strong> 
+                    <strong>CLIENT: {post.firstname} {post.lastName} </strong>
+                    <br/>
+                    <strong>DATE:</strong>
                  </Link> 
             </li>
         );

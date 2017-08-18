@@ -51366,6 +51366,12 @@
 	                            ' ',
 	                            post.lastName,
 	                            ' '
+	                        ),
+	                        _react2.default.createElement('br', null),
+	                        _react2.default.createElement(
+	                            'strong',
+	                            null,
+	                            'DATE:'
 	                        )
 	                    )
 	                );

@@ -53,7 +53,6 @@ class PostsShow extends Component {
                 <h4>STATE: {post.examState}</h4>
                 <h4>ZIP: {post.examZipCode}</h4>
                 <h4>EXAM TYPE: {post.examType}</h4>
-
              </div>
         );
     }
