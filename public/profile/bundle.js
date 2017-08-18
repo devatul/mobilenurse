@@ -51399,7 +51399,7 @@
 	                    _react2.default.createElement(
 	                        'h4',
 	                        { className: 'text-xs-left' },
-	                        'PENDING EXAMS'
+	                        'EXAM ORDERS'
 	                    )
 	                ),
 	                _react2.default.createElement('br', null),
@@ -51407,7 +51407,21 @@
 	                    'ul',
 	                    { className: 'list-group' },
 	                    this.renderPosts()
-	                )
+	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'h4',
+	                    { className: 'text-xs-left' },
+	                    'COMPLETED EXAMS'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'h4',
+	                    { className: 'text-xs-left' },
+	                    'CANCELED ORDERS'
+	                ),
+	                _react2.default.createElement('hr', null)
 	            );
 	        }
 	    }]);
@@ -64908,6 +64922,12 @@
 	                _react2.default.createElement(
 	                    'h4',
 	                    null,
+	                    'AGE: ',
+	                    post.clientAge
+	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
 	                    'DOB: ',
 	                    post.clientDOB
 	                ),
@@ -64931,6 +64951,18 @@
 	                    'EXAM INFORMATION'
 	                ),
 	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'EXAM DATE: ',
+	                    post.examDate
+	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'EXAM TIME: ',
+	                    post.examTime
+	                ),
 	                _react2.default.createElement(
 	                    'h4',
 	                    null,

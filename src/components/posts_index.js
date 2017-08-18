@@ -36,12 +36,18 @@ renderPosts() {
                       EXAM REQUEST
                     </Link>
               
-                <h4 className="text-xs-left">PENDING EXAMS</h4> 
+                <h4 className="text-xs-left">EXAM ORDERS</h4> 
             </div>    
                 <br/>
                 <ul className="list-group">
                     { this.renderPosts() }
                 </ul>
+                <br/>
+                <h4 className="text-xs-left">COMPLETED EXAMS</h4> 
+                <hr/>
+                <br/>
+                <h4 className="text-xs-left">CANCELED ORDERS</h4> 
+                <hr/>
              </div> 
         );
     }

@@ -41,6 +41,7 @@ class PostsShow extends Component {
                 <br/>
                 <h4>FIRSTNAME: {post.firstname}</h4>
                 <h4>LASTNAME: {post.lastName}</h4>
+                <h4>AGE: {post.clientAge}</h4>
                 <h4>DOB: {post.clientDOB}</h4>
                 <h4>PHONE: {post.clientPhone}</h4>
                 <h4>POLICY AMOUNT: {post.policyAmount}</h4>
@@ -48,6 +49,8 @@ class PostsShow extends Component {
                 <br/>
                 <h3>EXAM INFORMATION</h3>
                 <hr/>
+                <h4>EXAM DATE: {post.examDate}</h4>
+                <h4>EXAM TIME: {post.examTime}</h4>
                 <h4>ADDRESS: {post.examStreetAddress}</h4>
                 <h4>CITY: {post.examCity}</h4>
                 <h4>STATE: {post.examState}</h4>
