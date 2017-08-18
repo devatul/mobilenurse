@@ -64911,6 +64911,12 @@
 	                    'PHONE: ',
 	                    post.clientPhone
 	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'POLICY AMOUNT: ',
+	                    post.policyAmount
+	                ),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement('br', null),
 	                _react2.default.createElement(
@@ -64918,7 +64924,37 @@
 	                    null,
 	                    'EXAM INFORMATION'
 	                ),
-	                _react2.default.createElement('hr', null)
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'ADDRESS: ',
+	                    post.examStreetAddress
+	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'CITY: ',
+	                    post.examCity
+	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'STATE: ',
+	                    post.examState
+	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'ZIP: ',
+	                    post.examZipCode
+	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'EXAM TYPE: ',
+	                    post.examType
+	                )
 	            );
 	        }
 	    }]);

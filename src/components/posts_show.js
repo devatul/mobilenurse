@@ -43,11 +43,16 @@ class PostsShow extends Component {
                 <h4>LASTNAME: {post.lastName}</h4>
                 <h4>DOB: {post.clientDOB}</h4>
                 <h4>PHONE: {post.clientPhone}</h4>
+                <h4>POLICY AMOUNT: {post.policyAmount}</h4>
                 <br/>
                 <br/>
                 <h3>EXAM INFORMATION</h3>
                 <hr/>
-          
+                <h4>ADDRESS: {post.examStreetAddress}</h4>
+                <h4>CITY: {post.examCity}</h4>
+                <h4>STATE: {post.examState}</h4>
+                <h4>ZIP: {post.examZipCode}</h4>
+                <h4>EXAM TYPE: {post.examType}</h4>
 
              </div>
         );
