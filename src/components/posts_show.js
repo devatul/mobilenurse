@@ -35,11 +35,20 @@ class PostsShow extends Component {
                     onClick={this.onDeleteClick.bind(this)}>
                     CANCEL EXAM
                 </button> 
-                <h1> EXAM INFORMATION </h1>
+                <h1> CLIENT INFORMATION </h1>
                 <hr/>
-                <h3>FIRSTNAME: {post.firstname}</h3>
-                <h3>LASTNAME: {post.lastName}</h3>
-                <p>EXAM STATUS: {post.examStatus} </p>   
+                <h3>EXAM STATUS: {post.examStatus} </h3>  
+                <br/>
+                <h4>FIRSTNAME: {post.firstname}</h4>
+                <h4>LASTNAME: {post.lastName}</h4>
+                <h4>DOB: {post.clientDOB}</h4>
+                <h4>PHONE: {post.clientPhone}</h4>
+                <br/>
+                <br/>
+                <h3>EXAM INFORMATION</h3>
+                <hr/>
+          
+
              </div>
         );
     }

@@ -64876,28 +64876,49 @@
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
-	                    ' EXAM INFORMATION '
+	                    ' CLIENT INFORMATION '
 	                ),
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
 	                    'h3',
 	                    null,
+	                    'EXAM STATUS: ',
+	                    post.examStatus,
+	                    ' '
+	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
 	                    'FIRSTNAME: ',
 	                    post.firstname
 	                ),
 	                _react2.default.createElement(
-	                    'h3',
+	                    'h4',
 	                    null,
 	                    'LASTNAME: ',
 	                    post.lastName
 	                ),
 	                _react2.default.createElement(
-	                    'p',
+	                    'h4',
 	                    null,
-	                    'EXAM STATUS: ',
-	                    post.examStatus,
-	                    ' '
-	                )
+	                    'DOB: ',
+	                    post.clientDOB
+	                ),
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'PHONE: ',
+	                    post.clientPhone
+	                ),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement(
+	                    'h3',
+	                    null,
+	                    'EXAM INFORMATION'
+	                ),
+	                _react2.default.createElement('hr', null)
 	            );
 	        }
 	    }]);
