@@ -4,6 +4,8 @@ import { createPost } from '../actions/index';
 import { Link } from 'react-router';
 import { Select, Button, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
+import Header from './header';
+import { isValidDOB } from '../helpers';
 // require('react-datetime');
 
 // import {Datetime} from 'react-widgets';
@@ -17,11 +19,17 @@ class PostsNew extends Component {
         super(props);
         this.state = {
             examTime:null,
-            examDate:null
+            examDate:null,
+            clientPhone: this.props.fields.clientPhone
         }
         this.handleExamTypeChange = this.handleExamTypeChange.bind(this);
+        this.phoneNumber = this.phoneNumber.bind(this);
     }
-
+    componentWillReceiveProps(props) {
+        this.setState({
+          clientPhone:props.fields.clientPhone
+        })
+    }
     onSubmit(props) {
         this.props.createPost(props)
             .then(() => {
@@ -52,8 +60,17 @@ class PostsNew extends Component {
 handleGenderUpdate(event) {
     this.setState({gender: event.target.gender});
 }
-  
-  
+
+phoneNumber(e) {
+  let clientPhone = this.state.clientPhone;
+  let val = e.target.value;
+  console.log(e.target.value, val.length);
+
+  clientPhone.value = val;
+  this.setState({
+    clientPhone
+  })
+}
 
   //Form Validator for only Letters and spaces
   letters_spaces(e) {
@@ -65,10 +82,10 @@ handleGenderUpdate(event) {
 
 
     render() {
-        const { fields: {firstname, 
+        const { fields: {firstname,
                         lastName,
                         clientDOB,
-                        clientPhone,
+                        // clientPhone,
                         examStreetAddress,
                         examCity,
                         examState,
@@ -79,97 +96,98 @@ handleGenderUpdate(event) {
                         examType,
                         gender,
                         examNotes }, handleSubmit } = this.props;
+                        const {clientPhone} = this.state;
+                        console.log(' this.props',  this.props, clientPhone);
         return (
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-              <h3>SCHEDULE AN EXAM</h3>
-              <hr/> 
-              <br/>
-
-                <div className="text-xs-right">
-                    <Link to="/profile/">BACK</Link>
+            <div className="row">
+              <Header title="SCHEDULE AN EXAM" />
+              <div className="col-xs-12">
+                <div className="pull-right">
+                  <Link to="/profile/">BACK</Link>
                 </div>
-
-                <div className="text-xs-left">
-                    <Link to="/repinfo/">PROFILE</Link>
+                <div className="pull-left">
+                  <Link to="/repinfo/">PROFILE</Link>
                 </div>
-
+              </div>
+            <div className="col-xs-9 form-wrapper">
+              <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <div>
                     <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
-                        <label>FIRSTNAME</label> 
-                        <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                        <label>FIRSTNAME</label>
+                        <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
                             type="text" placeholder="firstname" className="form-control" {...firstname} />
                         <div className='text-help'>
                             {firstname.touched ? firstname.error: ''}
-                        </div> 
-                    </div> 
-                </div> 
+                        </div>
+                    </div>
+                </div>
 
                 <div className={`'form-group ${lastName.touched && lastName.invalid ? 'has-danger' : ''}`}>
-                    <label>LASTNAME</label> 
-                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                    <label>LASTNAME</label>
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
                          type="text" placeholder="lastname" className="form-control" {...lastName} />
                     <div className='text-help'>
                         {lastName.touched ? lastName.error: ''}
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
                 <div className={`'form-group ${clientDOB.touched && clientDOB.invalid ? 'has-danger' : ''}`}>
-                    <label>DATE OF BIRTH</label> 
+                    <label>DATE OF BIRTH</label>
                     <input type="DATE" placeholder="DOB" format="YYYY-MM-DD" className="col-lg-6 form-control" {...clientDOB} />
                     <div className='text-help'>
                     {clientDOB.touched ? clientDOB.error: ''}
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
                 <div className={`'form-group ${clientPhone.touched && clientPhone.invalid ? 'has-danger' : ''}`}>
-                    <label>PHONE NUMBER</label> 
-                    <input type="TEL" placeholder="XXX-XXX-XXXX" className="col-lg-6 form-control" {...clientPhone} />
+                    <label>PHONE NUMBER</label>
+                    <input type="TEL" placeholder="XXX-XXX-XXXX" className="col-lg-6 form-control" onKeyUp={(e)=>this.phoneNumber(e)}{...clientPhone} />
                     <div className='text-help'>
                     {clientPhone.touched ? clientPhone.error: ''}
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
                 <div className={`'form-group ${examStreetAddress.touched && examStreetAddress.invalid ? 'has-danger' : ''}`}>
-                    <label>STREET ADDRESS</label> 
+                    <label>STREET ADDRESS</label>
                     <input type="ADDRESS" placeholder="street address" className="form-control" {...examStreetAddress} />
                     <div className='text-help'>
                     {examStreetAddress.touched ? examStreetAddress.error: ''}
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
                 <div className={`'form-group ${examCity.touched && examCity.invalid ? 'has-danger' : ''}`}>
-                    <label>CITY</label> 
-                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                    <label>CITY</label>
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
                         type="CITY" placeholder="city" className="form-control col-md-4" {...examCity} />
                     <div className='text-help'>
                     {examCity.touched ? examCity.error: ''}
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
                 <div className={`form-group ${examState.touched && examState.invalid ? 'has-danger' : ''}`}>
-                    <label>STATE</label> 
-                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
+                    <label>STATE</label>
+                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
                         type="text" placeholder="state" className="form-control col-md-4" {...examState} />
                     <div className='text-help'>
                     {examState.touched ? examState.error: ''}
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
                 <div className={`'form-group ${examZipCode.touched && examZipCode.invalid ? 'has-danger' : ''}`}>
-                    <label>ZIP</label> 
+                    <label>ZIP</label>
                     <input type="number" placeholder="zip" className="col-lg-6 form-control" {...examZipCode} />
                     <div className='text-help'>
                     {examZipCode.touched ? examZipCode.error: ''}
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
                 <div className={`'form-group ${policyAmount.touched && policyAmount.invalid ? 'has-danger' : ''}`}>
-                    <label>POLICY AMOUNT</label> 
+                    <label>POLICY AMOUNT</label>
                     <input type="number" placeholder="policy amount" className="col-lg-6 form-control" {...policyAmount} />
                     <div className='text-help'>
                     {policyAmount.touched ? policyAmount.error: ''}
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
                 <div className='form-group col-sm-6'>
                     <label>EXAM DATE</label> <br/>
@@ -182,8 +200,8 @@ handleGenderUpdate(event) {
                 </div>
 
                 <div className='form-group col-sm-6'>
-                    <label>EXAM TIME</label> <br/>               
-                    <TimePicker 
+                    <label>EXAM TIME</label> <br/>
+                    <TimePicker
                         placeholder='SELECT'
                         format='hh:mm a'
                         {...examTime}
@@ -225,21 +243,22 @@ handleGenderUpdate(event) {
                         </select>
                         <br/>
                     </div>
-                </div> 
-               
+                </div>
+
                 <div className='form-group text-xs-left'>
                      <br/><br/>
                     <label className="text-xs-left">COMMENTS</label> <br/>
                     <textarea placeholder="special instructions" className="form-control" {...examNotes}/>
                 </div>
-
                 <div className="col-xs-12" >
-                    <button type="submit" className="btn btn-primary">SUBMIT</button> 
-                    <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
-                    <br></br>
-                    <br></br>
-                </div> 
-            </form> 
+                  <button type="submit" className="btn btn-primary">SUBMIT</button>
+                  <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
+                  <br></br>
+                  <br></br>
+                </div>
+              </form>
+            </div>
+          </div>
         );
     }
 }
@@ -256,6 +275,8 @@ function validate(values) {
     }
     if (!values.clientDOB) {
         errors.clientDOB = 'client date of birth';
+    } else if (!isValidDOB(values.clientDOB)) {
+      errors.clientDOB = 'Invalid date of birth';
     }
     if (!values.examStreetAddress) {
         errors.examStreetAddress = 'street address of exam';
@@ -274,7 +295,7 @@ function validate(values) {
    }
     if (!values.clientPhone) {
     errors.clientPhone = 'client phone number';
-    }
+  }
     return errors;
 }
 
@@ -299,4 +320,4 @@ export default reduxForm({
             'gender',
             'examNotes'],
     validate
-}, null,{ createPost } ) (PostsNew); 
+}, null,{ createPost } ) (PostsNew);
