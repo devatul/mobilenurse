@@ -1,11 +1,14 @@
 import React, { Component, PropTypes  } from 'react';
-import { reduxForm, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
+import { Form, reduxForm, formValueSelector, Field } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
 import { Select, Button, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
 import Header from './header';
-import { isValidDOB } from '../helpers';
+import { isValidDOB, isValidPhoneNumber } from '../helpers';
+import PhoneNumber from './form_components/phone_number.js';
+import InputComponent from './form_components/input_components.js';
 // require('react-datetime');
 
 // import {Datetime} from 'react-widgets';
@@ -20,17 +23,19 @@ class PostsNew extends Component {
         this.state = {
             examTime:null,
             examDate:null,
-            clientPhone: this.props.fields.clientPhone
+            // clientPhone: this.props.fields.clientPhone
         }
         this.handleExamTypeChange = this.handleExamTypeChange.bind(this);
         this.phoneNumber = this.phoneNumber.bind(this);
+        this.formatPhoneNumber = this.formatPhoneNumber.bind(this);
     }
     componentWillReceiveProps(props) {
-        this.setState({
-          clientPhone:props.fields.clientPhone
-        })
+        // this.setState({
+        //   clientPhone:props.fields.clientPhone
+        // })
     }
     onSubmit(props) {
+      console.log('submit');
         this.props.createPost(props)
             .then(() => {
                 // exams post has been created, navigate the user to the index
@@ -60,10 +65,31 @@ class PostsNew extends Component {
 handleGenderUpdate(event) {
     this.setState({gender: event.target.gender});
 }
-
-phoneNumber(e) {
+formatPhoneNumber(e) {
+  let seprator = '-';
   let clientPhone = this.state.clientPhone;
   let val = e.target.value;
+  if(val.length === 10 && isValidPhoneNumber(val)) {
+    val = '(' +val.slice(0, 3)+') '+val.slice(3, 6)+seprator+val.slice(6, val.length);
+  }
+  clientPhone.value = val;
+  this.setState({
+    clientPhone
+  })
+}
+phoneNumber(e) {
+  let seprator = '-';
+  let clientPhone = this.state.clientPhone;
+  let val = e.target.value;
+  if(val.length > 3 && val[3] !== seprator ) {
+    val = val.slice(0, 3)+seprator+val.slice(3, val.length);
+  }
+  if(val.length > 7 && val[7] !== seprator ) {
+    val = val.slice(0, 7)+seprator+val.slice(7, val.length);
+  }
+  if(val.length > 12) {
+    val = val.slice(0, 12);
+  }
   console.log(e.target.value, val.length);
 
   clientPhone.value = val;
@@ -78,26 +104,27 @@ phoneNumber(e) {
     if(!re.test(e.key)) {
         e.preventDefault();
     }
-}
+  }
 
 
     render() {
-        const { fields: {firstname,
-                        lastName,
-                        clientDOB,
+      console.log(' this.props=====',  this.props);
+      const {handleSubmit, asyncValidate} = this.props;
+        // const { fields: {firstname,
+                        // lastName,
+                        // clientDOB,
                         // clientPhone,
-                        examStreetAddress,
-                        examCity,
-                        examState,
-                        examZipCode,
-                        policyAmount,
-                        examDate,
-                        examTime,
-                        examType,
-                        gender,
-                        examNotes }, handleSubmit } = this.props;
-                        const {clientPhone} = this.state;
-                        console.log(' this.props',  this.props, clientPhone);
+                        // examStreetAddress,
+                        // examCity,
+                        // examState,
+                        // examZipCode,
+                        // policyAmount,
+                        // examDate,
+                        // examTime,
+                        // examType,
+                        // gender,
+                        // examNotes }, handleSubmit } = this.props;
+                        // const {clientPhone} = this.state;
         return (
             <div className="row">
               <Header title="SCHEDULE AN EXAM" />
@@ -110,153 +137,58 @@ phoneNumber(e) {
                 </div>
               </div>
             <div className="col-xs-9 form-wrapper">
-              <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                <div>
-                    <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
-                        <label>FIRSTNAME</label>
-                        <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
-                            type="text" placeholder="firstname" className="form-control" {...firstname} />
-                        <div className='text-help'>
-                            {firstname.touched ? firstname.error: ''}
-                        </div>
-                    </div>
-                </div>
-
-                <div className={`'form-group ${lastName.touched && lastName.invalid ? 'has-danger' : ''}`}>
-                    <label>LASTNAME</label>
-                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
-                         type="text" placeholder="lastname" className="form-control" {...lastName} />
-                    <div className='text-help'>
-                        {lastName.touched ? lastName.error: ''}
-                    </div>
-                </div>
-
-                <div className={`'form-group ${clientDOB.touched && clientDOB.invalid ? 'has-danger' : ''}`}>
-                    <label>DATE OF BIRTH</label>
-                    <input type="DATE" placeholder="DOB" format="YYYY-MM-DD" className="col-lg-6 form-control" {...clientDOB} />
-                    <div className='text-help'>
-                    {clientDOB.touched ? clientDOB.error: ''}
-                    </div>
-                </div>
-
-                <div className={`'form-group ${clientPhone.touched && clientPhone.invalid ? 'has-danger' : ''}`}>
-                    <label>PHONE NUMBER</label>
-                    <input type="TEL" placeholder="XXX-XXX-XXXX" className="col-lg-6 form-control" onKeyUp={(e)=>this.phoneNumber(e)}{...clientPhone} />
-                    <div className='text-help'>
-                    {clientPhone.touched ? clientPhone.error: ''}
-                    </div>
-                </div>
-
-                <div className={`'form-group ${examStreetAddress.touched && examStreetAddress.invalid ? 'has-danger' : ''}`}>
-                    <label>STREET ADDRESS</label>
-                    <input type="ADDRESS" placeholder="street address" className="form-control" {...examStreetAddress} />
-                    <div className='text-help'>
-                    {examStreetAddress.touched ? examStreetAddress.error: ''}
-                    </div>
-                </div>
-
-                <div className={`'form-group ${examCity.touched && examCity.invalid ? 'has-danger' : ''}`}>
-                    <label>CITY</label>
-                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
-                        type="CITY" placeholder="city" className="form-control col-md-4" {...examCity} />
-                    <div className='text-help'>
-                    {examCity.touched ? examCity.error: ''}
-                    </div>
-                </div>
-
-                <div className={`form-group ${examState.touched && examState.invalid ? 'has-danger' : ''}`}>
-                    <label>STATE</label>
-                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
-                        type="text" placeholder="state" className="form-control col-md-4" {...examState} />
-                    <div className='text-help'>
-                    {examState.touched ? examState.error: ''}
-                    </div>
-                </div>
-
-                <div className={`'form-group ${examZipCode.touched && examZipCode.invalid ? 'has-danger' : ''}`}>
-                    <label>ZIP</label>
-                    <input type="number" placeholder="zip" className="col-lg-6 form-control" {...examZipCode} />
-                    <div className='text-help'>
-                    {examZipCode.touched ? examZipCode.error: ''}
-                    </div>
-                </div>
-
-                <div className={`'form-group ${policyAmount.touched && policyAmount.invalid ? 'has-danger' : ''}`}>
-                    <label>POLICY AMOUNT</label>
-                    <input type="number" placeholder="policy amount" className="col-lg-6 form-control" {...policyAmount} />
-                    <div className='text-help'>
-                    {policyAmount.touched ? policyAmount.error: ''}
-                    </div>
-                </div>
-
-                <div className='form-group col-sm-6'>
-                    <label>EXAM DATE</label> <br/>
-                    <DatePicker
-                         {...examDate}
-                         value={this.state.examDate}
-                        onChange={(newValMoment, newValString) =>
-                            this.handleUpdateDate(newValMoment, newValString)}
-                        />
-                </div>
-
-                <div className='form-group col-sm-6'>
-                    <label>EXAM TIME</label> <br/>
-                    <TimePicker
-                        placeholder='SELECT'
-                        format='hh:mm a'
-                        {...examTime}
-                        currentValue={this.state.examTime}
-                        onChange={(newValMoment, newValString) =>
-                            this.handleUpdateTime(newValMoment, newValString)}
-                            />
-                </div>
-
-                <div className="col-sm-6">
-                    <div className={`'form-group ${examType.touched && examType.invalid ? 'has-danger' : ''}`}>
-                        <label>EXAM TYPE</label> <br/>
-                        <select style={{ width: 180 }} onChange={this.handleExamTypeChange} {...examType}>
-                            <option className="form-control" value="">SELECT</option>
-                            <option className="form-control" value="PBU">PBU</option>
-                            <option className="form-control" value="PBU + EKG">PBU + EKG</option>
-                            <option className="form-control" value="EKG">EKG</option>
-                            <option className="form-control" value="BLOOD">BLOOD ONLY</option>
-                            <option className="form-control" value="URINE">URINE ONLY</option>
-                            <option className="form-control" value="PHYSICAL MEASUREMENTS">PHYSICAL MEASUREMENTS</option>
-                            <option className="form-control" value="BLOOD PRESSURE">BLOOD PRESSURE</option>
-                            <option className="form-control" value="SPECIAL">SPECIAL ORDER</option>
-
-                            {/*<div className='text-help'>
-                            </div> */}
-                        </select>
-                        <br/>
-                    </div>
-                </div>
-
-
-                <div className="col-sm-6">
-                    <div className={`'form-group ${gender.touched && gender.invalid ? 'has-danger' : ''}`}>
-                        <label>GENDER</label><br/>
-                        <select style={{width: 180 }} onChange={this.handleGenderUpdate} {...gender}>
-                            <option className="form-control" value="">SELECT</option>
-                            <option className="form-control" value="MALE">MALE</option>
-                            <option className="form-control" value="FEMALE">FEMALE</option>
-                        </select>
-                        <br/>
-                    </div>
-                </div>
-
-                <div className='form-group text-xs-left'>
-                     <br/><br/>
-                    <label className="text-xs-left">COMMENTS</label> <br/>
-                    <textarea placeholder="special instructions" className="form-control" {...examNotes}/>
-                </div>
+              <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                <Field
+                  name="firstname"
+                  type="text"
+                  lable="FIRSTNAME"
+                  component={InputComponent}
+                  placeholder="firstname"
+                />
+                <Field
+                  name="lastName"
+                  type="text"
+                  lable="LASTNAME"
+                  component={InputComponent}
+                  placeholder="lastname"
+                />
+                <Field
+                  name="clientDOB"
+                  type="DATE"
+                  lable="DATE OF BIRTH"
+                  component={InputComponent}
+                  placeholder="DOB"
+                />
+                <Field
+                  name="clientPhone"
+                  type="TEL"
+                  lable="Phone Number"
+                  blurP = {this.state.b}
+                  onBlur={asyncValidate}
+                  component={PhoneNumber}
+                  placeholder="XXX-XXX-XXXX"
+                />
+                <Field
+                  name="examStreetAddress"
+                  type="ADDRESS"
+                  lable="STREET ADDRESS"
+                  component={InputComponent}
+                  placeholder="street address"
+                />
+                <Field
+                  name="examCity"
+                  type="CITY"
+                  lable="CITY"
+                  component={InputComponent}
+                  placeholder="city"
+                />
                 <div className="col-xs-12" >
                   <button type="submit" className="btn btn-primary">SUBMIT</button>
                   <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
                   <br></br>
                   <br></br>
                 </div>
-              </form>
+              </Form>
             </div>
           </div>
         );
@@ -266,7 +198,7 @@ phoneNumber(e) {
 
 function validate(values) {
     const errors = {};
-
+console.log('validate', values);
     if (!values.firstname) {
         errors.firstname = 'client firstname';
     }
@@ -294,30 +226,59 @@ function validate(values) {
     errors.policyAmount = 'policy amount';
    }
     if (!values.clientPhone) {
-    errors.clientPhone = 'client phone number';
+    errors.clientPhone = 'Invalid client phone number';
+  }else if (!isValidPhoneNumber(values.clientPhone)){
+    errors.clientPhone= 'asyncValidate client phone number' ;
   }
     return errors;
 }
-
+// const sleep = ms => new Promise((resolve, reject) => setTimeout(resolve, ms))
+//
+// const asyncValidate = (values) => {
+//   // console.log('name, values', name, values);
+//   let a = isValidPhoneNumber(values.clientPhone);
+//   console.log('aaaaa',a);
+//   return sleep(100).then(() => {
+//     // simulate server latency
+//     if (!a) {
+//       throw { clientPhone: 'asyncValidate client phone number' }
+//     }
+//   })
+// }
 //connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
 // reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps
 
+// fields: ['firstname',
+// 'lastName',
+// 'examType',
+// 'examStreetAddress',
+// 'examCity',
+// 'examState',
+// 'examZipCode',
+// 'policyAmount',
+// 'clientDOB',
+// 'clientPhone',
+// 'examDate',
+// 'examTime',
+// 'examType',
+// 'gender',
+// 'examNotes'],
+
+const mapStateToProps = (state) => ({
+    // ...
+});
+
+const mapDispatchToProps = (dispatch)  => ({
+    createPost: (props) => { return dispatch(createPost(props)) }
+});
+
+PostsNew = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(PostsNew);
+
 export default reduxForm({
-    form: "PostsNewForm",
-    fields: ['firstname',
-            'lastName',
-            'examType',
-            'examStreetAddress',
-            'examCity',
-            'examState',
-            'examZipCode',
-            'policyAmount',
-            'clientDOB',
-            'clientPhone',
-            'examDate',
-            'examTime',
-            'examType',
-            'gender',
-            'examNotes'],
-    validate
-}, null,{ createPost } ) (PostsNew);
+  form: "PostsNewForm",
+    validate,
+    // asyncValidate
+}) (PostsNew);
