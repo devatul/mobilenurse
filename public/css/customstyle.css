@@ -1,21 +1,53 @@
-/* Nav bar */
-.navbar-brand{
+ /* Nav bar */
+.mobilenurse-navbar-brand{
 	font-family: 'Gruppo', cursive; 
+    font-weight: bold;	
+} 
+
+.mobilenurse-navbar{
+    font-family: 'Gruppo', cursive; 
 	font-weight: bold;	
+    background: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	font-size: 15px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+    font-weight: 600;
+    color: black;
 }
+
+.mobilenurse-navbar:hover{
+    background-color: white;
+}   
+
+.mobilenurse-brand {
+    color: black;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: black
+    
+  }
+
+ .nav>li>a:focus, 
+ .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent !important;
+}
+
+
 
 form a {
     margin-left: 10px;
 }
 
 
-
-
-/*LANDING JUMBOTRON*/
+/* LANDING JUMBOTRON
 .container-fluid {
     padding-top: 5px;
     padding-bottom: 25px;
-}
+} */
 
 .display-header {
     font-size: 45px;
@@ -23,8 +55,8 @@ form a {
 
 .jumbotron {
     text-align: center;
-    font-family: 'Gruppo', cursive; 
-	font-weight: bold;
+    /* font-family: 'Gruppo', cursive; 
+	font-weight: bold; */
 }
 
 .mobilenurse-header{
@@ -33,9 +65,9 @@ form a {
 	font-size: 60px;
 }
 
-text{
+/* text{
 	font-family: 'Gruppo', cursive; 
-}
+} */
 /*LANDING JUMBOTRON END*/
 
 /*SERVICES*/
