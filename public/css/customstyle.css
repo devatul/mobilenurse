@@ -25,6 +25,10 @@
     color: black;
 }
 
+.mobilenurse-font {
+    color: black;
+}
+
 .navbar-toggle .icon-bar {
     background-color: black
     
@@ -34,6 +38,7 @@
  .nav>li>a:hover {
     text-decoration: none;
     background-color: transparent !important;
+    color: black
 }
 
 
