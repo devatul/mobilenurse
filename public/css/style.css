@@ -1,3 +1,7 @@
+.has-danger input, .has-danger .ant-select {
+  border-color: #d9534f;
+}
+
 .app {
 	min-height: 100%;
 	height: 100%;
@@ -199,4 +203,12 @@ h3{
 }
 .header-hr{
 	margin-left: -16px;
+}
+
+.form-buttons {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.client-dob input {
+	border: none;
 }

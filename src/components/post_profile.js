@@ -1,24 +1,20 @@
 import React, { Component, PropTypes  } from 'react';
-import { reduxForm, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
+import { Form, reduxForm, formValueSelector, Field } from 'redux-form';
 import { createRepInfo } from '../actions/index';
 import { Link } from 'react-router';
 import { Select, Button, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
+import Header from './header';
+import PhoneNumber from './form_components/phone_number.js';
+import InputComponent from './form_components/input_components.js';
+import AntdComponent from './form_components/antd_components.js';
+import { isValidDOB, isValidPhoneNumber, isValidState, isValidZip, isValidExamDate } from '../helpers';
 
 class PostProfile extends Component {
     static contextTypes = {
         router: PropTypes.object
     };
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            examTime:null,
-            examDate:null
-        }
-        this.handleExamTypeChange = this.handleExamTypeChange.bind(this);
-    }
-
     onSubmit(props) {
         this.props.createRepInfo(props)
             .then(() => {
@@ -27,182 +23,134 @@ class PostProfile extends Component {
                 this.context.router.push('/profile/');
             });
     }
-
-  handleUpdateDate(newValMoment, newValString) {
-    this.setState({
-      examDate: newValMoment
-    });
-  }
-
-  handleExamTypeChange(event) {
-    console.log("New updated exam type is " + event.target.value);
-      this.setState({examType : event.target.value});
-  }
-
-handleGenderUpdate(event) {
-    this.setState({gender: event.target.gender});
-}
-  
-nop
-  //Form Validator for only Letters and spaces
-letters_spaces(e) {
-    const re =/^[a-zA-Z\s]*$/;
-    if(!re.test(e.key)) {
-        e.preventDefault();
-    }
-}
-
-
     render() {
-        const { fields: {firstname, 
-                        lastName,
-                        officeAddress,
-                        repCity,
-                        repState,
-                        repZipCode,
-                        repOfficePhone,
-                        repCellPhone,
-                        repEmail,
-                        repAssistantEmail,
-                        repAdminPhone,
-                        repAdminName
-                        }, handleSubmit } = this.props;
+        const {handleSubmit } = this.props;
         return (
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-              <h3>PROFILE</h3>
-              <hr/> 
-              <br/>
-
+            <div className="row">
+              <Header title="PROFILE" />
+              <div className="col-xs-12">
                 <div className="text-xs-right">
-                    <Link to="/profile/">BACK</Link>
+                  <Link to="/profile/">BACK</Link>
                 </div>
-
-                <div>
-                    <div className={`'form-group ${firstname.touched && firstname.invalid ? 'has-danger' : ''}`}>
-                        <label>FIRSTNAME</label> 
-                        <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
-                             type="text" placeholder="firstname" className="form-control" {...firstname} />
-                        <div className='text-help'>
-                            {firstname.touched ? firstname.error: ''}
-                        </div> 
-                    </div> 
-                </div> 
-
-                <div className={`'form-group ${lastName.touched && lastName.invalid ? 'has-danger' : ''}`}>
-                    <label>LASTNAME</label> 
-                    <input  ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)} 
-                        type="text" placeholder="lastname" className="form-control" {...lastName} />
-                    <div className='text-help'>
-                        {lastName.touched ? lastName.error: ''}
-                    </div> 
-                </div> 
-
-                <div className={`'form-group ${repEmail.touched && repEmail.invalid ? 'has-danger' : ''}`}>
-                    <label>EMAIL</label> 
-                    <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repEmail} />
-                    <div className='text-help'>
-                    {repEmail.touched ? repEmail.error: ''}
-                    </div> 
-                </div>
-                
-                <div className={`'form-group ${repOfficePhone.touched && repOfficePhone.invalid ? 'has-danger' : ''}`}>
-                    <label>OFFICE NUMBER</label> 
-                    <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repOfficePhone} />
-                    <div className='text-help'>
-                    {repOfficePhone.touched ? repOfficePhone.error: ''}
-                    </div> 
-                </div>
-
-                <div className={`'form-group ${repCellPhone.touched && repCellPhone.invalid ? 'has-danger' : ''}`}>
-                    <label>MOBILE NUMBER</label> 
-                    <input type="NUMBER" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repCellPhone} />
-                    <div className='text-help'>
-                    {repCellPhone.touched ? repCellPhone.error: ''}
-                    </div> 
-                </div>  
-
-
-
+              </div>
+              <div className="col-xs-9 form-wrapper">
+              <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                <Field
+                  name="firstname"
+                  type="text"
+                  lable="FIRSTNAME"
+                  component={InputComponent}
+                  placeholder="firstname"
+                />
+                <Field
+                  name="lastName"
+                  type="text"
+                  lable="LASTNAME"
+                  component={InputComponent}
+                  placeholder="lastname"
+                />
+                <Field
+                  name="repEmail"
+                  type="email"
+                  lable="EMAIL"
+                  classname="col-lg-6"
+                  component={InputComponent}
+                  placeholder="email"
+                />
+                <Field
+                  name="repOfficePhone"
+                  type="TEL"
+                  lable="OFFICE NUMBER"
+                  classname="col-lg-6"
+                  component={PhoneNumber}
+                  placeholder="XXX-XXX-XXXX"
+                />
+                <Field
+                  name="repCellPhone"
+                  type="TEL"
+                  lable="MOBILE NUMBER"
+                  classname="col-lg-6"
+                  component={PhoneNumber}
+                  placeholder="XXX-XXX-XXXX"
+                />
                 <div>
                     <br/><br/>
                         <h5>OFFICE LOCATION</h5>
-                    <hr/> 
+                    <hr/>
                     <br/>
                 </div>
-
-                <div className={`'form-group ${officeAddress.touched && officeAddress.invalid ? 'has-danger' : ''}`}>
-                    <label>ADDRESS</label> 
-                    <input type="ADDRESS" placeholder="street address" className="form-control" {...officeAddress} />
-                    <div className='text-help'>
-                    {officeAddress.touched ? officeAddress.error: ''}
-                    </div> 
-                </div> 
-
-                <div className={`'form-group ${repCity.touched && repCity.invalid ? 'has-danger' : ''}`}>
-                    <label>CITY</label> 
-                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
-                         type="TEXT" placeholder="city" className="form-control col-md-4" {...repCity} />
-                    <div className='text-help'>
-                    {repCity.touched ? repCity.error: ''}
-                    </div> 
-                </div> 
-
-                <div className={`form-group ${repState.touched && repState.invalid ? 'has-danger' : ''}`}>
-                    <label>STATE</label> 
-                    <input ref="letters_spaces" onKeyPress={(e) => this.letters_spaces(e)}
-                            type="TEXT" placeholder="state" className="form-control col-md-4" {...repState} />
-                    <div className='text-help'>
-                    {repState.touched ? repState.error: ''}
-                    </div> 
-                </div> 
-
-                <div className={`'form-group ${repZipCode.touched && repZipCode.invalid ? 'has-danger' : ''}`}>
-                    <label>ZIP</label> 
-                    <input type="number" maxLength={5} placeholder="zip" className="col-lg-6 form-control" {...repZipCode} />
-                    <div className='text-help'>
-                    {repZipCode.touched ? repZipCode.error: ''}
-                    </div> 
-                </div>
-
-                <div>
-                    <br/><br/>
+                <Field
+                  name="officeAddress"
+                  type="ADDRESS"
+                  lable="ADDRESS"
+                  classname="col-lg-6"
+                  component={InputComponent}
+                  placeholder="street address"
+                />
+                <Field
+                  name="repCity"
+                  type="text"
+                  lable="CITY"
+                  classname="col-md-4"
+                  component={InputComponent}
+                  placeholder="city"
+                />
+                <Field
+                  name="repState"
+                  type="text"
+                  lable="STATE"
+                  classname="col-md-4"
+                  component={InputComponent}
+                  placeholder="state"
+                />
+                <Field
+                  name="repZipCode"
+                  type="number"
+                  lable="ZIP"
+                  classname="col-lg-6"
+                  component={InputComponent}
+                  placeholder="zip"
+                />
+              <div className="col-xs-12">
+                    <br />
+                    <br />
                         <h5>ADMINISTRATIVE ASSISTANT INFORMATION</h5>
-                        <p>IF APPLICABLE</p>
-                    <hr/> 
+                        <p>(if applicble)</p>
+                    <hr/>
                     <br/>
                 </div>
-
-              <div className={`'form-group ${repAdminName.touched && repAdminName.invalid ? 'has-danger' : ''}`}>
-                    <label>NAME</label> 
-                    <input type="TEXT" placeholder="NAME" className="col-lg-6 form-control" {...repAdminName} />
-                    <div className='text-help'>
-                    {repAdminName.touched ? repAdminName.error: ''}
-                    </div> 
-                </div>
-
-                <div className={`'form-group ${repAssistantEmail.touched && repAssistantEmail.invalid ? 'has-danger' : ''}`}>
-                    <label>EMAIL</label> 
-                    <input type="TEXT" placeholder="EMAIL" className="col-lg-6 form-control" {...repAssistantEmail} />
-                    <div className='text-help'>
-                    {repAssistantEmail.touched ? repAssistantEmail.error: ''}
-                    </div> 
-                </div>
-
-
-                <div className={`'form-group ${repAdminPhone.touched && repAdminPhone.invalid ? 'has-danger' : ''}`}>
-                    <label>PHONE</label> 
-                    <input type="TEXT" placeholder="xxx-xxx-xxxx" className="col-lg-6 form-control" {...repAdminPhone} />
-                    <div className='text-help'>
-                    {repAdminPhone.touched ? repAdminPhone.error: ''}
-                    </div> 
-                </div>
-
+                <Field
+                  name="repAdminName"
+                  type="text"
+                  lable="NAME"
+                  classname="col-lg-6"
+                  component={InputComponent}
+                  placeholder="NAME"
+                />
+                <Field
+                  name="repAssistantEmail"
+                  type="email"
+                  lable="EMAIL"
+                  classname="col-lg-6"
+                  component={InputComponent}
+                  placeholder="EMAIL"
+                />
+                <Field
+                  name="repAdminPhone"
+                  type="TEL"
+                  lable="PHONE"
+                  classname="col-lg-6"
+                  component={PhoneNumber}
+                  placeholder="XXX-XXX-XXXX"
+                />
                 <br/><br/>
                 <div className="col-xs-12" >
-                    <button type="submit" className="btn btn-primary">UPDATE</button> 
+                    <button type="submit" className="btn btn-primary">UPDATE</button>
                     <Link to="/profile/" className="btn btn-danger">CANCEL</Link>
-                </div> 
-            </form> 
+                </div>
+              </Form>
+            </div>
+            </div>
         );
     }
 }
@@ -210,33 +158,66 @@ letters_spaces(e) {
 
 function validate(values) {
     const errors = {};
+    let repStateErr = isValidState(values.repState)
+    let zipErr = isValidZip(values.repZipCode);
+    let examDateErr = isValidExamDate(values.examDate);
 
     if (!values.firstname) {
-        errors.firstname = 'client firstname';
+        errors.firstname = 'invalid firstname';
     }
-    if (!values.lastname) {
-        errors.lastName = 'client lastname';
+    if (!values.lastName) {
+        errors.lastName = 'Invalid lastname';
+    }
+    if (!values.officeAddress) {
+      errors.officeAddress = 'Office address empty';
+    }
+    if (!values.repCity) {
+      errors.repCity = 'city required';
+    }
+    if (repStateErr) {
+      errors.repState = repStateErr;
+    }
+    if (zipErr) {
+      errors.repZipCode = zipErr;
+    }
+    if (!values.repAdminName) {
+      errors.repAdminName = 'Invalid Name';
+    }
+    if (!values.repOfficePhone) {
+      errors.repOfficePhone = 'Empty office phone number';
+    } else if (!isValidPhoneNumber(values.repOfficePhone)){
+      errors.repOfficePhone = 'Invalid office phone number' ;
+    }
+    if (!values.repCellPhone) {
+      errors.repCellPhone = 'Empty cellphone number';
+    } else if (!isValidPhoneNumber(values.repCellPhone)){
+      errors.repCellPhone = 'Invalid cellphone number' ;
+    }
+    if (!values.repEmail) {
+      errors.repEmail = 'Invalid email';
+    }
+    if (!values.repAdminPhone) {
+      errors.repAdminPhone = 'Empty cellphone number';
+    } else if (!isValidPhoneNumber(values.repAdminPhone)){
+      errors.repAdminPhone = 'Invalid cellphone number' ;
+    }
+    if (!values.repAssistantEmail) {
+      errors.repAssistantEmail = 'Invalid email';
     }
     return errors;
 }
 
 //connect first argument is mapStatetoProps, 2nd is mapDipatchToProps
 // reduxForm: 1st is form config, 2nd is mapDipatchToProps, 3rd is mapDispatchToProps
+const mapStateToProps = (state) => ({
+    // ...
+});
+
+const mapDispatchToProps = (dispatch)  => ({
+    createRepInfo: (props) => { return dispatch(createRepInfo(props)) }
+});
 
 export default reduxForm({
     form: "PostsNewForm",
-    fields: ['firstname',
-            'lastName',
-            'officeAddress',
-            'repCity',
-            'repState',
-            'repZipCode',
-            'repOfficePhone',
-            'repCellPhone',
-            'repEmail',
-            'repAssistantEmail',
-            'repAdminPhone',
-            'repAdminName'
-        ],
-  //  validate
-}, null,{ createRepInfo } ) (PostProfile); 
+    validate
+}) (connect(mapStateToProps, mapDispatchToProps)(PostProfile));

@@ -16,10 +16,4 @@ class Header extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { post: state.posts.post };
-}
-
-
-
-export default connect(mapStateToProps) (Header);
+export default Header;

@@ -55,9 +55,9 @@ class PhoneNumber extends Component {
         <div className={`'form-group ${meta.touched && meta.invalid ? 'has-danger' : ''}`}>
           <label>{lable}</label>
           <input {...input} type={type} placeholder={placeholder} className="form-control"
-          onChange={(e)=>this.onChangeHandler(e)}
-          onBlur={(e)=>this.handleBlur(e)}
-          onFocus={(e)=>this.handleFocus(e)}
+            onChange={(e)=>this.onChangeHandler(e)}
+            onBlur={(e)=>this.handleBlur(e)}
+            onFocus={(e)=>this.handleFocus(e)}
           />
           <div className='text-help'>
             {meta.touched ? meta.error: ''}
