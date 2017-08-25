@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form, reduxForm, formValueSelector, Field } from 'redux-form';
 import { createPost } from '../actions/index';
 import { Link } from 'react-router';
+import { Row, Col } from 'react-bootstrap';
 import { Select, Button, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
 import Header from './header';
@@ -10,7 +11,7 @@ import { isValidDOB, isValidPhoneNumber, isValidState, isValidZip, isValidExamDa
 import PhoneNumber from './form_components/phone_number';
 import InputComponent from './form_components/input_components';
 import AntdComponent from './form_components/antd_components';
-import TimePickerComponent from './form_components/time_picker';
+import DateTimePickerComponent from './form_components/date_time_picker';
 import ModalComponent from './modal';
 
 class PostsNew extends Component {
@@ -80,9 +81,9 @@ class PostsNew extends Component {
                   name="clientDOB"
                   type="DatePicker"
                   lable="DATE OF BIRTH"
-                  dateFormat="DD/MM/YYYY"
-                  inputclassname="form-control client-dob "
-                  component={AntdComponent}
+                  inputFormat="DD/MM/YYYY"
+                  inputclassname="client-dob "
+                  component={DateTimePickerComponent}
                   placeholder="DOB"
                 />
                 <Field
@@ -133,22 +134,26 @@ class PostsNew extends Component {
                   component={InputComponent}
                   placeholder="policy amount"
                 />
+              <Col xs={12}>
                 <Field
                   name="examDate"
                   type="DatePicker"
                   lable="EXAM DATE"
                   classname="col-sm-6"
-                  component={AntdComponent}
+                  component={DateTimePickerComponent}
                   placeholder="Select Date"
-                />
+                  />
                 <Field
                   name="examTime"
                   type="TimePicker"
                   lable="EXAM TIME"
+                  inputFormat="ampm"
                   classname="col-sm-6"
-                  component={AntdComponent}
+                  component={DateTimePickerComponent}
                   placeholder="SELECT"
-                />
+                  />
+              </Col>
+              <Col xs={12}>
                 <Field
                   name="examType"
                   type="examType"
@@ -163,6 +168,7 @@ class PostsNew extends Component {
                   classname="col-sm-6"
                   component={AntdComponent}
                 />
+              </Col>
                 <Field
                   name="examNotes"
                   type="textarea"
