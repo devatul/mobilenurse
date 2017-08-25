@@ -1,6 +1,6 @@
 var path = require('path');
 var db = require('../models');
-// Generate a v1 UUID (time-based) 
+// Generate a v1 UUID (time-based)
 const uuidV1 = require('uuid/v1');
 
 module.exports = function(app) {
@@ -29,9 +29,9 @@ module.exports = function(app) {
                             //// API ROUTES /////
 
     app.post('/api/posts', ensureAuthenticated, function(req,res) {
-        
+
         String.prototype.toProperCase = function(){
-            return this.toLowerCase().replace(/(^[a-z]| [a-z]|-[a-z])/g, 
+            return this.toLowerCase().replace(/(^[a-z]| [a-z]|-[a-z])/g,
                 function($1){
                     return $1.toUpperCase();
                 }
@@ -41,7 +41,7 @@ module.exports = function(app) {
         var defaultStatus = 'pending'
 
         res.json(req.body);
-        console.log(req.body)
+        console.log('*******************',req.body)
         db.Exams.create({
             firstname: req.body.firstname.toProperCase(),
             lastName: req.body.lastName.toProperCase(),
@@ -64,13 +64,13 @@ module.exports = function(app) {
     app.post('/api/repinfo', ensureAuthenticated, function(req, res) {
 
         String.prototype.toProperCase = function(){
-            return this.toLowerCase().replace(/(^[a-z]| [a-z]|-[a-z])/g, 
+            return this.toLowerCase().replace(/(^[a-z]| [a-z]|-[a-z])/g,
                 function($1){
                     return $1.toUpperCase();
                 }
             );
-        };        
-         
+        };
+
         res.json(req.body);
         console.log(req.body);
         db.InsuranceReps.create({

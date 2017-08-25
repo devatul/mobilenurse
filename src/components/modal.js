@@ -2,6 +2,7 @@ import React, { Component, PropTypes  } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Modal, Button } from 'react-bootstrap';
 import moment from 'moment';
+import { formatPhoneNumberToInsert, convertAmtToPlainNumber } from '../helpers';
 
 class ModalComponent extends Component {
       constructor(props) {
@@ -21,12 +22,11 @@ class ModalComponent extends Component {
     }
     handleSubmit(){
       let data = this.state.data;
-      let clientDOB = moment(new Date(data.clientDOB)).format("DD/MM/YYYY");
-      let examDate = moment(new Date(data.examDate)).format("DD/MM/YYYY");
-      let examTime = moment(new Date(data.examTime)).format("hh:mm a");
-      data.clientDOB = clientDOB;
-      data.examDate = examDate;
-      data.examTime = examTime;
+      data.clientDOB = moment(new Date(data.clientDOB)).format("YYYY-MM-DD");
+      data.examDate = moment(new Date(data.examDate)).format("YYYY-MM-DD");
+      data.examTime = moment(new Date(data.examTime)).format("HH:mm:ss");
+      data.clientPhone = data.clientPhone && formatPhoneNumberToInsert(data.clientPhone);
+      data.policyAmount = parseInt(convertAmtToPlainNumber(data.policyAmount));
       this.props.onSubmit(data);
     }
     handleClose() {

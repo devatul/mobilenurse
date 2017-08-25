@@ -7,9 +7,10 @@ import { Select, Button, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
 import Header from './header';
 import { isValidDOB, isValidPhoneNumber, isValidState, isValidZip, isValidExamDate } from '../helpers';
-import PhoneNumber from './form_components/phone_number.js';
-import InputComponent from './form_components/input_components.js';
-import AntdComponent from './form_components/antd_components.js';
+import PhoneNumber from './form_components/phone_number';
+import InputComponent from './form_components/input_components';
+import AntdComponent from './form_components/antd_components';
+import TimePickerComponent from './form_components/time_picker';
 import ModalComponent from './modal';
 
 class PostsNew extends Component {

@@ -1,22 +1,22 @@
 import React, { Component, PropTypes  } from 'react';
 import { connect } from 'react-redux';
-import { Form, reduxForm, formValueSelector, Field } from 'redux-form';
+import { Form, reduxForm, Field } from 'redux-form';
 import { createRepInfo } from '../actions/index';
 import { Link } from 'react-router';
-import { Select, Button, DatePicker, TimePicker } from 'antd';
-import moment from 'moment';
 import Header from './header';
 import PhoneNumber from './form_components/phone_number.js';
 import InputComponent from './form_components/input_components.js';
-import AntdComponent from './form_components/antd_components.js';
-import { isValidDOB, isValidPhoneNumber, isValidState, isValidZip, isValidExamDate } from '../helpers';
+import { isValidPhoneNumber, isValidState, isValidZip, isValidExamDate, formatPhoneNumberToInsert } from '../helpers';
 
 class PostProfile extends Component {
     static contextTypes = {
         router: PropTypes.object
     };
-    onSubmit(props) {
-        this.props.createRepInfo(props)
+    onSubmit(data) {
+      data.repOfficePhone = formatPhoneNumberToInsert(data.repOfficePhone);
+      data.repCellPhone = formatPhoneNumberToInsert(data.repCellPhone);
+      data.repAdminPhone = formatPhoneNumberToInsert(data.repAdminPhone);
+        this.props.createRepInfo(data)
             .then(() => {
                 // exams post has been created, navigate the user to the index
                 // we navigate by calling this.context.router.push

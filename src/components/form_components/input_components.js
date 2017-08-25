@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import _ from 'lodash';
+import { convertAmtToPlainNumber } from '../../helpers';
 
 export default class InputComponent extends Component {
   handleBlur(e){
@@ -31,12 +32,7 @@ export default class InputComponent extends Component {
     let val = e.target.value;
     const { input, meta  } = this.props;
     if(input.name === 'policyAmount'){
-      val = val.split(',')
-      let newVal = '';
-      _.map(val,(num)=>{
-        newVal += num;
-      })
-      val = newVal;
+      val = convertAmtToPlainNumber(val);
     }
     input.onChange(val);
   }

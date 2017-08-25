@@ -8,19 +8,15 @@ class PostsShow extends Component {
     static contextTypes = {
         router: PropTypes.object
     };
-
-
     componentWillMount() {
-        this.props.fetchPost(this.props.params.id); 
-}
-
+      this.props.fetchPost(this.props.params.id);
+    }
     onDeleteClick() {
         this.props.deletePost(this.props.params.id)
         .then(() => {
             this.context.router.push('/profile/');
         });
     }
-
     render() {
         const { post } = this.props;
 
@@ -30,14 +26,14 @@ class PostsShow extends Component {
         return (
             <div>
                 <Link to="/profile/">Back</Link>
-                <button 
+                <button
                     className="btn btn-danger pull-xs-right"
                     onClick={this.onDeleteClick.bind(this)}>
                     CANCEL EXAM
-                </button> 
+                </button>
                 <h1> CLIENT INFORMATION </h1>
                 <hr/>
-                <h3>EXAM STATUS: {post.examStatus} </h3>  
+                <h3>EXAM STATUS: {post.examStatus} </h3>
                 <br/>
                 <h4>FIRSTNAME: {post.firstname}</h4>
                 <h4>LASTNAME: {post.lastName}</h4>
@@ -68,4 +64,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps, {fetchPost, deletePost}) (PostsShow); 
+export default connect(mapStateToProps, {fetchPost, deletePost}) (PostsShow);
