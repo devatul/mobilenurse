@@ -1,4 +1,4 @@
-<<<<<<< HEAD:public/css/style.css
+
 .has-danger input, .has-danger .ant-select {
   border-color: #d9534f;
 }
@@ -15,7 +15,7 @@
 .navbar-brand{
 	font-family: 'Gruppo', cursive;
     font-weight: bold;
-    
+}
  /* Nav bar */
  .mobilenurse-navbar-brand{
 	font-family: 'Gruppo', cursive; 
@@ -43,7 +43,29 @@
     color: black;
 }
 
-<<<<<<< HEAD:public/css/style.css
+.mobilenurse-font {
+    color: black;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: black
+    
+  }
+
+ .nav>li>a:focus, 
+ .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent !important;
+    color: black
+}
+
+
+
+form a {
+    margin-left: 10px;
+}
+
+
 .menu {
 	height: 100%;
   border-right: 1px solid #dcdcdc;
@@ -64,29 +86,7 @@
 .menu .menu-item:hover{
 	background: rgba(204, 204, 204, 0.3);
 }
-=======
-.mobilenurse-font {
-    color: black;
-}
 
-.navbar-toggle .icon-bar {
-    background-color: black
-    
-  }
-
- .nav>li>a:focus, 
- .nav>li>a:hover {
-    text-decoration: none;
-    background-color: transparent !important;
-    color: black
-}
-
-
->>>>>>> master:public/css/customstyle.css
-
-form a {
-    margin-left: 10px;
-}
 
 
 /* LANDING JUMBOTRON
@@ -101,13 +101,8 @@ form a {
 
 .jumbotron {
     text-align: center;
-<<<<<<< HEAD:public/css/style.css
-    font-family: 'Gruppo', cursive;
-	font-weight: bold;
-=======
     /* font-family: 'Gruppo', cursive; 
 	font-weight: bold; */
->>>>>>> master:public/css/customstyle.css
 }
 
 .mobilenurse-header{
@@ -116,15 +111,9 @@ form a {
 	font-size: 60px;
 }
 
-<<<<<<< HEAD:public/css/style.css
-text{
-	font-family: 'Gruppo', cursive;
-}
-=======
 /* text{
 	font-family: 'Gruppo', cursive; 
 } */
->>>>>>> master:public/css/customstyle.css
 /*LANDING JUMBOTRON END*/
 
 /*SERVICES*/
